@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { type ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { ContactComponent } from './contact.component';
 import { SeoService } from '../../core/services/seo.service';
@@ -13,10 +13,7 @@ describe('ContactComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [ContactComponent],
-      providers: [
-        { provide: SeoService, useValue: seoSpy },
-        provideRouter([]),
-      ],
+      providers: [{ provide: SeoService, useValue: seoSpy }, provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ContactComponent);

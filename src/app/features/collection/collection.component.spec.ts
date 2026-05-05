@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { CollectionComponent } from './collection.component';
@@ -14,10 +14,7 @@ describe('CollectionComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CollectionComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [
-        { provide: SeoService, useValue: seoSpy },
-        provideRouter([]),
-      ],
+      providers: [{ provide: SeoService, useValue: seoSpy }, provideRouter([])],
     })
       .overrideComponent(CollectionComponent, { set: { imports: [] } })
       .compileComponents();

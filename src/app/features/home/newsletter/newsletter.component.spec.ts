@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { type ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { NewsletterComponent } from './newsletter.component';
 
 describe('NewsletterComponent', () => {
