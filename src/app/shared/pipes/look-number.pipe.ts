@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, type PipeTransform } from '@angular/core';
 
 /** Formats a look number as "Look 01", "Look 02" etc. */
 @Pipe({ name: 'lookNumber', standalone: true })

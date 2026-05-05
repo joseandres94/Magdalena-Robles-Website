@@ -1,17 +1,16 @@
 import {
-  Component, OnInit, OnDestroy, HostListener,
+  Component, type OnInit, type OnDestroy, HostListener,
   signal, inject, ChangeDetectionStrategy,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { filter, Subscription } from 'rxjs';
+import { filter, type Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'mr-header',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

@@ -1,12 +1,14 @@
 <div
   class="modal-backdrop"
   @modalEnter
-  (click)="close.emit()"
+  (click)="onBackdropClick($event)"
+  (keydown.escape)="dismiss.emit()"
   role="dialog"
   aria-modal="true"
+  tabindex="-1"
   [attr.aria-label]="'Look ' + (currentIndex + 1) + ' — ' + look.name"
 >
-  <div class="modal-inner" (click)="$event.stopPropagation()" @panelEnter>
+  <div class="modal-inner" @panelEnter>
 
     <!-- Image panel -->
     <div class="modal-img-col" [style.background]="look.bgColor">
@@ -20,8 +22,8 @@
     <div class="modal-content" role="document">
 
       <div class="modal-top-row">
-        <span class="modal-num">Look 0{{ look.number }}</span>
-        <button class="modal-close" (click)="close.emit()" aria-label="Cerrar detalle de look">
+        <span class="modal-num">{{ look.number | lookNumber }}</span>
+        <button class="modal-close" (click)="dismiss.emit()" aria-label="Cerrar detalle de look">
           Cerrar ✕
         </button>
       </div>

@@ -1,5 +1,5 @@
 import {
-  Component, OnInit, AfterViewInit, inject,
+  Component, type AfterViewInit, inject,
   ChangeDetectionStrategy, signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -24,14 +24,12 @@ import { LanguageService } from '../../../core/services/language.service';
     ]),
   ],
 })
-export class HeroComponent implements OnInit, AfterViewInit {
+export class HeroComponent implements AfterViewInit {
   lang = inject(LanguageService);
   readonly ready = signal(false);
 
   /** Imagen de fondo del hero: coloca el archivo en `src/assets/hero/` con este nombre, o cambia la ruta. Cadena vacía = sin foto. */
   readonly heroBackdropSrc = '/assets/hero/hero-backdrop.jpg';
-
-  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     setTimeout(() => this.ready.set(true), 80);

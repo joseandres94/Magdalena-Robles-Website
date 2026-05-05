@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   signal,
 } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, type AbstractControl } from '@angular/forms';
 import { LanguageService } from '../../../core/services/language.service';
 
 interface NewsletterState {

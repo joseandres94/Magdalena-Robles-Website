@@ -7,7 +7,7 @@
         <img class="look-hero-photo" [src]="hero.src" [alt]="hero.alt" loading="eager" decoding="async" />
       }
       <div class="look-hero-content">
-        <span class="look-num mr-eyebrow">Look 0{{ look.number }}</span>
+        <span class="look-num mr-eyebrow">{{ look.number | lookNumber }}</span>
         <h1 class="look-name">{{ look.name }}</h1>
         <p class="look-archetype">{{ look.archetype }}</p>
       </div>
@@ -80,7 +80,7 @@
       <div class="pagination-prev">
         @if (prevLook) {
           <a [routerLink]="['/collection', prevLook.slug]" class="pagination-link">
-            <span class="pagination-dir">← Look 0{{ prevLook.number }}</span>
+            <span class="pagination-dir">← {{ prevLook.number | lookNumber }}</span>
             <span class="pagination-name">{{ prevLook.name }}</span>
           </a>
         }
@@ -91,7 +91,7 @@
       <div class="pagination-next">
         @if (nextLook) {
           <a [routerLink]="['/collection', nextLook.slug]" class="pagination-link">
-            <span class="pagination-dir">Look 0{{ nextLook.number }} →</span>
+            <span class="pagination-dir">{{ nextLook.number | lookNumber }} →</span>
             <span class="pagination-name">{{ nextLook.name }}</span>
           </a>
         }

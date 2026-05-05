@@ -1,16 +1,16 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, type OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { CollectionService } from '../../core/services/collection.service';
 import { SeoService } from '../../core/services/seo.service';
 import { LanguageService } from '../../core/services/language.service';
+import { LookNumberPipe } from '../../shared/pipes/look-number.pipe';
 import type { Look } from '../../core/models/look.model';
 
 @Component({
   selector: 'mr-look-detail',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, LookNumberPipe],
   templateUrl: './look-detail.component.html',
   styleUrl: './look-detail.component.scss',
 })

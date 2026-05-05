@@ -1,5 +1,5 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Component, type OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators, type AbstractControl } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../core/services/language.service';
 import { SeoService } from '../../core/services/seo.service';

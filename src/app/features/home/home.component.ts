@@ -1,6 +1,5 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, type OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { HeroComponent } from './hero/hero.component';
 import { MoodboardComponent } from './moodboard/moodboard.component';
 import { TickerComponent } from '../../shared/components/ticker/ticker.component';
@@ -16,7 +15,7 @@ import { LookModalComponent } from '../collection/look-modal/look-modal.componen
   selector: 'mr-home',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, CommonModule, HeroComponent, MoodboardComponent, TickerComponent, LookCardComponent, NewsletterComponent, LookModalComponent],
+  imports: [RouterLink, HeroComponent, MoodboardComponent, TickerComponent, LookCardComponent, NewsletterComponent, LookModalComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
