@@ -39,7 +39,7 @@ export class HeroComponent implements AfterViewInit {
   readonly ready = signal(false);
 
   /** Imagen de fondo del hero: coloca el archivo en `src/assets/hero/` con este nombre, o cambia la ruta. Cadena vacía = sin foto. */
-  readonly heroBackdropSrc = '/assets/hero/hero-backdrop.jpg';
+  readonly heroBackdropSrc = 'assets/hero/hero-backdrop.jpg';
 
   ngAfterViewInit(): void {
     setTimeout(() => this.ready.set(true), 80);

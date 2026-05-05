@@ -23,10 +23,10 @@ export class AboutComponent implements OnInit {
   /**
    * Retrato en la columna izquierda de /about.
    * 1) Guarda tu imagen en `src/assets/about/` (p. ej. `designer-portrait.jpg`).
-   * 2) Pon aquí la ruta pública, p. ej. `'/assets/about/designer-portrait.jpg'`.
+   * 2) Pon aquí la ruta pública, p. ej. `'assets/about/designer-portrait.jpg'`.
    * Cadena vacía = se muestra el placeholder (silueta + texto).
    */
-  readonly aboutPortraitSrc = '/assets/about/magdalena-about.jpg';
+  readonly aboutPortraitSrc = 'assets/about/magdalena-about.jpg';
 
   ngOnInit(): void {
     this.seo.setPage({

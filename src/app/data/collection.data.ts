@@ -32,7 +32,7 @@ export const LOOKS_DATA: Look[] = [
     ],
     images: [
       {
-        src: '/assets/looks/pedrolino-01.jpg',
+        src: 'assets/looks/pedrolino-01.jpg',
         alt: 'Pedrolino — Look 01, vista frontal, manga voluminosa en lino blanco',
         type: 'editorial',
       },
@@ -71,7 +71,7 @@ export const LOOKS_DATA: Look[] = [
     ],
     images: [
       {
-        src: '/assets/looks/colombina-01.jpg',
+        src: 'assets/looks/colombina-01.jpg',
         alt: 'Colombina — Look 02, corte láser en tul sobre satén',
         type: 'editorial',
       },
@@ -114,7 +114,7 @@ export const LOOKS_DATA: Look[] = [
     ],
     images: [
       {
-        src: '/assets/looks/arlequin-01.jpg',
+        src: 'assets/looks/arlequin-01.jpg',
         alt: 'Arlequín — Look 03, patchwork con accesorios de impresión 3D',
         type: 'editorial',
       },
@@ -148,7 +148,7 @@ export const LOOKS_DATA: Look[] = [
     ],
     images: [
       {
-        src: '/assets/looks/pantalone-01.jpg',
+        src: 'assets/looks/pantalone-01.jpg',
         alt: 'Pantalone — Look 04, volumen estructurado en capas de lana',
         type: 'editorial',
       },
@@ -186,7 +186,7 @@ export const LOOKS_DATA: Look[] = [
     ],
     images: [
       {
-        src: '/assets/looks/isabella-01.jpg',
+        src: 'assets/looks/isabella-01.jpg',
         alt: 'Isabella — Look 05, smocking a mano en seda biodegradable',
         type: 'editorial',
       },
@@ -224,7 +224,7 @@ export const LOOKS_DATA: Look[] = [
     ],
     images: [
       {
-        src: '/assets/looks/lelio-01.jpg',
+        src: 'assets/looks/lelio-01.jpg',
         alt: 'Lelio — Look 06, sastrería deconstruida en algodón y lana',
         type: 'editorial',
       },
