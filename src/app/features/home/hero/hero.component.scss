@@ -44,7 +44,9 @@
   padding: 0 1.5rem;
   box-sizing: border-box;
 
-  @include m.mobile { padding: 0 1.25rem; }
+  @include m.mobile {
+    padding: 0 1.25rem;
+  }
 }
 
 .hero-ctas {

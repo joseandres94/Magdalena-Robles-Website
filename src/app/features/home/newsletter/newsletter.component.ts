@@ -1,10 +1,5 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  signal,
-} from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Component, inject, ChangeDetectionStrategy, signal } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators, type AbstractControl } from '@angular/forms';
 import { LanguageService } from '../../../core/services/language.service';
 
 interface NewsletterState {
@@ -32,9 +27,9 @@ export class NewsletterComponent {
     email: ['', [Validators.required, Validators.email]],
     interests: this.fb.group({
       collection: [true],
-      process:    [false],
-      press:      [false],
-      events:     [false],
+      process: [false],
+      press: [false],
+      events: [false],
     }),
     acceptPrivacy: [false, Validators.requiredTrue],
   });
@@ -59,12 +54,16 @@ export class NewsletterComponent {
     // Simulate async submit — replace with real service call
     setTimeout(() => {
       this.state.set({ loading: false, success: true, error: null });
-      this.form.reset({ interests: { collection: true, process: false, press: false, events: false } });
+      this.form.reset({
+        interests: { collection: true, process: false, press: false, events: false },
+      });
     }, 1200);
   }
 
   reset(): void {
     this.state.set({ loading: false, success: false, error: null });
-    this.form.reset({ interests: { collection: true, process: false, press: false, events: false } });
+    this.form.reset({
+      interests: { collection: true, process: false, press: false, events: false },
+    });
   }
 }

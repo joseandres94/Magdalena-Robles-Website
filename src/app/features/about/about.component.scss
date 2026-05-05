@@ -9,7 +9,10 @@
   margin-top: 4rem;
   min-height: 560px;
 
-  @include m.mobile { grid-template-columns: 1fr; margin-top: 3.5rem; }
+  @include m.mobile {
+    grid-template-columns: 1fr;
+    margin-top: 3.5rem;
+  }
 }
 
 .about-image-col {
@@ -22,7 +25,11 @@
   overflow: hidden;
   position: relative;
 
-  @include m.mobile { min-height: 280px; border-right: none; border-bottom: t.$border-hair; }
+  @include m.mobile {
+    min-height: 280px;
+    border-right: none;
+    border-bottom: t.$border-hair;
+  }
 }
 
 .about-portrait {
@@ -73,7 +80,9 @@
     max-width: 420px;
   }
 
-  @include m.mobile { padding: 3rem 1.5rem; }
+  @include m.mobile {
+    padding: 3rem 1.5rem;
+  }
 }
 
 .about-headline {
@@ -98,9 +107,14 @@
   border: t.$border-hair;
   padding: 0.3rem 0.75rem;
   color: t.$mr-ink-45;
-  transition: border-color 0.2s, color 0.2s;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
 
-  &:hover { color: t.$mr-ink; border-color: rgba(29,29,29,0.35); }
+  &:hover {
+    color: t.$mr-ink;
+    border-color: rgba(29, 29, 29, 0.35);
+  }
 }
 
 // ── MANIFESTO ──
@@ -115,7 +129,7 @@
     font-style: italic;
     font-size: clamp(1.3rem, 2.4vw, 1.85rem);
     line-height: 1.5;
-    color: rgba(29,29,29,0.6);
+    color: rgba(29, 29, 29, 0.6);
     max-width: 560px;
     margin: 0 auto;
   }
@@ -131,7 +145,9 @@
     font-style: normal;
   }
 
-  @include m.mobile { padding: 5rem 1.5rem; }
+  @include m.mobile {
+    padding: 5rem 1.5rem;
+  }
 }
 
 // ── PROCESS ──
@@ -146,7 +162,11 @@
   padding: 3rem 2.5rem 1.5rem;
   border-bottom: t.$border-hair;
 
-  @include m.mobile { flex-direction: column; gap: 0.5rem; padding: 2rem 1.5rem 1.2rem; }
+  @include m.mobile {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem 1.5rem 1.2rem;
+  }
 }
 
 .process-intro {
@@ -161,8 +181,12 @@
   grid-template-columns: repeat(4, 1fr);
   border-top: none;
 
-  @include m.tablet { grid-template-columns: repeat(2, 1fr); }
-  @include m.mobile { grid-template-columns: 1fr; }
+  @include m.tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
 }
 
 .process-step {
@@ -172,16 +196,22 @@
   flex-direction: column;
   gap: 0.7rem;
 
-  &:last-child { border-right: none; }
+  &:last-child {
+    border-right: none;
+  }
 
   @include m.tablet {
     border-bottom: t.$border-hair;
-    &:nth-child(2n) { border-right: none; }
+    &:nth-child(2n) {
+      border-right: none;
+    }
   }
   @include m.mobile {
     border-right: none;
     border-bottom: t.$border-hair;
-    &:last-child { border-bottom: none; }
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 

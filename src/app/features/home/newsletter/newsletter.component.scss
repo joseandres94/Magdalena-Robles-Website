@@ -28,7 +28,7 @@
   font-size: t.$eyebrow-size;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(240, 237, 230, 0.30);
+  color: rgba(240, 237, 230, 0.3);
   font-weight: 400;
 }
 
@@ -40,7 +40,9 @@
   letter-spacing: -0.04em;
   color: t.$mr-cream;
 
-  em { font-style: italic; }
+  em {
+    font-style: italic;
+  }
 }
 
 .newsletter-desc {
@@ -82,11 +84,11 @@
   font-size: 0.56rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(240, 237, 230, 0.30);
+  color: rgba(240, 237, 230, 0.3);
 }
 
 .required-mark {
-  color: rgba(249, 198, 208, 0.70);
+  color: rgba(249, 198, 208, 0.7);
 }
 
 .newsletter-input {
@@ -103,18 +105,18 @@
   transition: border-color t.$duration-fast t.$easing;
 
   &::placeholder {
-    color: rgba(240, 237, 230, 0.20);
+    color: rgba(240, 237, 230, 0.2);
     font-size: 0.68rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   &:focus {
-    border-bottom-color: rgba(240, 237, 230, 0.50);
+    border-bottom-color: rgba(240, 237, 230, 0.5);
   }
 
   &.field-error-state {
-    border-bottom-color: rgba(192, 57, 43, 0.70);
+    border-bottom-color: rgba(192, 57, 43, 0.7);
   }
 }
 
@@ -122,7 +124,7 @@
   font-family: t.$font-ui;
   font-size: 0.56rem;
   letter-spacing: 0.08em;
-  color: rgba(249, 198, 208, 0.90);
+  color: rgba(249, 198, 208, 0.9);
 }
 
 // ── Interests checkboxes ─────────────────
@@ -206,8 +208,9 @@
   text-transform: uppercase;
   color: t.$mr-cream;
   cursor: pointer;
-  transition: color t.$duration-fast t.$easing,
-              border-color t.$duration-fast t.$easing;
+  transition:
+    color t.$duration-fast t.$easing,
+    border-color t.$duration-fast t.$easing;
 
   &:hover {
     color: t.$mr-gold;

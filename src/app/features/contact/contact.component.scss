@@ -1,7 +1,9 @@
 @use '../../../styles/tokens' as t;
 @use '../../../styles/mixins' as m;
 
-.contact-page { margin-top: 4rem; }
+.contact-page {
+  margin-top: 4rem;
+}
 
 .contact-grid {
   display: grid;
@@ -9,7 +11,9 @@
   border-bottom: t.$border-hair;
   min-height: calc(100vh - 4rem);
 
-  @include m.mobile { grid-template-columns: 1fr; }
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
 }
 
 // ── LEFT ──
@@ -20,7 +24,11 @@
   flex-direction: column;
   gap: 1.5rem;
 
-  @include m.mobile { padding: 3rem 1.5rem; border-right: none; border-bottom: t.$border-hair; }
+  @include m.mobile {
+    padding: 3rem 1.5rem;
+    border-right: none;
+    border-bottom: t.$border-hair;
+  }
 }
 
 .contact-headline {
@@ -45,12 +53,14 @@
   font-size: 0.72rem;
   color: t.$mr-ink-45;
   font-weight: 300;
-  border-bottom: 0.5px solid rgba(29,29,29,0.15);
+  border-bottom: 0.5px solid rgba(29, 29, 29, 0.15);
   padding-bottom: 0.35rem;
   width: fit-content;
   transition: color 0.2s;
   @include m.focus-ring;
-  &:hover { color: t.$mr-ink; }
+  &:hover {
+    color: t.$mr-ink;
+  }
 }
 
 .collaboration-types {
@@ -91,14 +101,18 @@
     text-decoration: none;
     transition: color 0.2s;
     @include m.focus-ring;
-    &:hover { color: t.$mr-ink; }
+    &:hover {
+      color: t.$mr-ink;
+    }
   }
 }
 
 // ── RIGHT ──
 .contact-form-col {
   padding: 5rem 3.5rem;
-  @include m.mobile { padding: 3rem 1.5rem; }
+  @include m.mobile {
+    padding: 3rem 1.5rem;
+  }
 }
 
 .form-eyebrow {
@@ -111,7 +125,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  @include m.mobile { grid-template-columns: 1fr; gap: 0; }
+  @include m.mobile {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 .form-field {
@@ -135,7 +152,9 @@
   color: t.$mr-ink-35;
   cursor: pointer;
 
-  span { color: t.$mr-rose-pin; }
+  span {
+    color: t.$mr-rose-pin;
+  }
 }
 
 .field-error {
@@ -155,11 +174,17 @@
   font-size: 0.68rem;
   letter-spacing: 0.08em;
 
-  option { text-transform: none; letter-spacing: 0; }
+  option {
+    text-transform: none;
+    letter-spacing: 0;
+  }
 }
 
 // ── CHECKBOX ──
-.form-field-check { flex-direction: row; align-items: flex-start; }
+.form-field-check {
+  flex-direction: row;
+  align-items: flex-start;
+}
 
 .check-label {
   display: flex;
@@ -167,7 +192,7 @@
   gap: 0.75rem;
   cursor: pointer;
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     width: 12px;
     height: 12px;
     margin-top: 2px;

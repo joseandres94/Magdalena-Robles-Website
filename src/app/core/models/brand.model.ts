@@ -24,15 +24,6 @@ export interface ManifestoItem {
   attribution?: string;
 }
 
-export interface PressItem {
-  id: string;
-  title: string;
-  publication: string;
-  date: string;
-  url?: string;
-  excerpt?: string;
-}
-
 export interface ProcessStep {
   order: number;
   label: string;

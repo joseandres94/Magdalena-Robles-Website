@@ -2,16 +2,24 @@
 
 // ── RESPONSIVE ──
 @mixin mobile {
-  @media (max-width: #{t.$bp-mobile}) { @content; }
+  @media (max-width: #{t.$bp-mobile}) {
+    @content;
+  }
 }
 @mixin tablet {
-  @media (max-width: #{t.$bp-tablet}) { @content; }
+  @media (max-width: #{t.$bp-tablet}) {
+    @content;
+  }
 }
 @mixin desktop {
-  @media (min-width: #{t.$bp-tablet + 1}) { @content; }
+  @media (min-width: #{t.$bp-tablet + 1}) {
+    @content;
+  }
 }
 @mixin large {
-  @media (min-width: #{t.$bp-desktop}) { @content; }
+  @media (min-width: #{t.$bp-desktop}) {
+    @content;
+  }
 }
 
 // ── SECTION LAYOUT ──
@@ -38,8 +46,9 @@
   background: #fff;
   padding: 8px 8px 26px;
   box-shadow: t.$shadow-polaroid;
-  transition: transform t.$duration-fast t.$easing,
-              box-shadow t.$duration-fast t.$easing;
+  transition:
+    transform t.$duration-fast t.$easing,
+    box-shadow t.$duration-fast t.$easing;
   &:hover {
     box-shadow: t.$shadow-polaroid-hover;
     transform: scale(1.04) !important;
@@ -51,8 +60,9 @@
 @mixin postit {
   box-shadow: t.$shadow-postit;
   cursor: pointer;
-  transition: transform t.$duration-fast t.$easing,
-              box-shadow t.$duration-fast t.$easing;
+  transition:
+    transform t.$duration-fast t.$easing,
+    box-shadow t.$duration-fast t.$easing;
   &:hover {
     box-shadow: t.$shadow-postit-hover;
     transform: scale(1.05) !important;

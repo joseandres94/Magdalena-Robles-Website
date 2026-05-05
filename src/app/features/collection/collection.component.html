@@ -4,14 +4,20 @@
     <span class="mr-eyebrow">SS25</span>
     <h1 class="collection-title">Lobotomy Chic</h1>
     <p class="collection-sub">
-      {{ lang.t(
-        "Commedia dell'Arte reinterpretada a través de siluetas históricas, construcción experimental y materiales circulares.",
-        "Commedia dell'Arte reinterpreted through historical silhouettes, experimental construction and circular materials."
-      ) }}
+      {{
+        lang.t(
+          "Commedia dell'Arte reinterpretada a través de siluetas históricas, construcción experimental y materiales circulares.",
+          "Commedia dell'Arte reinterpreted through historical silhouettes, experimental construction and circular materials."
+        )
+      }}
     </p>
   </div>
   <div class="collection-header-aside">
-    <blockquote>"Todo el mundo está en la fiesta.<br>Nadie sabe que la fiesta ya terminó."</blockquote>
+    <blockquote>
+      "Todo el mundo está en la fiesta.
+      <br />
+      Nadie sabe que la fiesta ya terminó."
+    </blockquote>
     <cite>— concepto central</cite>
   </div>
 </header>
@@ -28,11 +34,7 @@
   <div class="looks-grid" role="list">
     @for (look of collection.looks(); track look.id) {
       <div role="listitem">
-        <mr-look-card
-          [look]="look"
-          [index]="$index"
-          (cardClick)="collection.openLook($index)"
-        />
+        <mr-look-card [look]="look" [index]="$index" (cardClick)="collection.openLook($index)" />
       </div>
     }
   </div>
@@ -49,17 +51,11 @@
   </span>
   <span class="manifesto-sep">—</span>
   <span class="manifesto-text">
-    {{ lang.t('Siluetas históricas, distorsión contemporánea', 'Historical silhouettes, contemporary distortion') }}
+    {{
+      lang.t(
+        'Siluetas históricas, distorsión contemporánea',
+        'Historical silhouettes, contemporary distortion'
+      )
+    }}
   </span>
 </div>
-
-<!-- Look Modal -->
-@if (collection.activeLook(); as look) {
-  <mr-look-modal
-    [look]="look"
-    [currentIndex]="collection.activeLookIndex()!"
-    [totalLooks]="collection.totalLooks()"
-    (close)="collection.closeLook()"
-    (navigate)="collection.navigateLook($event)"
-  />
-}

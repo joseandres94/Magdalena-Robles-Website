@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, type OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../core/services/language.service';
 import { SeoService } from '../../core/services/seo.service';
@@ -14,10 +14,10 @@ import { BRAND_INFO, PROCESS_STEPS } from '../../data/brand.data';
   styleUrl: './about.component.scss',
 })
 export class AboutComponent implements OnInit {
-  lang        = inject(LanguageService);
+  lang = inject(LanguageService);
   private seo = inject(SeoService);
 
-  brand        = BRAND_INFO;
+  brand = BRAND_INFO;
   processSteps = PROCESS_STEPS;
 
   /**
@@ -31,7 +31,8 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.seo.setPage({
       title: 'Sobre la diseñadora',
-      description: 'Magdalena Robles — Fashion designer and specialist pattern maker. Couture construction, experimental pattern-making, circular materials.',
+      description:
+        'Magdalena Robles — Fashion designer and specialist pattern maker. Couture construction, experimental pattern-making, circular materials.',
     });
   }
 }

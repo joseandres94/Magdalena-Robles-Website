@@ -5,7 +5,6 @@ import { BRAND_INFO } from '../../../data/brand.data';
   selector: 'mr-footer',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

@@ -26,7 +26,9 @@
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: item.path === '/' }"
               class="nav-link"
-            >{{ item.label }}</a>
+            >
+              {{ item.label }}
+            </a>
           </li>
         }
       </ul>
@@ -34,14 +36,16 @@
 
     <!-- Right controls -->
     <div class="header-right">
-      <button class="lang-toggle" (click)="toggleLang()" [attr.aria-label]="'Switch language to ' + (lang.isEs() ? 'English' : 'Español')">
+      <button
+        class="lang-toggle"
+        (click)="toggleLang()"
+        [attr.aria-label]="'Switch language to ' + (lang.isEs() ? 'English' : 'Español')"
+      >
         <strong>{{ lang.isEs() ? 'ES' : 'EN' }}</strong>
-        <span aria-hidden="true"> / {{ lang.isEs() ? 'EN' : 'ES' }}</span>
+        <span aria-hidden="true">/ {{ lang.isEs() ? 'EN' : 'ES' }}</span>
       </button>
 
-      <a class="contact-cta" routerLink="/contact">
-        {{ lang.t('Contacto', 'Contact') }} →
-      </a>
+      <a class="contact-cta" routerLink="/contact">{{ lang.t('Contacto', 'Contact') }} →</a>
 
       <!-- Burger -->
       <button
@@ -68,17 +72,17 @@
   aria-modal="true"
   [attr.aria-label]="lang.t('Menú de navegación', 'Navigation menu')"
 >
-  <button class="mobile-close" (click)="closeMobile()" [attr.aria-label]="lang.t('Cerrar menú', 'Close menu')">
+  <button
+    class="mobile-close"
+    (click)="closeMobile()"
+    [attr.aria-label]="lang.t('Cerrar menú', 'Close menu')"
+  >
     {{ lang.t('Cerrar', 'Close') }} ✕
   </button>
 
   <nav aria-label="Mobile navigation">
     @for (item of lang.navItems(); track item.id) {
-      <a
-        [routerLink]="item.path"
-        class="mobile-link"
-        (click)="closeMobile()"
-      >{{ item.label }}</a>
+      <a [routerLink]="item.path" class="mobile-link" (click)="closeMobile()">{{ item.label }}</a>
     }
   </nav>
 

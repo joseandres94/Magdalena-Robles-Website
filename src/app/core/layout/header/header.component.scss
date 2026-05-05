@@ -24,24 +24,46 @@
   text-transform: uppercase;
   z-index: 9999;
 
-  &:focus { top: 0.5rem; }
+  &:focus {
+    top: 0.5rem;
+  }
 }
 
 // ── HEADER ──
 .mr-header {
   background: t.$mr-white;
   border-bottom: 0.5px solid t.$mr-ink-10;
-  transition: background 0.35s t.$easing, border-color 0.35s t.$easing;
+  transition:
+    background 0.35s t.$easing,
+    border-color 0.35s t.$easing;
 
   &.transparent {
     background: transparent;
     border-bottom-color: transparent;
 
-    .logo              { color: t.$mr-cream; }
-    .nav-link          { color: rgba(240,237,230,0.4); &:hover, &.active { color: t.$mr-cream; } }
-    .lang-toggle       { color: rgba(240,237,230,0.35); strong { color: t.$mr-cream; } }
-    .contact-cta       { color: rgba(240,237,230,0.6); border-bottom-color: rgba(240,237,230,0.2); }
-    .burger span       { background: t.$mr-cream; }
+    .logo {
+      color: t.$mr-cream;
+    }
+    .nav-link {
+      color: rgba(240, 237, 230, 0.4);
+      &:hover,
+      &.active {
+        color: t.$mr-cream;
+      }
+    }
+    .lang-toggle {
+      color: rgba(240, 237, 230, 0.35);
+      strong {
+        color: t.$mr-cream;
+      }
+    }
+    .contact-cta {
+      color: rgba(240, 237, 230, 0.6);
+      border-bottom-color: rgba(240, 237, 230, 0.2);
+    }
+    .burger span {
+      background: t.$mr-cream;
+    }
   }
 }
 
@@ -51,7 +73,9 @@
   justify-content: flex-start;
   padding: 1.4rem 2.5rem;
 
-  @include m.mobile { padding: 1.2rem 1.5rem; }
+  @include m.mobile {
+    padding: 1.2rem 1.5rem;
+  }
 }
 
 // ── LOGO ──
@@ -82,7 +106,9 @@
 .nav-desktop {
   margin-left: 3rem;
 
-  @include m.mobile { display: none; }
+  @include m.mobile {
+    display: none;
+  }
 
   ul {
     display: flex;
@@ -101,7 +127,10 @@
   transition: color 0.2s;
   @include m.focus-ring;
 
-  &:hover, &.active { color: t.$mr-ink; }
+  &:hover,
+  &.active {
+    color: t.$mr-ink;
+  }
 }
 
 // ── RIGHT ──
@@ -130,7 +159,9 @@
     font-weight: 500;
   }
 
-  @include m.mobile { display: none; }
+  @include m.mobile {
+    display: none;
+  }
 }
 
 .contact-cta {
@@ -139,14 +170,21 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: t.$mr-ink;
-  border-bottom: 0.5px solid rgba(29,29,29,0.28);
+  border-bottom: 0.5px solid rgba(29, 29, 29, 0.28);
   padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
   @include m.focus-ring;
 
-  &:hover { color: t.$mr-gold; border-bottom-color: t.$mr-gold; }
+  &:hover {
+    color: t.$mr-gold;
+    border-bottom-color: t.$mr-gold;
+  }
 
-  @include m.mobile { display: none; }
+  @include m.mobile {
+    display: none;
+  }
 }
 
 // ── BURGER ──
@@ -167,7 +205,9 @@
     transition: all 0.2s;
   }
 
-  @include m.mobile { display: flex; }
+  @include m.mobile {
+    display: flex;
+  }
 }
 
 // ── MOBILE MENU ──
@@ -197,7 +237,7 @@
   right: 1.5rem;
   background: none;
   border: none;
-  color: rgba(240,237,230,0.4);
+  color: rgba(240, 237, 230, 0.4);
   font-family: t.$font-ui;
   font-size: 0.65rem;
   letter-spacing: 0.14em;
@@ -206,7 +246,9 @@
   transition: color 0.2s;
   @include m.focus-ring;
 
-  &:hover { color: t.$mr-cream; }
+  &:hover {
+    color: t.$mr-cream;
+  }
 }
 
 .mobile-link {
@@ -214,11 +256,13 @@
   font-size: 0.85rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(240,237,230,0.45);
+  color: rgba(240, 237, 230, 0.45);
   text-decoration: none;
   transition: color 0.2s;
 
-  &:hover { color: t.$mr-cream; }
+  &:hover {
+    color: t.$mr-cream;
+  }
 }
 
 .mobile-footer {
@@ -228,8 +272,8 @@
 
 .mobile-lang {
   background: none;
-  border: 0.5px solid rgba(240,237,230,0.2);
-  color: rgba(240,237,230,0.5);
+  border: 0.5px solid rgba(240, 237, 230, 0.2);
+  color: rgba(240, 237, 230, 0.5);
   font-family: t.$font-ui;
   font-size: 0.65rem;
   letter-spacing: 0.14em;
@@ -238,5 +282,8 @@
   cursor: pointer;
   transition: all 0.2s;
 
-  &:hover { color: t.$mr-cream; border-color: rgba(240,237,230,0.5); }
+  &:hover {
+    color: t.$mr-cream;
+    border-color: rgba(240, 237, 230, 0.5);
+  }
 }

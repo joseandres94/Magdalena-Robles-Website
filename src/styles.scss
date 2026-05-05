@@ -43,14 +43,21 @@ button {
   font-family: inherit;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
 // ── SCROLLBAR ──
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: t.$mr-paper; }
-::-webkit-scrollbar-thumb { background: t.$mr-ink-22; }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: t.$mr-paper;
+}
+::-webkit-scrollbar-thumb {
+  background: t.$mr-ink-22;
+}
 
 // ── SELECTION ──
 ::selection {
@@ -72,8 +79,16 @@ ul, ol {
   transition: background t.$duration-fast;
   @include m.focus-ring;
 
-  &:hover { background: t.$mr-gold; }
-  &.dark  { background: t.$mr-ink; color: t.$mr-cream; &:hover { background: #333; } }
+  &:hover {
+    background: t.$mr-gold;
+  }
+  &.dark {
+    background: t.$mr-ink;
+    color: t.$mr-cream;
+    &:hover {
+      background: #333;
+    }
+  }
 }
 
 .btn-ghost {
@@ -88,8 +103,18 @@ ul, ol {
   transition: all t.$duration-fast;
   @include m.focus-ring;
 
-  &:hover { color: t.$mr-cream; border-color: rgba(240,237,230,0.5); }
-  &.light { color: t.$mr-ink-55; border-color: t.$mr-ink-18; &:hover { color: t.$mr-ink; border-color: rgba(29,29,29,0.5); } }
+  &:hover {
+    color: t.$mr-cream;
+    border-color: rgba(240, 237, 230, 0.5);
+  }
+  &.light {
+    color: t.$mr-ink-55;
+    border-color: t.$mr-ink-18;
+    &:hover {
+      color: t.$mr-ink;
+      border-color: rgba(29, 29, 29, 0.5);
+    }
+  }
 }
 
 .btn-line {
@@ -106,7 +131,9 @@ ul, ol {
   display: inline-block;
   @include m.focus-ring;
 
-  &:hover { opacity: 0.4; }
+  &:hover {
+    opacity: 0.4;
+  }
 }
 
 // ── FORM ELEMENTS ──
@@ -115,7 +142,7 @@ ul, ol {
 .mr-select {
   background: transparent;
   border: none;
-  border-bottom: 0.5px solid rgba(29,29,29,0.15);
+  border-bottom: 0.5px solid rgba(29, 29, 29, 0.15);
   color: t.$mr-ink;
   font-family: t.$font-ui;
   font-size: 0.82rem;
@@ -128,12 +155,14 @@ ul, ol {
   -webkit-appearance: none;
 
   &::placeholder {
-    color: rgba(29,29,29,0.22);
+    color: rgba(29, 29, 29, 0.22);
     font-size: 0.68rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  &:focus { border-bottom-color: t.$mr-ink; }
+  &:focus {
+    border-bottom-color: t.$mr-ink;
+  }
 }
 
 .mr-textarea {
@@ -142,4 +171,6 @@ ul, ol {
 }
 
 // ── UTILITY ──
-.visually-hidden { @include m.visually-hidden; }
+.visually-hidden {
+  @include m.visually-hidden;
+}
