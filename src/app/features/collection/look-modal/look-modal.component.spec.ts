@@ -95,7 +95,7 @@ describe('LookModalComponent', () => {
       component.dismiss.subscribe(() => (dismissed = true));
 
       const el = document.createElement('div');
-      component.onBackdropClick({ target: el, currentTarget: el } as MouseEvent);
+      component.onBackdropClick({ target: el, currentTarget: el } as unknown as MouseEvent);
 
       expect(dismissed).toBeTrue();
     });
@@ -106,7 +106,10 @@ describe('LookModalComponent', () => {
 
       const backdrop = document.createElement('div');
       const panel = document.createElement('div');
-      component.onBackdropClick({ target: panel, currentTarget: backdrop } as MouseEvent);
+      component.onBackdropClick({
+        target: panel,
+        currentTarget: backdrop,
+      } as unknown as MouseEvent);
 
       expect(dismissed).toBeFalse();
     });

@@ -15,9 +15,7 @@ describe('CollectionComponent', () => {
       imports: [CollectionComponent],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [{ provide: SeoService, useValue: seoSpy }, provideRouter([])],
-    })
-      .overrideComponent(CollectionComponent, { set: { imports: [] } })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CollectionComponent);
     fixture.detectChanges();

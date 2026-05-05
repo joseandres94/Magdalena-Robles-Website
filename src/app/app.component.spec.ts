@@ -1,5 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SeoService } from './core/services/seo.service';
@@ -16,10 +17,12 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [{ provide: SeoService, useValue: seoSpy }, provideRouter([])],
-    })
-      .overrideComponent(AppComponent, { set: { imports: [] } })
-      .compileComponents();
+      providers: [
+        { provide: SeoService, useValue: seoSpy },
+        provideRouter([]),
+        provideNoopAnimations(),
+      ],
+    }).compileComponents();
 
     collection = TestBed.inject(CollectionService);
     fixture = TestBed.createComponent(AppComponent);

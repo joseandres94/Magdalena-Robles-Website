@@ -1,27 +1,51 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, type UrlTree } from '@angular/router';
 import { Subject } from 'rxjs';
 import { HeaderComponent } from './header.component';
 import { LanguageService } from '../../services/language.service';
+
+interface RouterMock {
+  url: string;
+  events: Subject<NavigationEnd>;
+  createUrlTree: () => UrlTree;
+  serializeUrl: () => string;
+}
 
 describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
   let component: HeaderComponent;
   let routerEvents$: Subject<NavigationEnd>;
-  let routerMock: { url: string; events: Subject<NavigationEnd> };
+  let routerMock: RouterMock;
 
   beforeEach(async () => {
     routerEvents$ = new Subject<NavigationEnd>();
-    routerMock = { url: '/', events: routerEvents$ };
+    routerMock = {
+      url: '/',
+      events: routerEvents$,
+      createUrlTree: (): UrlTree => ({}) as UrlTree,
+      serializeUrl: (): string => '',
+    };
 
     await TestBed.configureTestingModule({
       imports: [HeaderComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [{ provide: Router, useValue: routerMock }],
-    })
-      .overrideComponent(HeaderComponent, { set: { imports: [] } })
-      .compileComponents();
+      providers: [
+        { provide: Router, useValue: routerMock as unknown as Router },
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              url: [],
+              outlet: 'primary',
+              routeConfig: null,
+              title: undefined,
+            },
+            outlet: 'primary',
+          },
+        },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
@@ -30,7 +54,7 @@ describe('HeaderComponent', () => {
 
   afterEach(() => {
     // Remove any own scrollY property added during scroll tests.
-    delete (window as Record<string, unknown>)['scrollY'];
+    delete (window as unknown as Record<string, unknown>)['scrollY'];
   });
 
   // ── isHomePage signal ───────────────────────────────────────────────
@@ -167,7 +191,7 @@ describe('HeaderComponent', () => {
 
       component.toggleLang();
 
-      expect(langService.toggle).toHaveBeenCalledOnce();
+      expect(langService.toggle).toHaveBeenCalledTimes(1);
     });
   });
 

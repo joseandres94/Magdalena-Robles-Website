@@ -25,9 +25,7 @@ describe('LookDetailComponent', () => {
           useValue: { snapshot: { paramMap: { get: () => slugValue } } },
         },
       ],
-    })
-      .overrideComponent(LookDetailComponent, { set: { imports: [] } })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LookDetailComponent);
     component = fixture.componentInstance;

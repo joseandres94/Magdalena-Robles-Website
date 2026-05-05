@@ -17,9 +17,7 @@ describe('HomeComponent', () => {
       imports: [HomeComponent],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [{ provide: SeoService, useValue: seoSpy }, provideRouter([])],
-    })
-      .overrideComponent(HomeComponent, { set: { imports: [] } })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
