@@ -15,13 +15,21 @@ import { LookModalComponent } from '../collection/look-modal/look-modal.componen
   selector: 'mr-home',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, HeroComponent, MoodboardComponent, TickerComponent, LookCardComponent, NewsletterComponent, LookModalComponent],
+  imports: [
+    RouterLink,
+    HeroComponent,
+    MoodboardComponent,
+    TickerComponent,
+    LookCardComponent,
+    NewsletterComponent,
+    LookModalComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   collection = inject(CollectionService);
-  lang       = inject(LanguageService);
+  lang = inject(LanguageService);
   private seo = inject(SeoService);
 
   brand = BRAND_INFO;
@@ -29,7 +37,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.seo.setPage({
       title: 'Magdalena Robles — Designer & Pattern Maker',
-      description: 'Magdalena Robles — Fashion designer and specialist pattern maker. Lobotomy Chic SS25.',
+      description:
+        'Magdalena Robles — Fashion designer and specialist pattern maker. Lobotomy Chic SS25.',
     });
   }
 }

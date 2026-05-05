@@ -15,10 +15,10 @@ import type { Look } from '../../core/models/look.model';
   styleUrl: './look-detail.component.scss',
 })
 export class LookDetailComponent implements OnInit {
-  private route      = inject(ActivatedRoute);
+  private route = inject(ActivatedRoute);
   private collection = inject(CollectionService);
-  private seo        = inject(SeoService);
-  lang               = inject(LanguageService);
+  private seo = inject(SeoService);
+  lang = inject(LanguageService);
 
   look: Look | undefined;
 
@@ -30,13 +30,13 @@ export class LookDetailComponent implements OnInit {
 
   get prevLook(): Look | undefined {
     if (!this.look) return undefined;
-    const idx = this.collection.looks().findIndex(l => l.slug === this.look!.slug);
+    const idx = this.collection.looks().findIndex((l) => l.slug === this.look!.slug);
     return idx > 0 ? this.collection.looks()[idx - 1] : undefined;
   }
 
   get nextLook(): Look | undefined {
     if (!this.look) return undefined;
-    const idx = this.collection.looks().findIndex(l => l.slug === this.look!.slug);
+    const idx = this.collection.looks().findIndex((l) => l.slug === this.look!.slug);
     const looks = this.collection.looks();
     return idx < looks.length - 1 ? looks[idx + 1] : undefined;
   }

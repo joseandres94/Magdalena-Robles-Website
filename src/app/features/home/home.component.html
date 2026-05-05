@@ -10,14 +10,20 @@
 <!-- INTRO -->
 <section class="mr-intro" aria-labelledby="intro-headline">
   <h2 id="intro-headline" class="intro-headline">
-    Moda de<br>autor
-    <em>con<br>propósito.</em>
+    Moda de
+    <br />
+    autor
+    <em>
+      con
+      <br />
+      propósito.
+    </em>
   </h2>
   <div class="intro-right">
     <p>
-      Magdalena Robles es diseñadora de moda y patronista especializada cuyo trabajo
-      habita la intersección entre la silueta histórica, la construcción experimental
-      y los materiales circulares. Prendas conceptuales y llevables a la vez.
+      Magdalena Robles es diseñadora de moda y patronista especializada cuyo trabajo habita la
+      intersección entre la silueta histórica, la construcción experimental y los materiales
+      circulares. Prendas conceptuales y llevables a la vez.
     </p>
     <a routerLink="/about" class="btn-line">
       {{ lang.t('Sobre la diseñadora', 'About the designer') }} →
@@ -36,11 +42,7 @@
   <div class="looks-grid" role="list">
     @for (look of collection.looks(); track look.id) {
       <div role="listitem">
-        <mr-look-card
-          [look]="look"
-          [index]="$index"
-          (cardClick)="collection.openLook($index)"
-        />
+        <mr-look-card [look]="look" [index]="$index" (cardClick)="collection.openLook($index)" />
       </div>
     }
   </div>
@@ -49,10 +51,20 @@
 <!-- MANIFESTO -->
 <section class="mr-manifesto" aria-label="Manifiesto">
   <blockquote>
-    "{{ lang.t('La máscara, llevada tanto tiempo que hemos dejado de preguntarnos qué cubría — o por qué.', "The mask, worn so long we've stopped asking what it covered — or why.") }}"
+    "{{
+      lang.t(
+        'La máscara, llevada tanto tiempo que hemos dejado de preguntarnos qué cubría — o por qué.',
+        "The mask, worn so long we've stopped asking what it covered — or why."
+      )
+    }}"
   </blockquote>
   <cite>
-    {{ lang.t('Lobotomy Chic — Brief creativo de colección, 2025', 'Lobotomy Chic — Collection Brief, 2025') }}
+    {{
+      lang.t(
+        'Lobotomy Chic — Brief creativo de colección, 2025',
+        'Lobotomy Chic — Collection Brief, 2025'
+      )
+    }}
   </cite>
 </section>
 

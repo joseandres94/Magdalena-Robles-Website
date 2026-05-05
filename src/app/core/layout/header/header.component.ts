@@ -1,6 +1,11 @@
 import {
-  Component, type OnInit, type OnDestroy, HostListener,
-  signal, inject, ChangeDetectionStrategy,
+  Component,
+  type OnInit,
+  type OnDestroy,
+  HostListener,
+  signal,
+  inject,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { filter, type Subscription } from 'rxjs';
@@ -26,8 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.checkRoute(this.router.url);
     this.sub = this.router.events
-      .pipe(filter(e => e instanceof NavigationEnd))
-      .subscribe(e => this.checkRoute((e as NavigationEnd).url));
+      .pipe(filter((e) => e instanceof NavigationEnd))
+      .subscribe((e) => this.checkRoute((e as NavigationEnd).url));
   }
 
   ngOnDestroy(): void {
@@ -52,7 +57,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   toggleMobile(): void {
-    this.mobileOpen.update(v => !v);
+    this.mobileOpen.update((v) => !v);
   }
 
   closeMobile(): void {

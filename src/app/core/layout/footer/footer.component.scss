@@ -55,7 +55,9 @@
     transition: color 0.2s;
     @include m.focus-ring;
 
-    &:hover { color: t.$mr-ink; }
+    &:hover {
+      color: t.$mr-ink;
+    }
   }
 }
 

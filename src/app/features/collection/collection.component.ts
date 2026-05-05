@@ -16,13 +16,14 @@ import { LookModalComponent } from './look-modal/look-modal.component';
 })
 export class CollectionComponent implements OnInit {
   collection = inject(CollectionService);
-  lang       = inject(LanguageService);
+  lang = inject(LanguageService);
   private seo = inject(SeoService);
 
   ngOnInit(): void {
     this.seo.setPage({
       title: 'Colección — Lobotomy Chic SS25',
-      description: "Lobotomy Chic — Primera colección de Magdalena Robles. Commedia dell'Arte reinterpretada a través de siluetas históricas, construcción experimental y materiales circulares.",
+      description:
+        "Lobotomy Chic — Primera colección de Magdalena Robles. Commedia dell'Arte reinterpretada a través de siluetas históricas, construcción experimental y materiales circulares.",
     });
   }
 }

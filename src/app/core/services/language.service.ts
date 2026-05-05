@@ -11,14 +11,14 @@ export class LanguageService {
   readonly isEn = computed(() => this._lang() === 'en');
 
   readonly navItems = computed(() =>
-    NAVIGATION_ITEMS.map(item => ({
+    NAVIGATION_ITEMS.map((item) => ({
       ...item,
       label: this._lang() === 'es' ? item.labelEs : item.labelEn,
-    }))
+    })),
   );
 
   toggle(): void {
-    this._lang.update(l => l === 'es' ? 'en' : 'es');
+    this._lang.update((l) => (l === 'es' ? 'en' : 'es'));
   }
 
   t(es: string, en: string): string {

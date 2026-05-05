@@ -1,10 +1,15 @@
 @if (look) {
   <article class="look-detail" [attr.aria-label]="'Look ' + look.number + ' — ' + look.name">
-
     <!-- Hero panel -->
     <section class="look-hero" [style.background]="look.bgColor">
       @if (look.images[0]; as hero) {
-        <img class="look-hero-photo" [src]="hero.src" [alt]="hero.alt" loading="eager" decoding="async" />
+        <img
+          class="look-hero-photo"
+          [src]="hero.src"
+          [alt]="hero.alt"
+          loading="eager"
+          decoding="async"
+        />
       }
       <div class="look-hero-content">
         <span class="look-num mr-eyebrow">{{ look.number | lookNumber }}</span>
@@ -16,7 +21,6 @@
 
     <!-- Detail grid -->
     <div class="look-grid">
-
       <!-- Left: editorial -->
       <div class="look-editorial">
         <div class="look-block">
@@ -67,16 +71,16 @@
         <div class="look-block look-cta-block">
           <p class="block-label">{{ lang.t('Disponibilidad', 'Availability') }}</p>
           <p class="look-status">{{ lang.t('Bajo petición', 'On request') }}</p>
-          <a routerLink="/contact" class="btn-primary dark">
-            {{ look.ctaLabel }} →
-          </a>
+          <a routerLink="/contact" class="btn-primary dark">{{ look.ctaLabel }} →</a>
         </div>
       </div>
-
     </div>
 
     <!-- Navigation between looks -->
-    <nav class="look-pagination" aria-label="Navegación entre looks">
+    <nav
+      class="look-pagination"
+      [attr.aria-label]="lang.t('Navegación entre looks', 'Look navigation')"
+    >
       <div class="pagination-prev">
         @if (prevLook) {
           <a [routerLink]="['/collection', prevLook.slug]" class="pagination-link">
@@ -97,11 +101,12 @@
         }
       </div>
     </nav>
-
   </article>
 } @else {
   <div class="look-not-found">
-    <p class="mr-eyebrow">Look no encontrado</p>
-    <a routerLink="/collection" class="btn-line">← Ver colección</a>
+    <p class="mr-eyebrow">{{ lang.t('Look no encontrado', 'Look not found') }}</p>
+    <a routerLink="/collection" class="btn-line">
+      ← {{ lang.t('Ver colección', 'View collection') }}
+    </a>
   </div>
 }

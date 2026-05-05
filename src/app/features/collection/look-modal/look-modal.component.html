@@ -9,22 +9,30 @@
   [attr.aria-label]="'Look ' + (currentIndex + 1) + ' — ' + look.name"
 >
   <div class="modal-inner" @panelEnter>
-
     <!-- Image panel -->
     <div class="modal-img-col" [style.background]="look.bgColor">
       @if (look.images[0]; as hero) {
-        <img class="modal-photo" [src]="hero.src" [alt]="hero.alt" loading="eager" decoding="async" />
+        <img
+          class="modal-photo"
+          [src]="hero.src"
+          [alt]="hero.alt"
+          loading="eager"
+          decoding="async"
+        />
       }
       <span class="modal-roman" aria-hidden="true">{{ look.roman }}</span>
     </div>
 
     <!-- Content panel -->
     <div class="modal-content" role="document">
-
       <div class="modal-top-row">
         <span class="modal-num">{{ look.number | lookNumber }}</span>
-        <button class="modal-close" (click)="dismiss.emit()" aria-label="Cerrar detalle de look">
-          Cerrar ✕
+        <button
+          class="modal-close"
+          (click)="dismiss.emit()"
+          [attr.aria-label]="lang.t('Cerrar detalle de look', 'Close look detail')"
+        >
+          {{ lang.t('Cerrar', 'Close') }} ✕
         </button>
       </div>
 
@@ -34,12 +42,12 @@
       <hr class="modal-divider" />
 
       <div class="modal-block">
-        <p class="modal-section-label">Concepto</p>
+        <p class="modal-section-label">{{ lang.t('Concepto', 'Concept') }}</p>
         <p class="modal-body">{{ look.conceptNote }}</p>
       </div>
 
       <div class="modal-block">
-        <p class="modal-section-label">Técnicas</p>
+        <p class="modal-section-label">{{ lang.t('Técnicas', 'Techniques') }}</p>
         <div class="modal-tags">
           @for (t of look.techniques; track t.name) {
             <span class="modal-tag">{{ t.name }}</span>
@@ -48,7 +56,7 @@
       </div>
 
       <div class="modal-block">
-        <p class="modal-section-label">Materiales</p>
+        <p class="modal-section-label">{{ lang.t('Materiales', 'Materials') }}</p>
         <div class="modal-tags">
           @for (mat of look.materials; track mat.name) {
             <span class="modal-tag">{{ mat.name }}</span>
@@ -62,17 +70,20 @@
           class="modal-nav-btn"
           (click)="navigate.emit(-1)"
           [disabled]="!hasPrev"
-          aria-label="Look anterior"
-        >← Anterior</button>
+          [attr.aria-label]="lang.t('Look anterior', 'Previous look')"
+        >
+          ← {{ lang.t('Anterior', 'Previous') }}
+        </button>
         <span class="modal-counter">{{ currentIndex + 1 }} / {{ totalLooks }}</span>
         <button
           class="modal-nav-btn"
           (click)="navigate.emit(1)"
           [disabled]="!hasNext"
-          aria-label="Look siguiente"
-        >Siguiente →</button>
+          [attr.aria-label]="lang.t('Look siguiente', 'Next look')"
+        >
+          {{ lang.t('Siguiente', 'Next') }} →
+        </button>
       </div>
-
     </div>
   </div>
 </div>

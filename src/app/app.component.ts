@@ -16,10 +16,17 @@ import { SeoService } from './core/services/seo.service';
     </main>
     <mr-footer />
   `,
-  styles: [`
-    :host { display: block; min-height: 100vh; }
-    main  { display: block; }
-  `],
+  styles: [
+    `
+      :host {
+        display: block;
+        min-height: 100vh;
+      }
+      main {
+        display: block;
+      }
+    `,
+  ],
 })
 export class AppComponent implements OnInit {
   private seo = inject(SeoService);

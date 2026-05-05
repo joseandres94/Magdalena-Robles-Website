@@ -16,7 +16,7 @@ export class CollectionService {
   readonly totalLooks = computed(() => this._looks().length);
 
   getLookBySlug(slug: string): Look | undefined {
-    return this._looks().find(l => l.slug === slug);
+    return this._looks().find((l) => l.slug === slug);
   }
 
   openLook(index: number): void {

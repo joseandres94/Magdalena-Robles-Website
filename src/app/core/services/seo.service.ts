@@ -10,12 +10,13 @@ export interface SeoData {
 }
 
 const BASE_TITLE = 'Magdalena Robles';
-const BASE_DESC  = 'Fashion designer and specialist pattern maker based in Almería. First collection: Lobotomy Chic SS25.';
+const BASE_DESC =
+  'Fashion designer and specialist pattern maker based in Almería. First collection: Lobotomy Chic SS25.';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
   private title = inject(Title);
-  private meta  = inject(Meta);
+  private meta = inject(Meta);
 
   setPage(data: Partial<SeoData>): void {
     const t = data.title ? `${data.title} — ${BASE_TITLE}` : BASE_TITLE;
