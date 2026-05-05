@@ -1,0 +1,123 @@
+// ─────────────────────────────────────────
+// MAGDALENA ROBLES — Design Tokens
+// _tokens.scss
+// ─────────────────────────────────────────
+
+// ── COLORS ──
+$mr-ink:            #1D1D1D;
+$mr-ink-60:         rgba(29,29,29,0.60);
+$mr-ink-55:         rgba(29,29,29,0.55);
+$mr-ink-45:         rgba(29,29,29,0.45);
+$mr-ink-35:         rgba(29,29,29,0.35);
+$mr-ink-30:         rgba(29,29,29,0.30);
+$mr-ink-22:         rgba(29,29,29,0.22);
+$mr-ink-18:         rgba(29,29,29,0.18);
+$mr-ink-10:         rgba(29,29,29,0.10);
+$mr-ink-04:         rgba(29,29,29,0.04);
+
+$mr-cream:          #f0ede6;
+$mr-board:          #f0ece4;
+$mr-paper:          #faf8f4;
+$mr-white:          #ffffff;
+$mr-gold:           #c8a96e;
+
+$mr-cream-55:       rgba(240,237,230,0.55);
+$mr-cream-30:       rgba(240,237,230,0.30);
+$mr-cream-20:       rgba(240,237,230,0.20);
+$mr-cream-08:       rgba(240,237,230,0.08);
+$mr-cream-06:       rgba(240,237,230,0.06);
+
+// Theatrical accents
+$mr-rose:           #f9c6d0;
+$mr-rose-pin:       #c0392b;
+$mr-yellow:         #f9e87f;
+$mr-yellow-pin:     #e67e22;
+$mr-lavender:       #d8d0f0;
+$mr-lavender-pin:   #7f77dd;
+$mr-teal:           #b8e8d8;
+$mr-teal-pin:       #16a085;
+$mr-blue-pin:       #2980b9;
+$mr-green-pin:      #27ae60;
+$mr-clay:           #ddd8ce;
+
+// ── TYPOGRAPHY ──
+$font-display:      'Playfair Display', Georgia, 'Times New Roman', serif;
+$font-ui:           'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+$font-hand:         'Caveat', cursive;
+
+// ── TYPE SCALE ──
+$h1-size:           clamp(3rem, 6vw, 5rem);
+$h2-size:           clamp(1.7rem, 2.8vw, 2.8rem);
+$h3-size:           clamp(1.2rem, 2vw, 1.6rem);
+$quote-size:        clamp(1.2rem, 2.2vw, 1.7rem);
+$body-size:         0.82rem;
+$nav-size:          0.7rem;
+$eyebrow-size:      0.65rem;
+$tag-size:          0.6rem;
+$look-name-size:    0.9rem;
+$caption-size:      0.85rem;
+
+// ── SPACING ──
+$space-1:  0.25rem;
+$space-2:  0.5rem;
+$space-3:  0.75rem;
+$space-4:  1rem;
+$space-5:  1.5rem;
+$space-6:  2rem;
+$space-7:  2.5rem;
+$space-8:  3.5rem;
+$space-9:  4rem;
+$space-10: 6rem;
+
+$section-pad-v:     4rem;
+$section-pad-h:     2.5rem;
+
+// ── BORDERS ──
+$border-hair:       0.5px solid $mr-ink-10;
+$border-hair-dark:  0.5px solid $mr-cream-08;
+$border-radius:     0;
+
+// ── SHADOWS ──
+$shadow-polaroid:       2px 4px 14px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.07);
+$shadow-polaroid-hover: 4px 8px 24px rgba(0,0,0,0.18);
+$shadow-postit:         2px 3px 10px rgba(0,0,0,0.10);
+$shadow-postit-hover:   3px 6px 18px rgba(0,0,0,0.15);
+$shadow-sketch:         1px 2px 8px rgba(0,0,0,0.09);
+$shadow-sketch-hover:   3px 5px 16px rgba(0,0,0,0.14);
+
+// ── ANIMATION ──
+$duration-fast:     0.2s;
+$duration-med:      0.4s;
+$duration-slow:     0.5s;
+$easing:            ease;
+$ticker-duration:   28s;
+
+// ── BREAKPOINTS ──
+$bp-mobile:         767px;
+$bp-tablet:         1023px;
+$bp-desktop:        1439px;
+
+// ── Z-INDEX ──
+$z-board-base:  1;
+$z-board-top:   6;
+$z-board-hover: 50;
+$z-nav:         100;
+$z-modal:       200;
+
+// ── CSS CUSTOM PROPERTIES (runtime) ──
+:root {
+  --mr-ink:         #{$mr-ink};
+  --mr-cream:       #{$mr-cream};
+  --mr-board:       #{$mr-board};
+  --mr-paper:       #{$mr-paper};
+  --mr-gold:        #{$mr-gold};
+  --mr-rose:        #{$mr-rose};
+  --mr-yellow:      #{$mr-yellow};
+  --mr-lavender:    #{$mr-lavender};
+  --mr-teal:        #{$mr-teal};
+  --font-display:   #{$font-display};
+  --font-ui:        #{$font-ui};
+  --font-hand:      #{$font-hand};
+  --duration-fast:  #{$duration-fast};
+  --duration-slow:  #{$duration-slow};
+}

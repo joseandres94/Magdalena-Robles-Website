@@ -1,0 +1,256 @@
+@use '../../../../styles/tokens' as t;
+
+// ─────────────────────────────────────────
+// NEWSLETTER SECTION
+// ─────────────────────────────────────────
+
+.mr-newsletter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: t.$border-hair;
+  border-bottom: t.$border-hair;
+  background: t.$mr-ink;
+}
+
+// ── Left column ──────────────────────────
+
+.newsletter-left {
+  padding: t.$space-9 t.$space-8;
+  border-right: 0.5px solid t.$mr-cream-08;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: t.$space-4;
+}
+
+.newsletter-eyebrow {
+  font-family: t.$font-ui;
+  font-size: t.$eyebrow-size;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 237, 230, 0.30);
+  font-weight: 400;
+}
+
+.newsletter-headline {
+  font-family: t.$font-display;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: t.$mr-cream;
+
+  em { font-style: italic; }
+}
+
+.newsletter-desc {
+  font-family: t.$font-ui;
+  font-size: t.$body-size;
+  line-height: 1.85;
+  color: rgba(240, 237, 230, 0.42);
+  font-weight: 300;
+  max-width: 340px;
+  margin-top: 0.25rem;
+}
+
+// ── Right column ─────────────────────────
+
+.newsletter-right {
+  padding: t.$space-9 t.$space-8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+// ── Form ─────────────────────────────────
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.newsletter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.newsletter-label {
+  font-family: t.$font-ui;
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240, 237, 230, 0.30);
+}
+
+.required-mark {
+  color: rgba(249, 198, 208, 0.70);
+}
+
+.newsletter-input {
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid rgba(240, 237, 230, 0.15);
+  color: t.$mr-cream;
+  font-family: t.$font-ui;
+  font-size: t.$body-size;
+  font-weight: 300;
+  padding: 0.75rem 0;
+  width: 100%;
+  outline: none;
+  transition: border-color t.$duration-fast t.$easing;
+
+  &::placeholder {
+    color: rgba(240, 237, 230, 0.20);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &:focus {
+    border-bottom-color: rgba(240, 237, 230, 0.50);
+  }
+
+  &.field-error-state {
+    border-bottom-color: rgba(192, 57, 43, 0.70);
+  }
+}
+
+.newsletter-field-error {
+  font-family: t.$font-ui;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  color: rgba(249, 198, 208, 0.90);
+}
+
+// ── Interests checkboxes ─────────────────
+
+.newsletter-interests {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.newsletter-check {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    width: 11px;
+    height: 11px;
+    accent-color: t.$mr-gold;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  span {
+    font-family: t.$font-ui;
+    font-size: 0.65rem;
+    color: rgba(240, 237, 230, 0.45);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    transition: color t.$duration-fast t.$easing;
+  }
+
+  &:hover span {
+    color: rgba(240, 237, 230, 0.75);
+  }
+}
+
+// ── Privacy ──────────────────────────────
+
+.newsletter-privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  margin-top: 0.2rem;
+
+  input[type='checkbox'] {
+    width: 11px;
+    height: 11px;
+    accent-color: t.$mr-gold;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+
+  span {
+    font-family: t.$font-ui;
+    font-size: 0.6rem;
+    color: rgba(240, 237, 230, 0.28);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+}
+
+// ── Submit ───────────────────────────────
+
+.newsletter-submit-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-newsletter {
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid rgba(240, 237, 230, 0.35);
+  padding: 0.5rem 0;
+  font-family: t.$font-ui;
+  font-size: t.$nav-size;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: t.$mr-cream;
+  cursor: pointer;
+  transition: color t.$duration-fast t.$easing,
+              border-color t.$duration-fast t.$easing;
+
+  &:hover {
+    color: t.$mr-gold;
+    border-bottom-color: t.$mr-gold;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+// ── Success state ────────────────────────
+
+.newsletter-success {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.newsletter-success-text {
+  font-family: t.$font-display;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-style: italic;
+  color: rgba(240, 237, 230, 0.55);
+  line-height: 1.5;
+}
+
+// ── Responsive ───────────────────────────
+
+@media (max-width: t.$bp-mobile) {
+  .mr-newsletter {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-left {
+    padding: t.$space-8 t.$space-5;
+    border-right: none;
+    border-bottom: 0.5px solid t.$mr-cream-08;
+  }
+
+  .newsletter-right {
+    padding: t.$space-8 t.$space-5;
+  }
+}

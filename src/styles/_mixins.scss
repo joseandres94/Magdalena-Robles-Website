@@ -1,0 +1,107 @@
+@use 'tokens' as t;
+
+// ── RESPONSIVE ──
+@mixin mobile {
+  @media (max-width: #{t.$bp-mobile}) { @content; }
+}
+@mixin tablet {
+  @media (max-width: #{t.$bp-tablet}) { @content; }
+}
+@mixin desktop {
+  @media (min-width: #{t.$bp-tablet + 1}) { @content; }
+}
+@mixin large {
+  @media (min-width: #{t.$bp-desktop}) { @content; }
+}
+
+// ── SECTION LAYOUT ──
+@mixin section-pad {
+  padding: t.$section-pad-v t.$section-pad-h;
+  @include mobile {
+    padding: 3rem 1.5rem;
+  }
+}
+
+// ── HAIRLINE BORDER ──
+@mixin border-bottom {
+  border-bottom: t.$border-hair;
+}
+@mixin border-top {
+  border-top: t.$border-hair;
+}
+@mixin border-right {
+  border-right: t.$border-hair;
+}
+
+// ── POLAROID ──
+@mixin polaroid {
+  background: #fff;
+  padding: 8px 8px 26px;
+  box-shadow: t.$shadow-polaroid;
+  transition: transform t.$duration-fast t.$easing,
+              box-shadow t.$duration-fast t.$easing;
+  &:hover {
+    box-shadow: t.$shadow-polaroid-hover;
+    transform: scale(1.04) !important;
+    z-index: t.$z-board-hover !important;
+  }
+}
+
+// ── POSTIT ──
+@mixin postit {
+  box-shadow: t.$shadow-postit;
+  cursor: pointer;
+  transition: transform t.$duration-fast t.$easing,
+              box-shadow t.$duration-fast t.$easing;
+  &:hover {
+    box-shadow: t.$shadow-postit-hover;
+    transform: scale(1.05) !important;
+    z-index: t.$z-board-hover !important;
+  }
+}
+
+// ── FOCUS RING ──
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 1.5px solid t.$mr-ink;
+    outline-offset: 3px;
+  }
+}
+
+// ── VISUALLY HIDDEN ──
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ── TRUNCATE ──
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ── DOT GRID TEXTURE ──
+@mixin dot-grid-texture {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%231D1D1D' fill-opacity='0.04'/%3E%3C/svg%3E");
+  }
+}

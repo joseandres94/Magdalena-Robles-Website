@@ -1,0 +1,29 @@
+<section class="mr-hero" id="hero-section" aria-label="Hero — Magdalena Robles">
+
+  @if (heroBackdropSrc) {
+    <img
+      class="hero-backdrop"
+      [src]="heroBackdropSrc"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      decoding="async"
+    />
+  }
+
+  @if (ready()) {
+    <div class="hero-content" @heroEnter>
+      <div class="hero-bottom">
+        <div class="hero-ctas">
+          <a routerLink="/collection" class="btn-primary">
+            {{ lang.t('Ver Colección', 'View Collection') }}
+          </a>
+          <a routerLink="/about" class="btn-ghost">
+            {{ lang.t('La diseñadora', 'The designer') }}
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+
+</section>

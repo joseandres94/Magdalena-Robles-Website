@@ -1,0 +1,71 @@
+<!-- HERO -->
+<mr-hero />
+
+<!-- TICKER -->
+<mr-ticker />
+
+<!-- MOODBOARD -->
+<mr-moodboard />
+
+<!-- INTRO -->
+<section class="mr-intro" aria-labelledby="intro-headline">
+  <h2 id="intro-headline" class="intro-headline">
+    Moda de<br>autor
+    <em>con<br>propósito.</em>
+  </h2>
+  <div class="intro-right">
+    <p>
+      Magdalena Robles es diseñadora de moda y patronista especializada cuyo trabajo
+      habita la intersección entre la silueta histórica, la construcción experimental
+      y los materiales circulares. Prendas conceptuales y llevables a la vez.
+    </p>
+    <a routerLink="/about" class="btn-line">
+      {{ lang.t('Sobre la diseñadora', 'About the designer') }} →
+    </a>
+  </div>
+</section>
+
+<!-- LOOKS GRID -->
+<section class="looks-section" aria-labelledby="looks-title">
+  <div class="looks-header">
+    <h2 id="looks-title" class="mr-eyebrow">
+      {{ lang.t('Colección — Lobotomy Chic', 'Collection — Lobotomy Chic') }}
+    </h2>
+    <span class="mr-eyebrow faint">6 Looks — SS25</span>
+  </div>
+  <div class="looks-grid" role="list">
+    @for (look of collection.looks(); track look.id) {
+      <div role="listitem">
+        <mr-look-card
+          [look]="look"
+          [index]="$index"
+          (cardClick)="collection.openLook($index)"
+        />
+      </div>
+    }
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="mr-manifesto" aria-label="Manifiesto">
+  <blockquote>
+    "{{ lang.t('La máscara, llevada tanto tiempo que hemos dejado de preguntarnos qué cubría — o por qué.', "The mask, worn so long we've stopped asking what it covered — or why.") }}"
+  </blockquote>
+  <cite>
+    {{ lang.t('Lobotomy Chic — Brief creativo de colección, 2025', 'Lobotomy Chic — Collection Brief, 2025') }}
+  </cite>
+</section>
+
+<!-- Look Modal -->
+@if (collection.activeLook(); as look) {
+  <mr-look-modal
+    [look]="look"
+    [currentIndex]="collection.activeLookIndex()!"
+    [totalLooks]="collection.totalLooks()"
+    (close)="collection.closeLook()"
+    (navigate)="collection.navigateLook($event)"
+  />
+}
+
+<!-- NEWSLETTER -->
+<mr-newsletter />

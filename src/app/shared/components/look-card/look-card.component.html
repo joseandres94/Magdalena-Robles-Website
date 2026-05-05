@@ -1,0 +1,25 @@
+<article
+  class="look-card"
+  (click)="cardClick.emit(look)"
+  (keydown.enter)="cardClick.emit(look)"
+  (keydown.space)="cardClick.emit(look)"
+  tabindex="0"
+  [attr.aria-label]="'Look ' + look.number + ' — ' + look.name + ': ' + look.shortDescription"
+  role="button"
+>
+  <!-- Image area -->
+  <div class="look-img" [style.background]="look.bgColor">
+    @if (look.images[0]; as hero) {
+      <img class="look-photo" [src]="hero.src" [alt]="hero.alt" loading="lazy" decoding="async" />
+    }
+    <div class="look-overlay" aria-hidden="true"></div>
+    <span class="look-roman" aria-hidden="true">{{ look.roman }}</span>
+  </div>
+
+  <!-- Meta -->
+  <footer class="look-meta">
+    <span class="look-num">Look 0{{ look.number }}</span>
+    <h3 class="look-name">{{ look.name }}</h3>
+    <p class="look-desc">{{ look.shortDescription }}</p>
+  </footer>
+</article>

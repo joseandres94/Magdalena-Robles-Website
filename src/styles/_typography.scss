@@ -1,0 +1,94 @@
+@use 'tokens' as t;
+
+// ── BASE ──
+html {
+  font-family: t.$font-ui;
+  color: t.$mr-ink;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// ── DISPLAY CLASSES ──
+.mr-display {
+  font-family: t.$font-display;
+  font-size: t.$h1-size;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+}
+
+.mr-h1 {
+  font-family: t.$font-display;
+  font-size: t.$h1-size;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+}
+
+.mr-h2 {
+  font-family: t.$font-display;
+  font-size: t.$h2-size;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.mr-h3 {
+  font-family: t.$font-display;
+  font-size: t.$h3-size;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.mr-eyebrow {
+  font-family: t.$font-ui;
+  font-size: t.$eyebrow-size;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: t.$mr-ink-35;
+}
+
+.mr-body {
+  font-family: t.$font-ui;
+  font-size: t.$body-size;
+  font-weight: 300;
+  line-height: 1.88;
+  color: t.$mr-ink-55;
+}
+
+.mr-quote {
+  font-family: t.$font-display;
+  font-size: t.$quote-size;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.mr-nav-link {
+  font-family: t.$font-ui;
+  font-size: t.$nav-size;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mr-tag {
+  font-family: t.$font-ui;
+  font-size: t.$tag-size;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: t.$border-hair;
+  padding: 0.3rem 0.75rem;
+  color: t.$mr-ink-45;
+  display: inline-block;
+}
+
+.mr-caption {
+  font-family: t.$font-hand;
+  font-size: t.$caption-size;
+}

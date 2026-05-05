@@ -1,0 +1,107 @@
+@if (look) {
+  <article class="look-detail" [attr.aria-label]="'Look ' + look.number + ' — ' + look.name">
+
+    <!-- Hero panel -->
+    <section class="look-hero" [style.background]="look.bgColor">
+      @if (look.images[0]; as hero) {
+        <img class="look-hero-photo" [src]="hero.src" [alt]="hero.alt" loading="eager" decoding="async" />
+      }
+      <div class="look-hero-content">
+        <span class="look-num mr-eyebrow">Look 0{{ look.number }}</span>
+        <h1 class="look-name">{{ look.name }}</h1>
+        <p class="look-archetype">{{ look.archetype }}</p>
+      </div>
+      <span class="look-hero-roman" aria-hidden="true">{{ look.roman }}</span>
+    </section>
+
+    <!-- Detail grid -->
+    <div class="look-grid">
+
+      <!-- Left: editorial -->
+      <div class="look-editorial">
+        <div class="look-block">
+          <p class="block-label">{{ lang.t('Descripción', 'Description') }}</p>
+          <p class="look-editorial-text">{{ look.editorialDescription }}</p>
+        </div>
+        <div class="look-block">
+          <p class="block-label">{{ lang.t('Concepto', 'Concept') }}</p>
+          <p class="look-concept">{{ look.conceptNote }}</p>
+        </div>
+        <div class="look-block">
+          <p class="block-label">{{ lang.t('Código', 'Reference') }}</p>
+          <p class="look-ref">{{ look.referenceCode }}</p>
+        </div>
+      </div>
+
+      <!-- Right: technical -->
+      <div class="look-technical">
+        <div class="look-block">
+          <p class="block-label">{{ lang.t('Técnicas', 'Techniques') }}</p>
+          <ul class="technique-list">
+            @for (t of look.techniques; track t.name) {
+              <li>
+                <span class="technique-name">{{ t.name }}</span>
+                @if (t.category) {
+                  <span class="technique-cat">{{ t.category }}</span>
+                }
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="look-block">
+          <p class="block-label">{{ lang.t('Materiales', 'Materials') }}</p>
+          <ul class="material-list">
+            @for (mat of look.materials; track mat.name) {
+              <li>
+                <span class="material-name">{{ mat.name }}</span>
+                <span class="material-type mat-type-{{ mat.type }}">{{ mat.type }}</span>
+                @if (mat.description) {
+                  <p class="material-desc">{{ mat.description }}</p>
+                }
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="look-block look-cta-block">
+          <p class="block-label">{{ lang.t('Disponibilidad', 'Availability') }}</p>
+          <p class="look-status">{{ lang.t('Bajo petición', 'On request') }}</p>
+          <a routerLink="/contact" class="btn-primary dark">
+            {{ look.ctaLabel }} →
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation between looks -->
+    <nav class="look-pagination" aria-label="Navegación entre looks">
+      <div class="pagination-prev">
+        @if (prevLook) {
+          <a [routerLink]="['/collection', prevLook.slug]" class="pagination-link">
+            <span class="pagination-dir">← Look 0{{ prevLook.number }}</span>
+            <span class="pagination-name">{{ prevLook.name }}</span>
+          </a>
+        }
+      </div>
+      <a routerLink="/collection" class="pagination-all mr-eyebrow">
+        {{ lang.t('Ver todos los looks', 'All looks') }}
+      </a>
+      <div class="pagination-next">
+        @if (nextLook) {
+          <a [routerLink]="['/collection', nextLook.slug]" class="pagination-link">
+            <span class="pagination-dir">Look 0{{ nextLook.number }} →</span>
+            <span class="pagination-name">{{ nextLook.name }}</span>
+          </a>
+        }
+      </div>
+    </nav>
+
+  </article>
+} @else {
+  <div class="look-not-found">
+    <p class="mr-eyebrow">Look no encontrado</p>
+    <a routerLink="/collection" class="btn-line">← Ver colección</a>
+  </div>
+}

@@ -1,0 +1,39 @@
+@use '../../../../styles/tokens' as t;
+
+.ticker-wrap {
+  overflow: hidden;
+  padding: 0.9rem 0;
+  background: t.$mr-ink;
+  border-bottom: 0.5px solid rgba(240,237,230,0.06);
+
+  &:not(.dark) {
+    background: t.$mr-paper;
+    border-bottom: 0.5px solid t.$mr-ink-10;
+
+    .ticker-item        { color: t.$mr-ink-22; }
+    .ticker-item.strong { color: t.$mr-ink-45; }
+  }
+}
+
+.ticker-track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  animation: ticker t.$ticker-duration linear infinite;
+
+  @media (prefers-reduced-motion: reduce) { animation: none; }
+}
+
+.ticker-item {
+  font-family: t.$font-ui;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.18);
+  white-space: nowrap;
+
+  &.strong {
+    color: rgba(240,237,230,0.42);
+    font-weight: 500;
+  }
+}

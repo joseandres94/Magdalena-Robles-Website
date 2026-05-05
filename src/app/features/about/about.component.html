@@ -1,0 +1,91 @@
+<!-- Profile -->
+<section class="about-hero" aria-labelledby="about-headline">
+  <div class="about-image-col">
+    @if (aboutPortraitSrc) {
+      <img
+        class="about-portrait"
+        [src]="aboutPortraitSrc"
+        [attr.alt]="lang.t('Magdalena Robles — retrato en estudio', 'Magdalena Robles — studio portrait')"
+        loading="lazy"
+        decoding="async"
+      />
+    } @else {
+      <div class="about-image-placeholder" aria-hidden="true">
+        <svg class="about-figurin" viewBox="0 0 120 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="60" cy="28" rx="18" ry="22" fill="none" stroke="#1D1D1D" stroke-width="1.5"/>
+          <line x1="60" y1="50" x2="60" y2="145" stroke="#1D1D1D" stroke-width="1.5"/>
+          <path d="M60,70 Q25,82 15,115" fill="none" stroke="#1D1D1D" stroke-width="2"/>
+          <path d="M60,70 Q95,82 105,115" fill="none" stroke="#1D1D1D" stroke-width="2"/>
+          <path d="M35,145 Q25,185 22,275" fill="none" stroke="#1D1D1D" stroke-width="1.5"/>
+          <path d="M85,145 Q95,185 98,275" fill="none" stroke="#1D1D1D" stroke-width="1.5"/>
+          <path d="M28,145 Q60,162 92,145" fill="none" stroke="#1D1D1D" stroke-width="1.5"/>
+          <path d="M26,168 Q60,220 94,168" fill="rgba(29,29,29,0.06)" stroke="#1D1D1D" stroke-width="1"/>
+        </svg>
+        <span class="about-image-label">
+          {{ lang.t('Foto diseñadora / atelier', 'Designer / atelier photo') }}
+        </span>
+      </div>
+    }
+  </div>
+
+  <div class="about-text">
+    <span class="mr-eyebrow">Designer &amp; Pattern Maker — Almería</span>
+    <h1 id="about-headline" class="about-headline">
+      {{ lang.t('La construcción como herramienta conceptual.', 'Craft as conceptual tool.') }}
+    </h1>
+    <p>
+      {{ lang.t(
+        'Su práctica fusiona referencias de construcción del siglo XVII con patronaje experimental y tecnologías sostenibles — impresión 3D, corte láser, materiales biodegradables. Cada pieza porta una idea.',
+        'Her practice fuses 17th-century construction references with experimental pattern-making and sustainable technologies — 3D printing, laser cutting, biodegradable materials. Every piece carries an idea.'
+      ) }}
+    </p>
+    <p>
+      {{ lang.t(
+        'Formada como patronista especializada, el trabajo de Magdalena parte desde dentro — desde la lógica constructiva de una manga histórica hasta la superficie de un textil cortado a láser. La prenda es al mismo tiempo concepto y objeto.',
+        "Trained as a specialist pattern-maker, Magdalena's work builds from the inside out — from the construction logic of a historical sleeve to the surface of a laser-cut textile. The garment is both concept and object."
+      ) }}
+    </p>
+    <div class="skills-grid" role="list" aria-label="Habilidades técnicas">
+      @for (skill of brand.skills; track skill) {
+        <span class="skill-tag" role="listitem">{{ skill }}</span>
+      }
+    </div>
+    <a routerLink="/contact" class="btn-line">
+      {{ lang.t('Trabajar juntos', 'Work together') }} →
+    </a>
+  </div>
+</section>
+
+<!-- Manifesto -->
+<section class="about-manifesto" aria-label="Manifiesto">
+  <blockquote>
+    "{{ lang.t('Siluetas históricas, distorsión contemporánea.', 'Historical silhouettes, contemporary distortion.') }}"
+  </blockquote>
+  <cite>{{ lang.t('Posicionamiento de marca — Magdalena Robles, 2025', 'Brand Positioning — Magdalena Robles, 2025') }}</cite>
+</section>
+
+<!-- Process -->
+<section class="process-section" id="process" aria-labelledby="process-title">
+  <div class="process-header">
+    <span class="mr-eyebrow" id="process-title">
+      {{ lang.t('Proceso', 'Process') }}
+    </span>
+    <p class="process-intro">
+      {{ lang.t('Del concepto a la prenda.', 'From concept to garment.') }}
+    </p>
+  </div>
+
+  <div class="process-grid" role="list">
+    @for (step of processSteps; track step.order) {
+      <div class="process-step" role="listitem">
+        <span class="step-num">0{{ step.order }}</span>
+        <h3 class="step-label">{{ step.label }}</h3>
+        <p class="step-desc">{{ step.description }}</p>
+        <span class="step-technique">{{ step.technique }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Ticker light -->
+<mr-ticker [dark]="false" />

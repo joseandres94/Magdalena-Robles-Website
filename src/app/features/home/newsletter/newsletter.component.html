@@ -1,0 +1,149 @@
+<section class="mr-newsletter" id="newsletter-section" aria-labelledby="newsletter-title">
+
+  <!-- Left -->
+  <div class="newsletter-left">
+    <span class="newsletter-eyebrow">Newsletter</span>
+    <h2 class="newsletter-headline" id="newsletter-title">
+      {{ lang.t('Primero en', 'First to') }}<br>
+      <em>{{ lang.t('saberlo.', 'know it.') }}</em>
+    </h2>
+    <p class="newsletter-desc">
+      {{ lang.t(
+        'Nuevas colecciones, proceso de taller, apariciones en prensa y eventos antes que nadie. Sin spam — solo lo que merece llegar.',
+        'New collections, studio process, press appearances and events before anyone else. No spam — only what deserves to arrive.'
+      ) }}
+    </p>
+  </div>
+
+  <!-- Right -->
+  <div class="newsletter-right">
+
+    <!-- Success state -->
+    @if (state().success) {
+      <div class="newsletter-success" role="status" aria-live="polite">
+        <p class="newsletter-success-text">
+          "{{ lang.t('Bienvenida al universo.', 'Welcome to the universe.') }}<br>
+          {{ lang.t('Pronto sabrás todo.', 'You\'ll know everything soon.') }}"
+        </p>
+        <button class="btn-newsletter" (click)="reset()">
+          {{ lang.t('Suscribir otro email', 'Subscribe another email') }}
+        </button>
+      </div>
+    } @else {
+
+      <form
+        class="newsletter-form"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        novalidate
+        [attr.aria-label]="lang.t('Formulario de suscripción a newsletter', 'Newsletter subscription form')"
+      >
+
+        <!-- Nombre -->
+        <div class="newsletter-field">
+          <label class="newsletter-label" for="nl-name">
+            {{ lang.t('Nombre', 'Name') }}
+          </label>
+          <input
+            class="newsletter-input"
+            [class.field-error-state]="isInvalid('name')"
+            id="nl-name"
+            type="text"
+            [placeholder]="lang.t('Tu nombre', 'Your name')"
+            formControlName="name"
+            autocomplete="given-name"
+          >
+          @if (isInvalid('name')) {
+            <span class="newsletter-field-error" role="alert">
+              {{ lang.t('Introduce tu nombre', 'Please enter your name') }}
+            </span>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="newsletter-field">
+          <label class="newsletter-label" for="nl-email">
+            {{ lang.t('Email', 'Email') }}
+            <span aria-hidden="true" class="required-mark">*</span>
+          </label>
+          <input
+            class="newsletter-input"
+            [class.field-error-state]="isInvalid('email')"
+            id="nl-email"
+            type="email"
+            placeholder="tu@email.com"
+            formControlName="email"
+            autocomplete="email"
+          >
+          @if (isInvalid('email')) {
+            <span class="newsletter-field-error" role="alert">
+              {{ lang.t('Introduce un email válido', 'Please enter a valid email') }}
+            </span>
+          }
+        </div>
+
+        <!-- Intereses -->
+        <div class="newsletter-field">
+          <span class="newsletter-label" id="nl-interests-label">
+            {{ lang.t('Me interesa', 'I\'m interested in') }}
+          </span>
+          <div class="newsletter-interests" role="group" aria-labelledby="nl-interests-label" formGroupName="interests">
+            <label class="newsletter-check">
+              <input type="checkbox" formControlName="collection">
+              <span>{{ lang.t('Nuevas colecciones', 'New collections') }}</span>
+            </label>
+            <label class="newsletter-check">
+              <input type="checkbox" formControlName="process">
+              <span>{{ lang.t('Proceso & taller', 'Process & studio') }}</span>
+            </label>
+            <label class="newsletter-check">
+              <input type="checkbox" formControlName="press">
+              <span>{{ lang.t('Prensa & apariciones', 'Press & appearances') }}</span>
+            </label>
+            <label class="newsletter-check">
+              <input type="checkbox" formControlName="events">
+              <span>{{ lang.t('Eventos & showroom', 'Events & showroom') }}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Privacidad -->
+        <label class="newsletter-privacy">
+          <input
+            type="checkbox"
+            formControlName="acceptPrivacy"
+            [attr.aria-invalid]="isInvalid('acceptPrivacy')"
+          >
+          <span>
+            {{ lang.t(
+              'Acepto la política de privacidad y el envío de comunicaciones de Magdalena Robles.',
+              'I accept the privacy policy and communications from Magdalena Robles.'
+            ) }}
+            <span aria-hidden="true" class="required-mark">*</span>
+          </span>
+        </label>
+        @if (isInvalid('acceptPrivacy')) {
+          <span class="newsletter-field-error" role="alert">
+            {{ lang.t('Debes aceptar la política de privacidad', 'You must accept the privacy policy') }}
+          </span>
+        }
+
+        <!-- Submit -->
+        <div class="newsletter-submit-row">
+          <button
+            type="submit"
+            class="btn-newsletter"
+            [disabled]="state().loading"
+            [attr.aria-busy]="state().loading"
+          >
+            {{ state().loading
+              ? lang.t('Enviando…', 'Sending…')
+              : lang.t('Suscribirme →', 'Subscribe →') }}
+          </button>
+        </div>
+
+      </form>
+    }
+
+  </div>
+</section>

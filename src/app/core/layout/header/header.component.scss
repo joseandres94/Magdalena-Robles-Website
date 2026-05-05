@@ -1,0 +1,242 @@
+@use '../../../../styles/tokens' as t;
+@use '../../../../styles/mixins' as m;
+
+// ── HOST ──
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: t.$z-nav;
+  display: block;
+}
+
+// ── SKIP LINK ──
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: t.$mr-ink;
+  color: t.$mr-cream;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 9999;
+
+  &:focus { top: 0.5rem; }
+}
+
+// ── HEADER ──
+.mr-header {
+  background: t.$mr-white;
+  border-bottom: 0.5px solid t.$mr-ink-10;
+  transition: background 0.35s t.$easing, border-color 0.35s t.$easing;
+
+  &.transparent {
+    background: transparent;
+    border-bottom-color: transparent;
+
+    .logo              { color: t.$mr-cream; }
+    .nav-link          { color: rgba(240,237,230,0.4); &:hover, &.active { color: t.$mr-cream; } }
+    .lang-toggle       { color: rgba(240,237,230,0.35); strong { color: t.$mr-cream; } }
+    .contact-cta       { color: rgba(240,237,230,0.6); border-bottom-color: rgba(240,237,230,0.2); }
+    .burger span       { background: t.$mr-cream; }
+  }
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.4rem 2.5rem;
+
+  @include m.mobile { padding: 1.2rem 1.5rem; }
+}
+
+// ── LOGO ──
+.logo {
+  font-family: t.$font-display;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: t.$mr-ink;
+  line-height: 1.1;
+  transition: color 0.35s;
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @include m.focus-ring;
+}
+
+.logo-line {
+  display: block;
+}
+
+.logo-line--second {
+  align-self: center;
+}
+
+// ── DESKTOP NAV ──
+.nav-desktop {
+  margin-left: 3rem;
+
+  @include m.mobile { display: none; }
+
+  ul {
+    display: flex;
+    gap: 2.4rem;
+    list-style: none;
+  }
+}
+
+.nav-link {
+  font-family: t.$font-ui;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: t.$mr-ink-35;
+  text-decoration: none;
+  transition: color 0.2s;
+  @include m.focus-ring;
+
+  &:hover, &.active { color: t.$mr-ink; }
+}
+
+// ── RIGHT ──
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.lang-toggle {
+  background: none;
+  border: none;
+  font-family: t.$font-ui;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: t.$mr-ink-35;
+  cursor: pointer;
+  transition: color 0.2s;
+  @include m.focus-ring;
+  padding: 0;
+
+  strong {
+    color: t.$mr-ink;
+    font-weight: 500;
+  }
+
+  @include m.mobile { display: none; }
+}
+
+.contact-cta {
+  font-family: t.$font-ui;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: t.$mr-ink;
+  border-bottom: 0.5px solid rgba(29,29,29,0.28);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+  @include m.focus-ring;
+
+  &:hover { color: t.$mr-gold; border-bottom-color: t.$mr-gold; }
+
+  @include m.mobile { display: none; }
+}
+
+// ── BURGER ──
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+  @include m.focus-ring;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 0.5px;
+    background: t.$mr-ink;
+    transition: all 0.2s;
+  }
+
+  @include m.mobile { display: flex; }
+}
+
+// ── MOBILE MENU ──
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: t.$mr-ink;
+  z-index: t.$z-modal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s t.$easing;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.mobile-close {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: rgba(240,237,230,0.4);
+  font-family: t.$font-ui;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s;
+  @include m.focus-ring;
+
+  &:hover { color: t.$mr-cream; }
+}
+
+.mobile-link {
+  font-family: t.$font-ui;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover { color: t.$mr-cream; }
+}
+
+.mobile-footer {
+  position: absolute;
+  bottom: 2rem;
+}
+
+.mobile-lang {
+  background: none;
+  border: 0.5px solid rgba(240,237,230,0.2);
+  color: rgba(240,237,230,0.5);
+  font-family: t.$font-ui;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover { color: t.$mr-cream; border-color: rgba(240,237,230,0.5); }
+}

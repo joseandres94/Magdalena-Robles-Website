@@ -1,0 +1,173 @@
+<div class="contact-page">
+
+  <section class="contact-grid" aria-labelledby="contact-title">
+
+    <!-- Left info -->
+    <div class="contact-info">
+      <span class="mr-eyebrow" style="display:block;margin-bottom:2rem">
+        {{ lang.t('Contacto', 'Contact') }}
+      </span>
+      <h1 id="contact-title" class="contact-headline">
+        {{ lang.t('Trabajemos juntos.', "Let's work together.") }}
+      </h1>
+      <p class="contact-desc">
+        {{ lang.t(
+          'Abierta a colaboraciones con estudios, marcas y proyectos culturales. Disponible para prensa, estilismo y pedidos a medida.',
+          'Open to collaborations with studios, brands and cultural projects. Available for press, styling and bespoke orders.'
+        ) }}
+      </p>
+      <a class="contact-email" [href]="'mailto:' + brand.email">{{ brand.email }}</a>
+
+      <div class="collaboration-types">
+        <p class="collab-label mr-eyebrow">{{ lang.t('Áreas', 'Areas') }}</p>
+        <ul>
+          <li>— {{ lang.t('Prensa & editorial', 'Press & editorial') }}</li>
+          <li>— {{ lang.t('Estilismo & sesiones', 'Styling & shoots') }}</li>
+          <li>— {{ lang.t('Pedidos a medida / bespoke', 'Bespoke orders') }}</li>
+          <li>— {{ lang.t('Colaboraciones de marca', 'Brand collaborations') }}</li>
+          <li>— {{ lang.t('Proyectos culturales', 'Cultural projects') }}</li>
+        </ul>
+      </div>
+
+      <div class="contact-socials">
+        @for (s of brand.socials; track s.platform) {
+          <a [href]="s.url" target="_blank" rel="noopener noreferrer">{{ s.label }}</a>
+        }
+      </div>
+    </div>
+
+    <!-- Right form -->
+    <div class="contact-form-col">
+      <p class="form-eyebrow mr-eyebrow">{{ lang.t('Envía un mensaje', 'Send a message') }}</p>
+
+      @if (formState().success) {
+        <div class="form-success" role="status" aria-live="polite">
+          <p>{{ lang.t('Mensaje enviado. Gracias — responderé pronto.', "Message sent. Thank you — I'll reply soon.") }}</p>
+          <button class="btn-line" (click)="formState.set({loading:false,success:false,error:null})">
+            {{ lang.t('Enviar otro mensaje', 'Send another message') }}
+          </button>
+        </div>
+      } @else {
+        <form
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          novalidate
+          aria-label="Formulario de contacto"
+        >
+
+          <!-- Name + Email -->
+          <div class="form-row">
+            <div class="form-field" [class.error]="isInvalid('name')">
+              <label for="f-name" class="field-label">
+                {{ lang.t('Nombre', 'Name') }} <span aria-hidden="true">*</span>
+              </label>
+              <input
+                id="f-name"
+                type="text"
+                class="mr-input"
+                formControlName="name"
+                [attr.aria-invalid]="isInvalid('name')"
+                autocomplete="name"
+              >
+              @if (isInvalid('name')) {
+                <span class="field-error" role="alert">
+                  {{ lang.t('Nombre requerido', 'Name is required') }}
+                </span>
+              }
+            </div>
+
+            <div class="form-field" [class.error]="isInvalid('email')">
+              <label for="f-email" class="field-label">
+                {{ lang.t('Email', 'Email') }} <span aria-hidden="true">*</span>
+              </label>
+              <input
+                id="f-email"
+                type="email"
+                class="mr-input"
+                formControlName="email"
+                [attr.aria-invalid]="isInvalid('email')"
+                autocomplete="email"
+              >
+              @if (isInvalid('email')) {
+                <span class="field-error" role="alert">
+                  {{ lang.t('Email inválido', 'Invalid email') }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <!-- Reason -->
+          <div class="form-field" [class.error]="isInvalid('reason')">
+            <label for="f-reason" class="field-label">
+              {{ lang.t('Motivo', 'Reason') }} <span aria-hidden="true">*</span>
+            </label>
+            <select id="f-reason" class="mr-input mr-select" formControlName="reason" [attr.aria-invalid]="isInvalid('reason')">
+              <option value="" disabled>{{ lang.t('Selecciona un motivo', 'Select a reason') }}</option>
+              @for (r of reasons; track r.value) {
+                <option [value]="r.value">{{ lang.isEs() ? r.label : r.labelEn }}</option>
+              }
+            </select>
+            @if (isInvalid('reason')) {
+              <span class="field-error" role="alert">
+                {{ lang.t('Selecciona un motivo', 'Please select a reason') }}
+              </span>
+            }
+          </div>
+
+          <!-- Message -->
+          <div class="form-field" [class.error]="isInvalid('message')">
+            <label for="f-message" class="field-label">
+              {{ lang.t('Mensaje', 'Message') }} <span aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="f-message"
+              class="mr-textarea"
+              formControlName="message"
+              [attr.aria-invalid]="isInvalid('message')"
+              rows="4"
+            ></textarea>
+            @if (isInvalid('message')) {
+              <span class="field-error" role="alert">
+                {{ lang.t('Mensaje demasiado corto', 'Message too short') }}
+              </span>
+            }
+          </div>
+
+          <!-- Privacy -->
+          <div class="form-field form-field-check" [class.error]="isInvalid('acceptPrivacy')">
+            <label class="check-label">
+              <input
+                type="checkbox"
+                formControlName="acceptPrivacy"
+                [attr.aria-invalid]="isInvalid('acceptPrivacy')"
+              >
+              <span>
+                {{ lang.t('Acepto la política de privacidad', 'I accept the privacy policy') }}
+                <span aria-hidden="true"> *</span>
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-submit-row">
+            @if (formState().error) {
+              <span class="form-error" role="alert">{{ formState().error }}</span>
+            }
+            <button
+              type="submit"
+              class="btn-line"
+              [disabled]="formState().loading"
+              [attr.aria-busy]="formState().loading"
+            >
+              {{ formState().loading
+                ? lang.t('Enviando…', 'Sending…')
+                : lang.t('Enviar', 'Send') }} →
+            </button>
+          </div>
+
+        </form>
+      }
+    </div>
+
+  </section>
+</div>

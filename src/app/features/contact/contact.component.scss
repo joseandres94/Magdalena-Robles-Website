@@ -1,0 +1,216 @@
+@use '../../../styles/tokens' as t;
+@use '../../../styles/mixins' as m;
+
+.contact-page { margin-top: 4rem; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: t.$border-hair;
+  min-height: calc(100vh - 4rem);
+
+  @include m.mobile { grid-template-columns: 1fr; }
+}
+
+// ── LEFT ──
+.contact-info {
+  padding: 5rem 3.5rem;
+  border-right: t.$border-hair;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include m.mobile { padding: 3rem 1.5rem; border-right: none; border-bottom: t.$border-hair; }
+}
+
+.contact-headline {
+  font-family: t.$font-display;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.contact-desc {
+  font-family: t.$font-ui;
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: t.$mr-ink-55;
+  font-weight: 300;
+  max-width: 320px;
+}
+
+.contact-email {
+  font-family: t.$font-ui;
+  font-size: 0.72rem;
+  color: t.$mr-ink-45;
+  font-weight: 300;
+  border-bottom: 0.5px solid rgba(29,29,29,0.15);
+  padding-bottom: 0.35rem;
+  width: fit-content;
+  transition: color 0.2s;
+  @include m.focus-ring;
+  &:hover { color: t.$mr-ink; }
+}
+
+.collaboration-types {
+  margin-top: 0.5rem;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+
+    li {
+      font-family: t.$font-ui;
+      font-size: 0.72rem;
+      color: t.$mr-ink-45;
+      font-weight: 300;
+    }
+  }
+}
+
+.collab-label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 1.8rem;
+  margin-top: 1rem;
+
+  a {
+    font-family: t.$font-ui;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: t.$mr-ink-30;
+    text-decoration: none;
+    transition: color 0.2s;
+    @include m.focus-ring;
+    &:hover { color: t.$mr-ink; }
+  }
+}
+
+// ── RIGHT ──
+.contact-form-col {
+  padding: 5rem 3.5rem;
+  @include m.mobile { padding: 3rem 1.5rem; }
+}
+
+.form-eyebrow {
+  display: block;
+  margin-bottom: 2.5rem;
+}
+
+// ── FORM ──
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  @include m.mobile { grid-template-columns: 1fr; gap: 0; }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.8rem;
+
+  &.error .mr-input,
+  &.error .mr-textarea,
+  &.error .mr-select {
+    border-bottom-color: t.$mr-rose-pin;
+  }
+}
+
+.field-label {
+  font-family: t.$font-ui;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: t.$mr-ink-35;
+  cursor: pointer;
+
+  span { color: t.$mr-rose-pin; }
+}
+
+.field-error {
+  font-family: t.$font-ui;
+  font-size: 0.58rem;
+  color: t.$mr-rose-pin;
+  letter-spacing: 0.08em;
+}
+
+.mr-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(29,29,29,0.3)'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  padding-right: 1.2rem;
+  cursor: pointer;
+  color: t.$mr-ink-55;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+
+  option { text-transform: none; letter-spacing: 0; }
+}
+
+// ── CHECKBOX ──
+.form-field-check { flex-direction: row; align-items: flex-start; }
+
+.check-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+    accent-color: t.$mr-ink;
+    flex-shrink: 0;
+  }
+
+  span {
+    font-family: t.$font-ui;
+    font-size: 0.68rem;
+    color: t.$mr-ink-45;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+}
+
+// ── SUBMIT ──
+.form-submit-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.form-error {
+  font-family: t.$font-ui;
+  font-size: 0.62rem;
+  color: t.$mr-rose-pin;
+}
+
+// ── SUCCESS ──
+.form-success {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem 0;
+
+  p {
+    font-family: t.$font-display;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: t.$mr-ink-55;
+    line-height: 1.5;
+  }
+}

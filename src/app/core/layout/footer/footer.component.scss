@@ -1,0 +1,68 @@
+@use '../../../../styles/tokens' as t;
+@use '../../../../styles/mixins' as m;
+
+.mr-footer {
+  border-top: 0.5px solid t.$mr-ink-10;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.6rem 2.5rem;
+  gap: 2rem;
+
+  @include m.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+.footer-logo {
+  font-family: t.$font-display;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: t.$mr-ink-35;
+}
+
+.footer-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  @include m.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.2rem;
+
+  a {
+    font-family: t.$font-ui;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: t.$mr-ink-30;
+    text-decoration: none;
+    transition: color 0.2s;
+    @include m.focus-ring;
+
+    &:hover { color: t.$mr-ink; }
+  }
+}
+
+.footer-text {
+  font-family: t.$font-ui;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: t.$mr-ink-22;
+}

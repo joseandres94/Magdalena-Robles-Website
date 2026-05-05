@@ -1,0 +1,90 @@
+<header
+  class="mr-header"
+  [class.transparent]="isTransparent()"
+  [class.scrolled]="scrolled()"
+  role="banner"
+>
+  <!-- Skip link -->
+  <a class="skip-link" href="#main-content">
+    {{ lang.t('Ir al contenido', 'Skip to content') }}
+  </a>
+
+  <div class="header-inner">
+    <!-- Logo -->
+    <a class="logo" routerLink="/" aria-label="Magdalena Robles — Home" (click)="closeMobile()">
+      <span class="logo-line">Magdalena</span>
+      <span class="logo-line logo-line--second">Robles</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <ul>
+        @for (item of lang.navItems(); track item.id) {
+          <li>
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+              class="nav-link"
+            >{{ item.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Right controls -->
+    <div class="header-right">
+      <button class="lang-toggle" (click)="toggleLang()" [attr.aria-label]="'Switch language to ' + (lang.isEs() ? 'English' : 'Español')">
+        <strong>{{ lang.isEs() ? 'ES' : 'EN' }}</strong>
+        <span aria-hidden="true"> / {{ lang.isEs() ? 'EN' : 'ES' }}</span>
+      </button>
+
+      <a class="contact-cta" routerLink="/contact">
+        {{ lang.t('Contacto', 'Contact') }} →
+      </a>
+
+      <!-- Burger -->
+      <button
+        class="burger"
+        (click)="toggleMobile()"
+        [attr.aria-expanded]="mobileOpen()"
+        aria-controls="mobile-menu"
+        [attr.aria-label]="lang.t('Abrir menú', 'Open menu')"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile overlay -->
+<div
+  class="mobile-menu"
+  id="mobile-menu"
+  [class.open]="mobileOpen()"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="lang.t('Menú de navegación', 'Navigation menu')"
+>
+  <button class="mobile-close" (click)="closeMobile()" [attr.aria-label]="lang.t('Cerrar menú', 'Close menu')">
+    {{ lang.t('Cerrar', 'Close') }} ✕
+  </button>
+
+  <nav aria-label="Mobile navigation">
+    @for (item of lang.navItems(); track item.id) {
+      <a
+        [routerLink]="item.path"
+        class="mobile-link"
+        (click)="closeMobile()"
+      >{{ item.label }}</a>
+    }
+  </nav>
+
+  <div class="mobile-footer">
+    <button class="mobile-lang" (click)="toggleLang()">
+      {{ lang.isEs() ? 'EN' : 'ES' }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,198 @@
+@use '../../../../styles/tokens' as t;
+@use '../../../../styles/mixins' as m;
+
+.board-section {
+  background: t.$mr-board;
+  padding: 3rem 2.5rem 5rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 720px;
+  border-bottom: t.$border-hair;
+
+  @include m.dot-grid-texture;
+
+  @include m.mobile {
+    min-height: auto;
+    padding: 2rem 1.5rem 3rem;
+  }
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.faint { color: t.$mr-ink-22; }
+
+.board {
+  position: relative;
+  min-height: 660px;
+
+  @include m.mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: auto;
+
+    .foto, .postit, .sketch, .swatch, .text-note {
+      position: relative !important;
+      left: auto !important;
+      right: auto !important;
+      top: auto !important;
+      transform: none !important;
+      width: 100% !important;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+  }
+}
+
+// ── FOTO / POLAROID ──
+.foto {
+  position: absolute;
+  background: #fff;
+  padding: 8px 8px 28px;
+  box-shadow: t.$shadow-polaroid;
+  cursor: pointer;
+  transition: transform t.$duration-fast, box-shadow t.$duration-fast;
+
+  &:hover {
+    box-shadow: t.$shadow-polaroid-hover;
+    transform: scale(1.04) rotate(0deg) !important;
+    z-index: t.$z-board-hover !important;
+  }
+}
+
+.foto-img {
+  background: t.$mr-cream;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.foto-placeholder {
+  font-family: t.$font-display;
+  font-style: italic;
+  font-size: 0.6rem;
+  color: t.$mr-ink-22;
+  text-align: center;
+  line-height: 1.6;
+  padding: 0.5rem;
+}
+
+.foto-cap {
+  font-family: t.$font-hand;
+  font-size: 0.88rem;
+  color: t.$mr-ink-45;
+  text-align: center;
+  margin-top: 6px;
+  display: block;
+}
+
+.pin {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  z-index: 2;
+  display: block;
+}
+
+// ── POST-IT ──
+.postit {
+  position: absolute;
+  padding: 1rem 1rem 1.1rem;
+  box-shadow: t.$shadow-postit;
+  cursor: pointer;
+  transition: transform t.$duration-fast, box-shadow t.$duration-fast;
+
+  &:hover {
+    box-shadow: t.$shadow-postit-hover;
+    transform: scale(1.05) rotate(0deg) !important;
+    z-index: t.$z-board-hover !important;
+  }
+
+  p {
+    font-family: t.$font-hand;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: rgba(29,29,29,0.7);
+  }
+
+  small {
+    font-family: t.$font-hand;
+    font-size: 0.72rem;
+    color: t.$mr-ink-45;
+    display: block;
+    margin-top: 0.4rem;
+  }
+}
+
+// ── SKETCH ──
+.sketch {
+  position: absolute;
+  background: t.$mr-paper;
+  box-shadow: t.$shadow-sketch;
+  cursor: pointer;
+  transition: transform t.$duration-fast;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    box-shadow: t.$shadow-sketch-hover;
+    transform: scale(1.03) rotate(0deg) !important;
+    z-index: t.$z-board-hover !important;
+  }
+}
+
+.tape {
+  position: absolute;
+  z-index: 10;
+  background: rgba(255,240,180,0.55);
+  height: 18px;
+  display: block;
+}
+
+// ── SWATCH ──
+.swatch {
+  position: absolute;
+  box-shadow: 1px 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform t.$duration-fast;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: scale(1.06) rotate(0deg) !important;
+    z-index: t.$z-board-hover !important;
+  }
+}
+
+.swatch-label {
+  font-family: t.$font-hand;
+  font-size: 0.68rem;
+  color: rgba(29,29,29,0.65);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+// ── TEXT NOTE ──
+.text-note {
+  position: absolute;
+  font-family: t.$font-hand;
+  color: t.$mr-ink-45;
+  cursor: default;
+  line-height: 1.5;
+}

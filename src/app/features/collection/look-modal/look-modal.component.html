@@ -1,0 +1,76 @@
+<div
+  class="modal-backdrop"
+  @modalEnter
+  (click)="close.emit()"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="'Look ' + (currentIndex + 1) + ' — ' + look.name"
+>
+  <div class="modal-inner" (click)="$event.stopPropagation()" @panelEnter>
+
+    <!-- Image panel -->
+    <div class="modal-img-col" [style.background]="look.bgColor">
+      @if (look.images[0]; as hero) {
+        <img class="modal-photo" [src]="hero.src" [alt]="hero.alt" loading="eager" decoding="async" />
+      }
+      <span class="modal-roman" aria-hidden="true">{{ look.roman }}</span>
+    </div>
+
+    <!-- Content panel -->
+    <div class="modal-content" role="document">
+
+      <div class="modal-top-row">
+        <span class="modal-num">Look 0{{ look.number }}</span>
+        <button class="modal-close" (click)="close.emit()" aria-label="Cerrar detalle de look">
+          Cerrar ✕
+        </button>
+      </div>
+
+      <h2 class="modal-name">{{ look.name }}</h2>
+      <p class="modal-tagline">{{ look.shortDescription }}</p>
+
+      <hr class="modal-divider" />
+
+      <div class="modal-block">
+        <p class="modal-section-label">Concepto</p>
+        <p class="modal-body">{{ look.conceptNote }}</p>
+      </div>
+
+      <div class="modal-block">
+        <p class="modal-section-label">Técnicas</p>
+        <div class="modal-tags">
+          @for (t of look.techniques; track t.name) {
+            <span class="modal-tag">{{ t.name }}</span>
+          }
+        </div>
+      </div>
+
+      <div class="modal-block">
+        <p class="modal-section-label">Materiales</p>
+        <div class="modal-tags">
+          @for (mat of look.materials; track mat.name) {
+            <span class="modal-tag">{{ mat.name }}</span>
+          }
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <div class="modal-nav">
+        <button
+          class="modal-nav-btn"
+          (click)="navigate.emit(-1)"
+          [disabled]="!hasPrev"
+          aria-label="Look anterior"
+        >← Anterior</button>
+        <span class="modal-counter">{{ currentIndex + 1 }} / {{ totalLooks }}</span>
+        <button
+          class="modal-nav-btn"
+          (click)="navigate.emit(1)"
+          [disabled]="!hasNext"
+          aria-label="Look siguiente"
+        >Siguiente →</button>
+      </div>
+
+    </div>
+  </div>
+</div>

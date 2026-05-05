@@ -1,0 +1,65 @@
+<!-- Page header -->
+<header class="collection-header">
+  <div class="collection-header-inner">
+    <span class="mr-eyebrow">SS25</span>
+    <h1 class="collection-title">Lobotomy Chic</h1>
+    <p class="collection-sub">
+      {{ lang.t(
+        "Commedia dell'Arte reinterpretada a través de siluetas históricas, construcción experimental y materiales circulares.",
+        "Commedia dell'Arte reinterpreted through historical silhouettes, experimental construction and circular materials."
+      ) }}
+    </p>
+  </div>
+  <div class="collection-header-aside">
+    <blockquote>"Todo el mundo está en la fiesta.<br>Nadie sabe que la fiesta ya terminó."</blockquote>
+    <cite>— concepto central</cite>
+  </div>
+</header>
+
+<!-- Grid -->
+<section class="looks-section" aria-labelledby="looks-grid-title">
+  <div class="looks-bar">
+    <h2 id="looks-grid-title" class="mr-eyebrow">
+      {{ lang.t('6 Looks', '6 Looks') }}
+    </h2>
+    <span class="mr-eyebrow faint">Magdalena Robles — SS25</span>
+  </div>
+
+  <div class="looks-grid" role="list">
+    @for (look of collection.looks(); track look.id) {
+      <div role="listitem">
+        <mr-look-card
+          [look]="look"
+          [index]="$index"
+          (cardClick)="collection.openLook($index)"
+        />
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Manifesto strip -->
+<div class="manifesto-strip">
+  <span class="manifesto-text">
+    {{ lang.t('Couture / Ready-to-wear', 'Couture / Ready-to-wear') }}
+  </span>
+  <span class="manifesto-sep">—</span>
+  <span class="manifesto-text">
+    {{ lang.t('Materiales circulares', 'Circular materials') }}
+  </span>
+  <span class="manifesto-sep">—</span>
+  <span class="manifesto-text">
+    {{ lang.t('Siluetas históricas, distorsión contemporánea', 'Historical silhouettes, contemporary distortion') }}
+  </span>
+</div>
+
+<!-- Look Modal -->
+@if (collection.activeLook(); as look) {
+  <mr-look-modal
+    [look]="look"
+    [currentIndex]="collection.activeLookIndex()!"
+    [totalLooks]="collection.totalLooks()"
+    (close)="collection.closeLook()"
+    (navigate)="collection.navigateLook($event)"
+  />
+}
