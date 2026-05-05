@@ -9,7 +9,8 @@ export interface SeoData {
   url?: string;
 }
 
-const BASE_TITLE = 'Magdalena Robles';
+const BRAND_NAME = 'Magdalena Robles';
+const BASE_TITLE = `${BRAND_NAME} — Designer & Pattern Maker`;
 const BASE_DESC =
   'Fashion designer and specialist pattern maker based in Almería. First collection: Lobotomy Chic SS25.';
 
@@ -19,7 +20,7 @@ export class SeoService {
   private meta = inject(Meta);
 
   setPage(data: Partial<SeoData>): void {
-    const t = data.title ? `${data.title} — ${BASE_TITLE}` : BASE_TITLE;
+    const t = data.title ? `${data.title} — ${BRAND_NAME}` : BASE_TITLE;
     const d = data.description ?? BASE_DESC;
 
     this.title.setTitle(t);

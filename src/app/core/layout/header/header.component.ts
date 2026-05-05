@@ -4,6 +4,7 @@ import {
   type OnDestroy,
   HostListener,
   signal,
+  computed,
   inject,
   ChangeDetectionStrategy,
 } from '@angular/core';
@@ -24,9 +25,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private sub!: Subscription;
 
-  readonly isTransparent = signal(false);
+  readonly isHomePage = signal(false);
   readonly mobileOpen = signal(false);
   readonly scrolled = signal(false);
+  readonly isTransparent = computed(() => this.isHomePage() && !this.scrolled());
 
   ngOnInit(): void {
     this.checkRoute(this.router.url);
@@ -41,19 +43,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private checkRoute(url: string): void {
     const isHome = url === '/' || url === '';
-    this.isTransparent.set(isHome && !this.scrolled());
+    this.isHomePage.set(isHome);
     if (isHome) this.scrolled.set(window.scrollY > window.innerHeight * 0.85);
   }
 
   @HostListener('window:scroll', [])
   onScroll(): void {
-    const isHome = this.router.url === '/' || this.router.url === '';
-    if (!isHome) return;
+    if (!this.isHomePage()) return;
     const hero = document.getElementById('hero-section');
     const heroH = hero ? hero.offsetHeight : window.innerHeight;
-    const past = window.scrollY > heroH - 80;
-    this.scrolled.set(past);
-    this.isTransparent.set(!past);
+    this.scrolled.set(window.scrollY > heroH - 80);
   }
 
   toggleMobile(): void {

@@ -68,16 +68,5 @@
   </cite>
 </section>
 
-<!-- Look Modal -->
-@if (collection.activeLook(); as look) {
-  <mr-look-modal
-    [look]="look"
-    [currentIndex]="collection.activeLookIndex()!"
-    [totalLooks]="collection.totalLooks()"
-    (dismiss)="collection.closeLook()"
-    (navigate)="collection.navigateLook($event)"
-  />
-}
-
 <!-- NEWSLETTER -->
 <mr-newsletter />

@@ -1,4 +1,4 @@
-@if (look) {
+@if (look(); as look) {
   <article class="look-detail" [attr.aria-label]="'Look ' + look.number + ' — ' + look.name">
     <!-- Hero panel -->
     <section class="look-hero" [style.background]="look.bgColor">
@@ -82,10 +82,10 @@
       [attr.aria-label]="lang.t('Navegación entre looks', 'Look navigation')"
     >
       <div class="pagination-prev">
-        @if (prevLook) {
-          <a [routerLink]="['/collection', prevLook.slug]" class="pagination-link">
-            <span class="pagination-dir">← {{ prevLook.number | lookNumber }}</span>
-            <span class="pagination-name">{{ prevLook.name }}</span>
+        @if (prevLook(); as prev) {
+          <a [routerLink]="['/collection', prev.slug]" class="pagination-link">
+            <span class="pagination-dir">← {{ prev.number | lookNumber }}</span>
+            <span class="pagination-name">{{ prev.name }}</span>
           </a>
         }
       </div>
@@ -93,10 +93,10 @@
         {{ lang.t('Ver todos los looks', 'All looks') }}
       </a>
       <div class="pagination-next">
-        @if (nextLook) {
-          <a [routerLink]="['/collection', nextLook.slug]" class="pagination-link">
-            <span class="pagination-dir">{{ nextLook.number | lookNumber }} →</span>
-            <span class="pagination-name">{{ nextLook.name }}</span>
+        @if (nextLook(); as next) {
+          <a [routerLink]="['/collection', next.slug]" class="pagination-link">
+            <span class="pagination-dir">{{ next.number | lookNumber }} →</span>
+            <span class="pagination-name">{{ next.name }}</span>
           </a>
         }
       </div>

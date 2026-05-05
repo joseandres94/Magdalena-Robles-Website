@@ -4,13 +4,12 @@ import { CollectionService } from '../../core/services/collection.service';
 import { LanguageService } from '../../core/services/language.service';
 import { SeoService } from '../../core/services/seo.service';
 import { LookCardComponent } from '../../shared/components/look-card/look-card.component';
-import { LookModalComponent } from './look-modal/look-modal.component';
 
 @Component({
   selector: 'mr-collection',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, LookCardComponent, LookModalComponent],
+  imports: [RouterLink, LookCardComponent],
   templateUrl: './collection.component.html',
   styleUrl: './collection.component.scss',
 })

@@ -1,4 +1,11 @@
-import { Component, type OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  type OnInit,
+  inject,
+  ChangeDetectionStrategy,
+  signal,
+  computed,
+} from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CollectionService } from '../../core/services/collection.service';
 import { SeoService } from '../../core/services/seo.service';
@@ -20,24 +27,27 @@ export class LookDetailComponent implements OnInit {
   private seo = inject(SeoService);
   lang = inject(LanguageService);
 
-  look: Look | undefined;
+  readonly look = signal<Look | undefined>(undefined);
+
+  readonly prevLook = computed<Look | undefined>(() => {
+    const current = this.look();
+    if (!current) return undefined;
+    const idx = this.collection.looks().findIndex((l) => l.slug === current.slug);
+    return idx > 0 ? this.collection.looks()[idx - 1] : undefined;
+  });
+
+  readonly nextLook = computed<Look | undefined>(() => {
+    const current = this.look();
+    if (!current) return undefined;
+    const looks = this.collection.looks();
+    const idx = looks.findIndex((l) => l.slug === current.slug);
+    return idx < looks.length - 1 ? looks[idx + 1] : undefined;
+  });
 
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug') ?? '';
-    this.look = this.collection.getLookBySlug(slug);
-    if (this.look) this.seo.setLookPage(this.look);
-  }
-
-  get prevLook(): Look | undefined {
-    if (!this.look) return undefined;
-    const idx = this.collection.looks().findIndex((l) => l.slug === this.look!.slug);
-    return idx > 0 ? this.collection.looks()[idx - 1] : undefined;
-  }
-
-  get nextLook(): Look | undefined {
-    if (!this.look) return undefined;
-    const idx = this.collection.looks().findIndex((l) => l.slug === this.look!.slug);
-    const looks = this.collection.looks();
-    return idx < looks.length - 1 ? looks[idx + 1] : undefined;
+    const found = this.collection.getLookBySlug(slug);
+    this.look.set(found);
+    if (found) this.seo.setLookPage(found);
   }
 }
