@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { LookCardComponent } from './look-card.component';
 import { LOOKS_DATA } from '../../../data/collection.data';
 import type { Look } from '../../../core/models/look.model';

@@ -31,9 +31,7 @@ describe('SeoService', () => {
     it('uses the default brand title when no title is provided', () => {
       service.setPage({});
 
-      expect(titleSpy.setTitle).toHaveBeenCalledWith(
-        'Magdalena Robles — Designer & Pattern Maker',
-      );
+      expect(titleSpy.setTitle).toHaveBeenCalledWith('Magdalena Robles — Designer & Pattern Maker');
     });
 
     it('sets the meta description tag', () => {
