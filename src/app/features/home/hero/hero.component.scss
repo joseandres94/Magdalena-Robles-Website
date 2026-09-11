@@ -24,29 +24,70 @@
   pointer-events: none;
 }
 
-// ── CTAs (misma altura que antes: ancladas abajo, centradas) ──
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top, rgba(29, 29, 29, 0.8), rgba(29, 29, 29, 0.08) 65%),
+    linear-gradient(to right, rgba(29, 29, 29, 0.35), transparent 55%);
+  pointer-events: none;
+}
+
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-items: stretch;
   flex: 1;
   padding-bottom: 10vh;
 }
 
 .hero-bottom {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
-  padding: 0 1.5rem;
+  padding: 0 2.5rem;
+  gap: 2rem;
   box-sizing: border-box;
 
   @include m.mobile {
+    flex-direction: column;
+    align-items: flex-start;
     padding: 0 1.25rem;
   }
+}
+
+.hero-copy {
+  color: t.$mr-cream;
+
+  h1 {
+    margin: 0.8rem 0 0.6rem;
+    font-family: t.$font-display;
+    font-size: clamp(3.2rem, 7vw, 7rem);
+    font-weight: 900;
+    line-height: 0.82;
+    letter-spacing: -0.055em;
+  }
+
+  p {
+    font-family: t.$font-ui;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: t.$mr-cream-55;
+  }
+}
+
+.hero-eyebrow {
+  font-family: t.$font-ui;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: t.$mr-gold;
 }
 
 .hero-ctas {
@@ -54,4 +95,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+
+  @include m.mobile {
+    justify-content: flex-start;
+  }
 }

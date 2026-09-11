@@ -1,4 +1,5 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { LookCardComponent } from './look-card.component';
 import type { Look } from '../../../core/models/look.model';
 import { MOCK_LOOK, MOCK_LOOK_LAST } from '../../../../testing/test-fixtures';
@@ -10,6 +11,7 @@ describe('LookCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LookCardComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LookCardComponent);

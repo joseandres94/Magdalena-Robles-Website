@@ -1,5 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { LookModalComponent } from './look-modal.component';
 import { MOCK_LOOK } from '../../../../testing/test-fixtures';
 
@@ -10,6 +11,7 @@ describe('LookModalComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LookModalComponent, NoopAnimationsModule],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LookModalComponent);

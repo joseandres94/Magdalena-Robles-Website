@@ -7,11 +7,15 @@ export const MOCK_LOOK: Look = {
   roman: 'I',
   name: 'Pedrolino',
   archetype: 'The Outsider',
+  archetypeEn: 'The Outsider',
   slug: 'pedrolino',
   shortDescription: "The one who doesn't fit.",
+  shortDescriptionEn: "The one who doesn't fit.",
   editorialDescription:
     'El eterno outsider. Vestido de blanco, expresivo, perpetuamente incomprendido.',
+  editorialDescriptionEn: 'The eternal outsider.',
   conceptNote: 'Test concept note.',
+  conceptNoteEn: 'Test concept note.',
   materials: [{ name: 'Lino deadstock', type: 'deadstock' }],
   techniques: [{ name: 'Patronaje avanzado', category: 'Construcción' }],
   images: [{ src: '/assets/looks/pedrolino-01.jpg', alt: 'Pedrolino look', type: 'editorial' }],
@@ -21,6 +25,7 @@ export const MOCK_LOOK: Look = {
   referenceCode: 'MR-SS25-01',
   status: 'on-request',
   ctaLabel: 'Consultar disponibilidad',
+  ctaLabelEn: 'Enquire availability',
 };
 
 /** Look fixture for the last entry of LOOKS_DATA (Lelio), used to test boundary conditions. */
@@ -30,10 +35,14 @@ export const MOCK_LOOK_LAST: Look = {
   roman: 'VI',
   name: 'Lelio',
   archetype: 'Lost in Their Own World',
+  archetypeEn: 'Lost in Their Own World',
   slug: 'lelio',
   shortDescription: 'Lost in their own world.',
+  shortDescriptionEn: 'Lost in their own world.',
   editorialDescription: 'El amante absorto en su propia ficción. Ajeno, sincero, a la deriva.',
+  editorialDescriptionEn: 'The lover absorbed in a private fiction.',
   conceptNote: 'Test concept note.',
+  conceptNoteEn: 'Test concept note.',
   materials: [{ name: 'Algodón reciclado', type: 'recycled' }],
   techniques: [{ name: 'Sastrería deconstruida', category: 'Construcción' }],
   images: [{ src: '/assets/looks/lelio-01.jpg', alt: 'Lelio look', type: 'editorial' }],
@@ -43,4 +52,5 @@ export const MOCK_LOOK_LAST: Look = {
   referenceCode: 'MR-SS25-06',
   status: 'on-request',
   ctaLabel: 'Consultar disponibilidad',
+  ctaLabelEn: 'Enquire availability',
 };

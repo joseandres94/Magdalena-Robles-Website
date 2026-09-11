@@ -27,6 +27,9 @@ export interface ManifestoItem {
 export interface ProcessStep {
   order: number;
   label: string;
+  labelEn: string;
   description: string;
+  descriptionEn: string;
   technique: string;
+  techniqueEn: string;
 }

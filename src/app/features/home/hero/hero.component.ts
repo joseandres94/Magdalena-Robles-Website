@@ -6,21 +6,22 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 import { trigger, style, animate, transition, query } from '@angular/animations';
 import { LanguageService } from '../../../core/services/language.service';
+import { ImageFallbackDirective } from '../../../shared/directives/image-fallback.directive';
 
 @Component({
   selector: 'mr-hero',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink],
+  imports: [RouterLink, NgOptimizedImage, ImageFallbackDirective],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
   animations: [
     trigger('heroEnter', [
       transition(':enter', [
         query(
-          '.hero-ctas',
+          '.hero-copy, .hero-ctas',
           [
             style({ opacity: 0, transform: 'translateY(20px)' }),
             animate(
@@ -35,7 +36,7 @@ import { LanguageService } from '../../../core/services/language.service';
   ],
 })
 export class HeroComponent implements AfterViewInit {
-  lang = inject(LanguageService);
+  readonly lang = inject(LanguageService);
   readonly ready = signal(false);
 
   /** Imagen de fondo del hero: coloca el archivo en `src/assets/hero/` con este nombre, o cambia la ruta. Cadena vacía = sin foto. */

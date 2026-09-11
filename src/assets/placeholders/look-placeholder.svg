@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Fotograf�a de look pendiente</title>
+  <desc id="desc">Marcador editorial para sustituir por la fotograf�a definitiva</desc>
+  <rect width="800" height="1200" fill="#e8e3da"/>
+  <path d="M400 170c-54 0-92 44-92 105 0 55 34 98 92 98s92-43 92-98c0-61-38-105-92-105Zm0 203v305m0-210-210 195m210-195 210 195M310 678l-95 402m275-402 95 402" fill="none" stroke="#1d1d1d" stroke-opacity=".22" stroke-width="8"/>
+  <path d="M300 674c34 34 166 34 200 0l88 300c-116 38-260 38-376 0Z" fill="#faf8f4" stroke="#1d1d1d" stroke-opacity=".16" stroke-width="5"/>
+  <text x="400" y="1120" text-anchor="middle" fill="#1d1d1d" fill-opacity=".45" font-family="Georgia,serif" font-size="24" font-style="italic">Editorial pendiente</text>
+</svg>
