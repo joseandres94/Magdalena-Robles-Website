@@ -65,6 +65,16 @@
       background: t.$mr-cream;
     }
   }
+
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+
+    .header-inner {
+      padding-top: 0.9rem;
+      padding-bottom: 0.9rem;
+    }
+  }
 }
 
 .header-inner {
@@ -72,6 +82,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 1.4rem 2.5rem;
+  transition: padding 0.35s t.$easing;
 
   @include m.mobile {
     padding: 1.2rem 1.5rem;
@@ -189,12 +200,18 @@
 
 // ── BURGER ──
 .burger {
+  position: relative;
+  z-index: 1;
   display: none;
   flex-direction: column;
   gap: 5px;
   background: none;
   border: none;
-  padding: 4px;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   @include m.focus-ring;
 
   span {
@@ -259,10 +276,18 @@
   color: rgba(240, 237, 230, 0.45);
   text-decoration: none;
   transition: color 0.2s;
+  @include m.focus-ring;
 
   &:hover {
     color: t.$mr-cream;
   }
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .mobile-footer {
@@ -281,6 +306,7 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: all 0.2s;
+  @include m.focus-ring;
 
   &:hover {
     color: t.$mr-cream;

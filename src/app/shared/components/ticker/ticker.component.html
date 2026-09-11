@@ -1,6 +1,6 @@
 <div class="ticker-wrap" [class.dark]="dark" aria-hidden="true" role="presentation">
   <div class="ticker-track">
-    @for (item of items; track $index) {
+    @for (item of displayItems; track item.text + $index) {
       <span class="ticker-item" [class.strong]="item.strong">{{ item.text }}</span>
     }
   </div>

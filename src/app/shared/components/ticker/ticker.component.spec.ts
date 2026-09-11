@@ -16,11 +16,11 @@ describe('TickerComponent', () => {
   });
 
   it('provides a non-empty default items array', () => {
-    expect(component.items.length).toBeGreaterThan(0);
+    expect(component.displayItems.length).toBeGreaterThan(0);
   });
 
   it('default items include at least one entry with strong styling', () => {
-    const hasStrong = component.items.some((item) => item.strong === true);
+    const hasStrong = component.displayItems.some((item) => item.strong === true);
     expect(hasStrong).toBeTrue();
   });
 
