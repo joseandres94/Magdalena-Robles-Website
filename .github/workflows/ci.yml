@@ -124,17 +124,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Chrome
-        id: chrome
-        uses: browser-actions/setup-chrome@v2
-        with:
-          chrome-version: stable
-          install-dependencies: true
+      - name: Install Chromium for Karma
+        run: npx playwright install --with-deps chromium
 
       - name: Run unit tests with coverage
-        run: npm run test:ci
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          export CHROME_BIN="$(node -e "console.log(require('playwright').chromium.executablePath())")"
+          echo "Using Chrome binary: $CHROME_BIN"
+          "$CHROME_BIN" --version
+          npm run test:ci
 
   e2e:
     name: End-to-End
