@@ -30,8 +30,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+          install-dependencies: true
+
       - name: Verify quality gates
         run: npm run check && npm run test:ci
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
 
       - name: Build prerendered site
         run: npm run build
