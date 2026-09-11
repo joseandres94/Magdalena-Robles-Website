@@ -22,6 +22,14 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/magdalena-robles'),
       subdir: '.',
       reporters: [{ type: 'html' }, { type: 'text-summary' }],
+      check: {
+        global: {
+          statements: 85,
+          branches: 65,
+          functions: 90,
+          lines: 90,
+        },
+      },
     },
     reporters: ['progress', 'kjhtml'],
     browsers: ['ChromeHeadless'],
