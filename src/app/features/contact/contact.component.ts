@@ -3,23 +3,24 @@ import { ReactiveFormsModule, FormBuilder, Validators, type AbstractControl } fr
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../core/services/language.service';
 import { SeoService } from '../../core/services/seo.service';
+import { FormSubmissionService } from '../../core/services/form-submission.service';
 import { BRAND_INFO } from '../../data/brand.data';
 import type { ContactFormState } from '../../core/models/contact.model';
 
 @Component({
   selector: 'mr-contact',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
 export class ContactComponent implements OnInit {
-  private fb = inject(FormBuilder);
-  lang = inject(LanguageService);
-  private seo = inject(SeoService);
+  private readonly fb = inject(FormBuilder).nonNullable;
+  private readonly submissions = inject(FormSubmissionService);
+  readonly lang = inject(LanguageService);
+  private readonly seo = inject(SeoService);
 
-  brand = BRAND_INFO;
+  readonly brand = BRAND_INFO;
 
   readonly formState = signal<ContactFormState>({ loading: false, success: false, error: null });
 
@@ -62,12 +63,30 @@ export class ContactComponent implements OnInit {
       return;
     }
 
+    const values = this.form.getRawValue();
+    const payload = {
+      name: values.name,
+      email: values.email,
+      reason: values.reason,
+      message: values.message,
+    };
     this.formState.set({ loading: true, success: false, error: null });
 
-    // Simulate async send (replace with real service call)
-    setTimeout(() => {
-      this.formState.set({ loading: false, success: true, error: null });
-      this.form.reset();
-    }, 1200);
+    this.submissions.submitContact(payload).subscribe({
+      next: () => {
+        this.formState.set({ loading: false, success: true, error: null });
+        this.form.reset();
+      },
+      error: () => {
+        this.formState.set({
+          loading: false,
+          success: false,
+          error: this.lang.t(
+            'No se pudo enviar el mensaje. Escríbenos directamente por email.',
+            'The message could not be sent. Please email us directly.',
+          ),
+        });
+      },
+    });
   }
 }

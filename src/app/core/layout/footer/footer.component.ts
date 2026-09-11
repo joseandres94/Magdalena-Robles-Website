@@ -1,14 +1,17 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { BRAND_INFO } from '../../../data/brand.data';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'mr-footer',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  brand = BRAND_INFO;
-  year = new Date().getFullYear();
+  readonly brand = BRAND_INFO;
+  readonly lang = inject(LanguageService);
+  readonly year = new Date().getFullYear();
 }

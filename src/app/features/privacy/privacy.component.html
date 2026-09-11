@@ -1,0 +1,70 @@
+<article class="legal-page" aria-labelledby="privacy-title">
+  <header class="legal-header">
+    <span class="mr-eyebrow">{{ lang.t('Información legal', 'Legal information') }}</span>
+    <h1 id="privacy-title">{{ lang.t('Política de privacidad', 'Privacy policy') }}</h1>
+    <p>
+      {{ lang.t('Última actualización: agosto de 2026.', 'Last updated: August 2026.') }}
+    </p>
+  </header>
+
+  <div class="legal-content">
+    <section>
+      <h2>{{ lang.t('Responsable', 'Data controller') }}</h2>
+      <p>
+        {{ brand.fullName }} — {{ brand.location }}.
+        {{ lang.t('Contacto:', 'Contact:') }}
+        <a [href]="'mailto:' + brand.email">{{ brand.email }}</a>
+        .
+      </p>
+    </section>
+
+    <section>
+      <h2>{{ lang.t('Datos y finalidad', 'Data and purpose') }}</h2>
+      <p>
+        {{
+          lang.t(
+            'Los formularios recogen los datos que facilitas para responder consultas o, cuando lo solicitas, enviarte novedades del estudio. No se utilizan para decisiones automatizadas.',
+            'Forms collect the data you provide to answer enquiries or, when requested, send studio updates. The data is not used for automated decision-making.'
+          )
+        }}
+      </p>
+    </section>
+
+    <section>
+      <h2>{{ lang.t('Base legal y conservación', 'Legal basis and retention') }}</h2>
+      <p>
+        {{
+          lang.t(
+            'El tratamiento se basa en tu consentimiento. Conservaremos los datos mientras atendemos la solicitud o mantengas la suscripción, y durante los plazos legales aplicables.',
+            'Processing is based on your consent. We retain data while handling your request or while your subscription remains active, plus any applicable legal periods.'
+          )
+        }}
+      </p>
+    </section>
+
+    <section>
+      <h2>{{ lang.t('Destinatarios y derechos', 'Recipients and your rights') }}</h2>
+      <p>
+        {{
+          lang.t(
+            'Los datos solo se comparten con proveedores necesarios para prestar el servicio. Puedes solicitar acceso, rectificación, supresión, limitación, oposición o portabilidad escribiendo al email indicado.',
+            'Data is only shared with providers required to deliver the service. You may request access, correction, deletion, restriction, objection or portability by emailing the address above.'
+          )
+        }}
+      </p>
+    </section>
+
+    <p class="legal-note">
+      {{
+        lang.t(
+          'Este texto debe ser validado con los datos fiscales y proveedores definitivos antes de publicar.',
+          'This text must be validated with the final tax details and service providers before publication.'
+        )
+      }}
+    </p>
+
+    <a routerLink="/contact" class="btn-line">
+      {{ lang.t('Volver a contacto', 'Back to contact') }} →
+    </a>
+  </div>
+</article>

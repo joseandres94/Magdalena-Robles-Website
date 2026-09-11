@@ -4,6 +4,9 @@
 
     <div class="footer-right">
       <div class="footer-socials">
+        <a routerLink="/contact">{{ lang.t('Contacto', 'Contact') }}</a>
+        <a [href]="'mailto:' + brand.email">{{ brand.email }}</a>
+        <a routerLink="/privacy">{{ lang.t('Privacidad', 'Privacy') }}</a>
         @for (s of brand.socials; track s.platform) {
           <a [href]="s.url" target="_blank" rel="noopener noreferrer">{{ s.label }}</a>
         }

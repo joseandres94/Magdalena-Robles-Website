@@ -193,8 +193,8 @@
   cursor: pointer;
 
   input[type='checkbox'] {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     margin-top: 2px;
     accent-color: t.$mr-ink;
     flex-shrink: 0;
@@ -207,6 +207,11 @@
     line-height: 1.5;
     font-weight: 300;
   }
+}
+
+.privacy-link {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 // ── SUBMIT ──

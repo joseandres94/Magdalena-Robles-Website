@@ -1,19 +1,33 @@
-import { type ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { Subject } from 'rxjs';
 import { ContactComponent } from './contact.component';
 import { SeoService } from '../../core/services/seo.service';
+import { FormSubmissionService } from '../../core/services/form-submission.service';
 
 describe('ContactComponent', () => {
   let fixture: ComponentFixture<ContactComponent>;
   let component: ContactComponent;
   let seoSpy: jasmine.SpyObj<SeoService>;
+  let submission$: Subject<void>;
+  let submissionsSpy: jasmine.SpyObj<FormSubmissionService>;
 
   beforeEach(async () => {
+    localStorage.removeItem('mr-language');
     seoSpy = jasmine.createSpyObj<SeoService>('SeoService', ['setPage', 'setLookPage']);
+    submission$ = new Subject<void>();
+    submissionsSpy = jasmine.createSpyObj<FormSubmissionService>('FormSubmissionService', [
+      'submitContact',
+    ]);
+    submissionsSpy.submitContact.and.returnValue(submission$);
 
     await TestBed.configureTestingModule({
       imports: [ContactComponent],
-      providers: [{ provide: SeoService, useValue: seoSpy }, provideRouter([])],
+      providers: [
+        { provide: SeoService, useValue: seoSpy },
+        { provide: FormSubmissionService, useValue: submissionsSpy },
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ContactComponent);
@@ -96,22 +110,22 @@ describe('ContactComponent', () => {
       expect(component.form.touched).toBeTrue();
     });
 
-    it('sets loading true immediately when the form is valid', fakeAsync(() => {
+    it('sets loading true immediately when the form is valid', () => {
       fillValidForm(component);
       component.onSubmit();
 
       expect(component.formState().loading).toBeTrue();
-      tick(1200);
-    }));
+    });
 
-    it('transitions to success after 1200 ms', fakeAsync(() => {
+    it('transitions to success after the request succeeds', () => {
       fillValidForm(component);
       component.onSubmit();
-      tick(1200);
+      submission$.next();
+      submission$.complete();
 
       expect(component.formState().loading).toBeFalse();
       expect(component.formState().success).toBeTrue();
-    }));
+    });
   });
 });
 

@@ -1,0 +1,74 @@
+@use '../../../styles/tokens' as t;
+@use '../../../styles/mixins' as m;
+
+.legal-page {
+  min-height: 100vh;
+  padding-top: 7.5rem;
+  background: t.$mr-paper;
+}
+
+.legal-header,
+.legal-content {
+  padding: 3.5rem max(1.5rem, calc((100vw - 960px) / 2));
+}
+
+.legal-header {
+  border-bottom: t.$border-hair;
+
+  h1 {
+    margin: 1.5rem 0 1rem;
+    font-family: t.$font-display;
+    font-size: t.$h1-size;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  p {
+    color: t.$mr-ink-55;
+  }
+}
+
+.legal-content {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+
+  section {
+    display: grid;
+    grid-template-columns: minmax(11rem, 0.35fr) 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: t.$border-hair;
+
+    @include m.mobile {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+
+  h2 {
+    font-family: t.$font-ui;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-family: t.$font-ui;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: t.$mr-ink-60;
+  }
+
+  a:not(.btn-line) {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.legal-note {
+  padding: 1rem;
+  border-left: 2px solid t.$mr-gold;
+  background: t.$mr-white;
+}
