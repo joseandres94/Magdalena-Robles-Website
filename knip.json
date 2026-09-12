@@ -6,12 +6,6 @@
     "@angular/compiler",
     "@angular/platform-browser-dynamic",
     "@angular-eslint/schematics",
-    "@types/jasmine",
-    "jasmine-core",
-    "karma-chrome-launcher",
-    "karma-coverage",
-    "karma-jasmine",
-    "karma-jasmine-html-reporter",
     "sass"
   ],
   "ignoreExportsUsedInFile": true
