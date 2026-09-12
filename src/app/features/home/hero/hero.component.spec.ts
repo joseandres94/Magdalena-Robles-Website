@@ -30,6 +30,6 @@ describe('HeroComponent', () => {
   }));
 
   it('heroBackdropSrc points to the correct asset path', () => {
-    expect(component.heroBackdropSrc).toBe('/assets/hero/hero-backdrop.jpg');
+    expect(component.heroBackdropSrc).toBe('assets/hero/hero-backdrop.jpg');
   });
 });

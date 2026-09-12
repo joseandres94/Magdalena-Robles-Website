@@ -5,6 +5,7 @@ describe('LanguageService', () => {
   let service: LanguageService;
 
   beforeEach(() => {
+    localStorage.removeItem('mr-language');
     TestBed.configureTestingModule({});
     service = TestBed.inject(LanguageService);
   });

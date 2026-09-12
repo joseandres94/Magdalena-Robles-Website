@@ -1,6 +1,8 @@
 import { Component, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, type AbstractControl } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../../core/services/language.service';
+import { FormSubmissionService } from '../../../core/services/form-submission.service';
 
 interface NewsletterState {
   loading: boolean;
@@ -10,15 +12,15 @@ interface NewsletterState {
 
 @Component({
   selector: 'mr-newsletter',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './newsletter.component.html',
   styleUrl: './newsletter.component.scss',
 })
 export class NewsletterComponent {
-  lang = inject(LanguageService);
-  private fb = inject(FormBuilder);
+  readonly lang = inject(LanguageService);
+  private readonly fb = inject(FormBuilder).nonNullable;
+  private readonly submissions = inject(FormSubmissionService);
 
   readonly state = signal<NewsletterState>({ loading: false, success: false, error: null });
 
@@ -50,18 +52,37 @@ export class NewsletterComponent {
     }
 
     this.state.set({ loading: true, success: false, error: null });
+    const { name, email, interests } = this.form.getRawValue();
+    const selectedInterests = Object.entries(interests)
+      .filter(([, selected]) => selected)
+      .map(([interest]) => interest);
 
-    // Simulate async submit — replace with real service call
-    setTimeout(() => {
-      this.state.set({ loading: false, success: true, error: null });
-      this.form.reset({
-        interests: { collection: true, process: false, press: false, events: false },
+    this.submissions
+      .subscribeToNewsletter({ name, email, interests: selectedInterests })
+      .subscribe({
+        next: () => {
+          this.state.set({ loading: false, success: true, error: null });
+          this.resetForm();
+        },
+        error: () => {
+          this.state.set({
+            loading: false,
+            success: false,
+            error: this.lang.t(
+              'No se pudo completar la suscripción. Inténtalo de nuevo más tarde.',
+              'The subscription could not be completed. Please try again later.',
+            ),
+          });
+        },
       });
-    }, 1200);
   }
 
   reset(): void {
     this.state.set({ loading: false, success: false, error: null });
+    this.resetForm();
+  }
+
+  private resetForm(): void {
     this.form.reset({
       interests: { collection: true, process: false, press: false, events: false },
     });

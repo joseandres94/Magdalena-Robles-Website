@@ -122,10 +122,14 @@
             [attr.aria-invalid]="isInvalid('acceptPrivacy')"
           />
           <span>
+            {{ lang.t('Acepto la', 'I accept the') }}
+            <a routerLink="/privacy" class="newsletter-privacy-link">
+              {{ lang.t('política de privacidad', 'privacy policy') }}
+            </a>
             {{
               lang.t(
-                'Acepto la política de privacidad y el envío de comunicaciones de Magdalena Robles.',
-                'I accept the privacy policy and communications from Magdalena Robles.'
+                'y el envío de comunicaciones de Magdalena Robles.',
+                'and communications from Magdalena Robles.'
               )
             }}
             <span aria-hidden="true" class="required-mark">*</span>
@@ -144,6 +148,9 @@
 
         <!-- Submit -->
         <div class="newsletter-submit-row">
+          @if (state().error) {
+            <span class="newsletter-field-error" role="alert">{{ state().error }}</span>
+          }
           <button
             type="submit"
             class="btn-newsletter"

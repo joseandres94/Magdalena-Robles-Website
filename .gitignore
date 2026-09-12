@@ -34,6 +34,10 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+/.agents
+skills*
+/test-results/
+/playwright-report/
 
 # Linter caches
 .eslintcache

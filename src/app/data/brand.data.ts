@@ -51,29 +51,45 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     order: 1,
     label: 'Concepto',
+    labelEn: 'Concept',
     description:
       'Cada colección nace de un universo conceptual concreto — un personaje, un estado emocional, una referencia histórica.',
+    descriptionEn:
+      'Each collection begins with a precise conceptual universe — a character, an emotional state, a historical reference.',
     technique: 'Investigación y narrativa',
+    techniqueEn: 'Research & narrative',
   },
   {
     order: 2,
     label: 'Construcción',
+    labelEn: 'Construction',
     description:
       'El patronaje no es técnica, es lenguaje. Cada pieza se construye desde la lógica interna de la silueta.',
+    descriptionEn:
+      'Pattern-making is not merely technique; it is language. Every piece is built from the internal logic of its silhouette.',
     technique: 'Patronaje & drapeado',
+    techniqueEn: 'Pattern-making & draping',
   },
   {
     order: 3,
     label: 'Material',
+    labelEn: 'Material',
     description:
       'Los materiales forman parte del concepto. Tejidos de segunda vida, bioplásticos, naturales y regenerativos.',
+    descriptionEn:
+      'Materials are part of the concept: second-life textiles, bioplastics, natural and regenerative fibres.',
     technique: 'Investigación de tejidos',
+    techniqueEn: 'Textile research',
   },
   {
     order: 4,
     label: 'Proceso digital',
+    labelEn: 'Digital process',
     description:
       'Impresión 3D y corte láser como extensión del oficio artesanal, no como sustitución.',
+    descriptionEn:
+      '3D printing and laser cutting extend the handmade craft rather than replace it.',
     technique: 'Fabricación digital',
+    techniqueEn: 'Digital fabrication',
   },
 ];

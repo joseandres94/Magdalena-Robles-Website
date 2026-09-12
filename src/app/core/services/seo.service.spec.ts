@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { Title, Meta } from '@angular/platform-browser';
 import { SeoService } from './seo.service';
 import { LOOKS_DATA } from '../../data/collection.data';
+import { APP_ENVIRONMENT, appEnvironment } from '../app-environment';
 
 describe('SeoService', () => {
   let service: SeoService;
@@ -9,6 +10,7 @@ describe('SeoService', () => {
   let metaSpy: jasmine.SpyObj<Meta>;
 
   beforeEach(() => {
+    document.documentElement.lang = 'es';
     titleSpy = jasmine.createSpyObj<Title>('Title', ['setTitle', 'getTitle']);
     metaSpy = jasmine.createSpyObj<Meta>('Meta', ['updateTag']);
 
@@ -16,6 +18,7 @@ describe('SeoService', () => {
       providers: [
         { provide: Title, useValue: titleSpy },
         { provide: Meta, useValue: metaSpy },
+        { provide: APP_ENVIRONMENT, useValue: appEnvironment },
       ],
     });
     service = TestBed.inject(SeoService);
@@ -70,14 +73,13 @@ describe('SeoService', () => {
       });
     });
 
-    it('does not set og:image when no image is provided', () => {
+    it('sets the default social image when no image is provided', () => {
       service.setPage({ title: 'Test' });
 
-      const ogImageCalled = metaSpy.updateTag.calls
-        .allArgs()
-        .some((args) => (args[0] as { property?: string }).property === 'og:image');
-
-      expect(ogImageCalled).toBeFalse();
+      expect(metaSpy.updateTag).toHaveBeenCalledWith({
+        property: 'og:image',
+        content: 'https://magdalenarobles.com/assets/placeholders/hero-placeholder.svg',
+      });
     });
   });
 

@@ -2,17 +2,32 @@
   @if (heroBackdropSrc) {
     <img
       class="hero-backdrop"
-      [src]="heroBackdropSrc"
+      [ngSrc]="heroBackdropSrc"
+      fill
+      priority
+      sizes="100vw"
+      mrImageFallback="/assets/placeholders/hero-placeholder.svg"
       alt=""
       aria-hidden="true"
-      loading="eager"
-      decoding="async"
     />
   }
+  <div class="hero-overlay" aria-hidden="true"></div>
 
   @if (ready()) {
     <div class="hero-content" @heroEnter>
       <div class="hero-bottom">
+        <div class="hero-copy">
+          <span class="hero-eyebrow">SS25 — Lobotomy Chic</span>
+          <h1>Magdalena Robles</h1>
+          <p>
+            {{
+              lang.t(
+                'Siluetas históricas. Distorsión contemporánea.',
+                'Historical silhouettes. Contemporary distortion.'
+              )
+            }}
+          </p>
+        </div>
         <div class="hero-ctas">
           <a routerLink="/collection" class="btn-primary">
             {{ lang.t('Ver Colección', 'View Collection') }}

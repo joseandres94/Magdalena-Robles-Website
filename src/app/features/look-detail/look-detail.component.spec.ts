@@ -1,6 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { LookDetailComponent } from './look-detail.component';
 import { SeoService } from '../../core/services/seo.service';
 import { LOOKS_DATA } from '../../data/collection.data';
@@ -9,10 +10,10 @@ describe('LookDetailComponent', () => {
   let fixture: ComponentFixture<LookDetailComponent>;
   let component: LookDetailComponent;
   let seoSpy: jasmine.SpyObj<SeoService>;
-  let slugValue: string;
+  let slug$: BehaviorSubject<ReturnType<typeof convertToParamMap>>;
 
   beforeEach(async () => {
-    slugValue = 'pedrolino';
+    slug$ = new BehaviorSubject(convertToParamMap({ slug: 'pedrolino' }));
     seoSpy = jasmine.createSpyObj<SeoService>('SeoService', ['setPage', 'setLookPage']);
 
     await TestBed.configureTestingModule({
@@ -22,7 +23,10 @@ describe('LookDetailComponent', () => {
         { provide: SeoService, useValue: seoSpy },
         {
           provide: ActivatedRoute,
-          useValue: { snapshot: { paramMap: { get: () => slugValue } } },
+          useValue: {
+            snapshot: { paramMap: convertToParamMap({ slug: 'pedrolino' }) },
+            paramMap: slug$.asObservable(),
+          },
         },
       ],
     }).compileComponents();
@@ -34,21 +38,21 @@ describe('LookDetailComponent', () => {
 
   describe('ngOnInit — look resolution', () => {
     it('sets the look signal for a valid slug', () => {
-      slugValue = 'pedrolino';
+      setSlug('pedrolino');
       fixture.detectChanges();
 
       expect(component.look()?.name).toBe('Pedrolino');
     });
 
     it('leaves the look signal undefined for an unknown slug', () => {
-      slugValue = 'nonexistent-slug';
+      setSlug('nonexistent-slug');
       fixture.detectChanges();
 
       expect(component.look()).toBeUndefined();
     });
 
     it('calls seo.setLookPage with the resolved look', () => {
-      slugValue = 'colombina';
+      setSlug('colombina');
       fixture.detectChanges();
 
       expect(seoSpy.setLookPage).toHaveBeenCalledOnceWith(
@@ -57,7 +61,7 @@ describe('LookDetailComponent', () => {
     });
 
     it('does not call seo.setLookPage when the slug is not found', () => {
-      slugValue = 'nonexistent-slug';
+      setSlug('nonexistent-slug');
       fixture.detectChanges();
 
       expect(seoSpy.setLookPage).not.toHaveBeenCalled();
@@ -66,14 +70,14 @@ describe('LookDetailComponent', () => {
 
   describe('prevLook computed', () => {
     it('is undefined when the look is the first in the collection', () => {
-      slugValue = LOOKS_DATA[0].slug; // index 0
+      setSlug(LOOKS_DATA[0].slug); // index 0
       fixture.detectChanges();
 
       expect(component.prevLook()).toBeUndefined();
     });
 
     it('returns the look at the previous index', () => {
-      slugValue = LOOKS_DATA[1].slug; // index 1
+      setSlug(LOOKS_DATA[1].slug); // index 1
       fixture.detectChanges();
 
       expect(component.prevLook()?.name).toBe(LOOKS_DATA[0].name);
@@ -83,17 +87,21 @@ describe('LookDetailComponent', () => {
   describe('nextLook computed', () => {
     it('is undefined when the look is the last in the collection', () => {
       const lastLook = LOOKS_DATA[LOOKS_DATA.length - 1];
-      slugValue = lastLook.slug;
+      setSlug(lastLook.slug);
       fixture.detectChanges();
 
       expect(component.nextLook()).toBeUndefined();
     });
 
     it('returns the look at the next index', () => {
-      slugValue = LOOKS_DATA[0].slug; // index 0
+      setSlug(LOOKS_DATA[0].slug); // index 0
       fixture.detectChanges();
 
       expect(component.nextLook()?.name).toBe(LOOKS_DATA[1].name);
     });
   });
+
+  function setSlug(slug: string): void {
+    slug$.next(convertToParamMap({ slug }));
+  }
 });

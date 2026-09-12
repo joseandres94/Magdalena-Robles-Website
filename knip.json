@@ -2,11 +2,6 @@
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "entry": ["src/app/app.routes.ts"],
   "project": ["src/**/*.ts"],
-  "ignoreDependencies": [
-    "@angular/compiler",
-    "@angular/platform-browser-dynamic",
-    "@angular-eslint/schematics",
-    "sass"
-  ],
+  "ignoreDependencies": ["@angular/platform-browser-dynamic", "@angular-eslint/schematics", "sass"],
   "ignoreExportsUsedInFile": true
 }

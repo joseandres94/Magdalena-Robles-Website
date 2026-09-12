@@ -8,7 +8,6 @@ import { LookModalComponent } from './features/collection/look-modal/look-modal.
 
 @Component({
   selector: 'mr-root',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, LookModalComponent],
   template: `
@@ -17,10 +16,10 @@ import { LookModalComponent } from './features/collection/look-modal/look-modal.
       <router-outlet />
     </main>
     <mr-footer />
-    @if (collection.activeLook(); as look) {
+    @if (collection.activeLookState(); as active) {
       <mr-look-modal
-        [look]="look"
-        [currentIndex]="collection.activeLookIndex()!"
+        [look]="active.look"
+        [currentIndex]="active.index"
         [totalLooks]="collection.totalLooks()"
         (dismiss)="collection.closeLook()"
         (navigate)="collection.navigateLook($event)"
@@ -40,8 +39,8 @@ import { LookModalComponent } from './features/collection/look-modal/look-modal.
   ],
 })
 export class AppComponent implements OnInit {
-  private seo = inject(SeoService);
-  collection = inject(CollectionService);
+  private readonly seo = inject(SeoService);
+  readonly collection = inject(CollectionService);
 
   ngOnInit(): void {
     this.seo.setPage({});

@@ -7,6 +7,7 @@
           class="look-hero-photo"
           [src]="hero.src"
           [alt]="hero.alt"
+          mrImageFallback="/assets/placeholders/look-placeholder.svg"
           loading="eager"
           decoding="async"
         />
@@ -14,7 +15,7 @@
       <div class="look-hero-content">
         <span class="look-num mr-eyebrow">{{ look.number | lookNumber }}</span>
         <h1 class="look-name">{{ look.name }}</h1>
-        <p class="look-archetype">{{ look.archetype }}</p>
+        <p class="look-archetype">{{ lang.isEs() ? look.archetype : look.archetypeEn }}</p>
       </div>
       <span class="look-hero-roman" aria-hidden="true">{{ look.roman }}</span>
     </section>
@@ -25,11 +26,13 @@
       <div class="look-editorial">
         <div class="look-block">
           <p class="block-label">{{ lang.t('Descripción', 'Description') }}</p>
-          <p class="look-editorial-text">{{ look.editorialDescription }}</p>
+          <p class="look-editorial-text">
+            {{ lang.isEs() ? look.editorialDescription : look.editorialDescriptionEn }}
+          </p>
         </div>
         <div class="look-block">
           <p class="block-label">{{ lang.t('Concepto', 'Concept') }}</p>
-          <p class="look-concept">{{ look.conceptNote }}</p>
+          <p class="look-concept">{{ lang.isEs() ? look.conceptNote : look.conceptNoteEn }}</p>
         </div>
         <div class="look-block">
           <p class="block-label">{{ lang.t('Código', 'Reference') }}</p>
@@ -71,7 +74,9 @@
         <div class="look-block look-cta-block">
           <p class="block-label">{{ lang.t('Disponibilidad', 'Availability') }}</p>
           <p class="look-status">{{ lang.t('Bajo petición', 'On request') }}</p>
-          <a routerLink="/contact" class="btn-primary dark">{{ look.ctaLabel }} →</a>
+          <a routerLink="/contact" class="btn-primary dark">
+            {{ lang.isEs() ? look.ctaLabel : look.ctaLabelEn }} →
+          </a>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@
       <img
         class="about-portrait"
         [src]="aboutPortraitSrc"
+        mrImageFallback="/assets/placeholders/portrait-placeholder.svg"
         [attr.alt]="
           lang.t('Magdalena Robles — retrato en estudio', 'Magdalena Robles — studio portrait')
         "
@@ -113,9 +114,9 @@
     @for (step of processSteps; track step.order) {
       <div class="process-step" role="listitem">
         <span class="step-num">0{{ step.order }}</span>
-        <h3 class="step-label">{{ step.label }}</h3>
-        <p class="step-desc">{{ step.description }}</p>
-        <span class="step-technique">{{ step.technique }}</span>
+        <h3 class="step-label">{{ lang.isEs() ? step.label : step.labelEn }}</h3>
+        <p class="step-desc">{{ lang.isEs() ? step.description : step.descriptionEn }}</p>
+        <span class="step-technique">{{ lang.isEs() ? step.technique : step.techniqueEn }}</span>
       </div>
     }
   </div>

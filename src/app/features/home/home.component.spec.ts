@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { SeoService } from '../../core/services/seo.service';
 import { BRAND_INFO } from '../../data/brand.data';
+import { FormSubmissionService } from '../../core/services/form-submission.service';
 
 describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
@@ -16,7 +17,11 @@ describe('HomeComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HomeComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [{ provide: SeoService, useValue: seoSpy }, provideRouter([])],
+      providers: [
+        { provide: SeoService, useValue: seoSpy },
+        { provide: FormSubmissionService, useValue: {} },
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);

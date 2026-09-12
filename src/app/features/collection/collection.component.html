@@ -14,11 +14,13 @@
   </div>
   <div class="collection-header-aside">
     <blockquote>
-      "Todo el mundo está en la fiesta.
+      "{{ lang.t('Todo el mundo está en la fiesta.', 'Everyone is at the party.') }}
       <br />
-      Nadie sabe que la fiesta ya terminó."
+      {{
+        lang.t('Nadie sabe que la fiesta ya terminó.', 'No one knows the party is already over.')
+      }}"
     </blockquote>
-    <cite>— concepto central</cite>
+    <cite>— {{ lang.t('concepto central', 'central concept') }}</cite>
   </div>
 </header>
 

@@ -13,6 +13,10 @@ export class CollectionService {
     return idx !== null ? this._looks()[idx] : null;
   });
   readonly activeLookIndex = computed(() => this._activeLookIndex());
+  readonly activeLookState = computed(() => {
+    const index = this._activeLookIndex();
+    return index === null ? null : { look: this._looks()[index], index };
+  });
   readonly totalLooks = computed(() => this._looks().length);
 
   getLookBySlug(slug: string): Look | undefined {

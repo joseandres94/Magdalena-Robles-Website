@@ -11,7 +11,6 @@ import { BRAND_INFO } from '../../data/brand.data';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 @Component({
   selector: 'mr-home',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterLink,

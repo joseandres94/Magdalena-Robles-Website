@@ -1,4 +1,5 @@
 <div
+  #dialog
   class="modal-backdrop"
   @modalEnter
   (click)="onBackdropClick($event)"
@@ -16,6 +17,7 @@
           class="modal-photo"
           [src]="hero.src"
           [alt]="hero.alt"
+          mrImageFallback="/assets/placeholders/look-placeholder.svg"
           loading="eager"
           decoding="async"
         />
@@ -37,13 +39,15 @@
       </div>
 
       <h2 class="modal-name">{{ look.name }}</h2>
-      <p class="modal-tagline">{{ look.shortDescription }}</p>
+      <p class="modal-tagline">
+        {{ lang.isEs() ? look.shortDescription : look.shortDescriptionEn }}
+      </p>
 
       <hr class="modal-divider" />
 
       <div class="modal-block">
         <p class="modal-section-label">{{ lang.t('Concepto', 'Concept') }}</p>
-        <p class="modal-body">{{ look.conceptNote }}</p>
+        <p class="modal-body">{{ lang.isEs() ? look.conceptNote : look.conceptNoteEn }}</p>
       </div>
 
       <div class="modal-block">
@@ -62,6 +66,19 @@
             <span class="modal-tag">{{ mat.name }}</span>
           }
         </div>
+      </div>
+
+      <div class="modal-actions">
+        <a
+          [routerLink]="['/collection', look.slug]"
+          class="btn-primary dark"
+          (click)="dismiss.emit()"
+        >
+          {{ lang.t('Ver ficha completa', 'View full story') }} →
+        </a>
+        <a routerLink="/contact" class="btn-line" (click)="dismiss.emit()">
+          {{ lang.t('Consultar disponibilidad', 'Enquire availability') }} →
+        </a>
       </div>
 
       <!-- Nav -->

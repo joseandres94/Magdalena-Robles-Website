@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-labelledby="title">
+  <title id="title">Retrato de dise�adora pendiente</title>
+  <rect width="1000" height="1400" fill="#ddd8ce"/>
+  <path d="M500 180c-100 0-168 80-168 188 0 98 63 172 168 172s168-74 168-172c0-108-68-188-168-188Zm0 360v365m0-235-290 280m290-280 290 280M360 900l-100 410m380-410 100 410" fill="none" stroke="#1d1d1d" stroke-opacity=".25" stroke-width="9"/>
+  <text x="500" y="1320" text-anchor="middle" fill="#1d1d1d" fill-opacity=".46" font-family="Georgia,serif" font-size="28" font-style="italic">Retrato de atelier pendiente</text>
+</svg>

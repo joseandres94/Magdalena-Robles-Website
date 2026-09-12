@@ -1,4 +1,5 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { LanguageService } from '../../../core/services/language.service';
 
 export interface TickerItem {
   text: string;
@@ -7,49 +8,40 @@ export interface TickerItem {
 
 @Component({
   selector: 'mr-ticker',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './ticker.component.html',
   styleUrl: './ticker.component.scss',
 })
 export class TickerComponent {
-  @Input() items: TickerItem[] = [
-    { text: 'Lobotomy Chic', strong: true },
-    { text: '—' },
-    { text: 'Primera Colección' },
-    { text: '✦' },
-    { text: 'Designer & Pattern Maker' },
-    { text: '✦' },
-    { text: "Commedia dell'Arte", strong: true },
-    { text: '—' },
-    { text: 'Reinterpretada' },
-    { text: '✦' },
-    { text: 'Almería — España' },
-    { text: '✦' },
-    { text: 'Couture / Ready-to-wear' },
-    { text: '✦' },
-    { text: 'Materiales Circulares', strong: true },
-    { text: '✦' },
-    { text: 'Impresión 3D & Corte Láser' },
-    { text: '✦' },
-    { text: 'Lobotomy Chic', strong: true },
-    { text: '—' },
-    { text: 'Primera Colección' },
-    { text: '✦' },
-    { text: 'Designer & Pattern Maker' },
-    { text: '✦' },
-    { text: "Commedia dell'Arte", strong: true },
-    { text: '—' },
-    { text: 'Reinterpretada' },
-    { text: '✦' },
-    { text: 'Almería — España' },
-    { text: '✦' },
-    { text: 'Couture / Ready-to-wear' },
-    { text: '✦' },
-    { text: 'Materiales Circulares', strong: true },
-    { text: '✦' },
-    { text: 'Impresión 3D & Corte Láser' },
-  ];
-
+  private readonly lang = inject(LanguageService);
+  @Input() items: TickerItem[] = [];
   @Input() dark = true;
+
+  get displayItems(): TickerItem[] {
+    const source = this.items.length ? this.items : this.defaultItems;
+    return [...source, ...source];
+  }
+
+  private get defaultItems(): TickerItem[] {
+    return [
+      { text: 'Lobotomy Chic', strong: true },
+      { text: '—' },
+      { text: this.lang.t('Primera colección', 'First collection') },
+      { text: '✦' },
+      { text: 'Designer & Pattern Maker' },
+      { text: '✦' },
+      { text: "Commedia dell'Arte", strong: true },
+      { text: '—' },
+      { text: this.lang.t('Reinterpretada', 'Reinterpreted') },
+      { text: '✦' },
+      { text: this.lang.t('Almería — España', 'Almería — Spain') },
+      { text: '✦' },
+      { text: 'Couture / Ready-to-wear' },
+      { text: '✦' },
+      { text: this.lang.t('Materiales circulares', 'Circular materials'), strong: true },
+      { text: '✦' },
+      { text: this.lang.t('Impresión 3D & corte láser', '3D printing & laser cutting') },
+      { text: '✦' },
+    ];
+  }
 }

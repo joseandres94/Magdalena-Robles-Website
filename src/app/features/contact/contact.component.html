@@ -162,7 +162,10 @@
                 [attr.aria-invalid]="isInvalid('acceptPrivacy')"
               />
               <span>
-                {{ lang.t('Acepto la política de privacidad', 'I accept the privacy policy') }}
+                {{ lang.t('Acepto la', 'I accept the') }}
+                <a routerLink="/privacy" class="privacy-link">
+                  {{ lang.t('política de privacidad', 'privacy policy') }}
+                </a>
                 <span aria-hidden="true">*</span>
               </span>
             </label>

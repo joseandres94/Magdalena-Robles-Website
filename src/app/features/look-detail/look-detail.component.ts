@@ -1,33 +1,32 @@
-import {
-  Component,
-  type OnInit,
-  inject,
-  ChangeDetectionStrategy,
-  signal,
-  computed,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy, computed, effect } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { map } from 'rxjs';
 import { CollectionService } from '../../core/services/collection.service';
 import { SeoService } from '../../core/services/seo.service';
 import { LanguageService } from '../../core/services/language.service';
 import { LookNumberPipe } from '../../shared/pipes/look-number.pipe';
 import type { Look } from '../../core/models/look.model';
+import { ImageFallbackDirective } from '../../shared/directives/image-fallback.directive';
 
 @Component({
   selector: 'mr-look-detail',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, LookNumberPipe],
+  imports: [RouterLink, LookNumberPipe, ImageFallbackDirective],
   templateUrl: './look-detail.component.html',
   styleUrl: './look-detail.component.scss',
 })
-export class LookDetailComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  private collection = inject(CollectionService);
-  private seo = inject(SeoService);
-  lang = inject(LanguageService);
+export class LookDetailComponent {
+  private readonly route = inject(ActivatedRoute);
+  private readonly collection = inject(CollectionService);
+  private readonly seo = inject(SeoService);
+  readonly lang = inject(LanguageService);
 
-  readonly look = signal<Look | undefined>(undefined);
+  private readonly slug = toSignal(
+    this.route.paramMap.pipe(map((params) => params.get('slug') ?? '')),
+    { initialValue: this.route.snapshot.paramMap.get('slug') ?? '' },
+  );
+  readonly look = computed(() => this.collection.getLookBySlug(this.slug()));
 
   readonly prevLook = computed<Look | undefined>(() => {
     const current = this.look();
@@ -44,10 +43,22 @@ export class LookDetailComponent implements OnInit {
     return idx < looks.length - 1 ? looks[idx + 1] : undefined;
   });
 
-  ngOnInit(): void {
-    const slug = this.route.snapshot.paramMap.get('slug') ?? '';
-    const found = this.collection.getLookBySlug(slug);
-    this.look.set(found);
-    if (found) this.seo.setLookPage(found);
+  constructor() {
+    effect(() => {
+      this.lang.currentLang();
+      const look = this.look();
+      if (look) {
+        this.seo.setLookPage(look);
+      } else {
+        this.seo.setPage({
+          title: this.lang.t('Look no encontrado', 'Look not found'),
+          description: this.lang.t(
+            'El look solicitado no existe.',
+            'The requested look does not exist.',
+          ),
+          noIndex: true,
+        });
+      }
+    });
   }
 }
