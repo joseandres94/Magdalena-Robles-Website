@@ -39,7 +39,7 @@ jobs:
           npm run check && npm run test:ci
 
       - name: Build prerendered site
-        run: npm run build
+        run: npm run build -- --base-href /Magdalena-Robles-Website/
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
