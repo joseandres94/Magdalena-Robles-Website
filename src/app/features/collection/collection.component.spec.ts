@@ -27,7 +27,7 @@ describe('CollectionComponent', () => {
 
   it('sets SEO title and description for the collection page on init', () => {
     expect(seoSpy.setPage).toHaveBeenCalledOnceWith({
-      title: 'Colección — Lobotomy Chic',
+      title: 'Lobotomy Chic — Marionetas',
       description:
         "Lobotomy Chic — Primera colección de Magdalena Robles. Commedia dell'Arte reinterpretada a través de siluetas históricas, construcción experimental y materiales circulares.",
     });
