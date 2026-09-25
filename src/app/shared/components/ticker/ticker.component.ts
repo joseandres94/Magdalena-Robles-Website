@@ -30,32 +30,17 @@ export class TickerComponent {
       { text: '✦' },
       { text: this.lang.t('Estudio Experimental', 'Experimental Studio') },
       { text: '✦' },
-      { text: this.lang.t('Artesanía, Sostenibilidad e Innovación', 'Craftsmanship, Sustainability and Innovation') },
+      {
+        text: this.lang.t(
+          'Artesanía, Sostenibilidad e Innovación',
+          'Craftsmanship, Sustainability and Innovation',
+        ),
+      },
       { text: '✦' },
       { text: this.lang.t('Diseño de Autor', 'Designer Collection') },
       { text: '✦' },
       { text: this.lang.t('Patronaje Creativo', 'Creative Pattern-making') },
       { text: '✦' },
-      /*
-      { text: 'Lobotomy Chic', strong: true },
-      { text: '—' },
-      { text: this.lang.t('Primera colección', 'First collection') },
-      { text: '✦' },
-      { text: 'Designer & Pattern Maker' },
-      { text: '✦' },
-      { text: "Commedia dell'Arte", strong: true },
-      { text: '—' },
-      { text: this.lang.t('Reinterpretada', 'Reinterpreted') },
-      { text: '✦' },
-      { text: this.lang.t('Almería — España', 'Almería — Spain') },
-      { text: '✦' },
-      { text: 'Couture / Ready-to-wear' },
-      { text: '✦' },
-      { text: this.lang.t('Materiales circulares', 'Circular materials'), strong: true },
-      { text: '✦' },
-      { text: this.lang.t('Impresión 3D & corte láser', '3D printing & laser cutting') },
-      { text: '✦' },
-       */
     ];
   }
 }
