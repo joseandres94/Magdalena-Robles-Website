@@ -1,4 +1,4 @@
-import { Component, type OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, type OnInit, computed, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeroComponent } from './hero/hero.component';
 import { MoodboardComponent } from './moodboard/moodboard.component';
@@ -24,16 +24,24 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  collection = inject(CollectionService);
-  lang = inject(LanguageService);
+  readonly collection = inject(CollectionService);
+  readonly lang = inject(LanguageService);
   private seo = inject(SeoService);
 
-  brand = BRAND_INFO;
+  readonly brand = BRAND_INFO;
+  readonly featuredLooks = computed(() => {
+    const looksBySlug = new Map(this.collection.looks().map((look) => [look.slug, look]));
+
+    return ['colombina', 'pantalone', 'lelio', 'pedrolino'].flatMap((slug) => {
+      const look = looksBySlug.get(slug);
+      return look ? [look] : [];
+    });
+  });
 
   ngOnInit(): void {
     this.seo.setPage({
       description:
-        'Magdalena Robles — Fashion designer and specialist pattern maker. Lobotomy Chic SS25.',
+        'Magdalena Robles — Fashion designer and specialist pattern maker. Lobotomy Chic.',
     });
   }
 }

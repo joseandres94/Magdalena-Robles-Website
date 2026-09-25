@@ -17,7 +17,7 @@
       <em>
         con
         <br />
-        propósito.
+        [INSERTE MOTIVO]*.
       </em>
     } @else {
       Author-led
@@ -34,7 +34,7 @@
     <p>
       {{
         lang.t(
-          'Magdalena Robles es diseñadora de moda y patronista especializada cuyo trabajo habita la intersección entre la silueta histórica, la construcción experimental y los materiales circulares. Prendas conceptuales y llevables a la vez.',
+          '**Magdalena Robles es diseñadora de moda y patronista especializada cuyo trabajo habita la intersección entre la silueta histórica, la construcción experimental y los materiales circulares. Prendas conceptuales y llevables a la vez.',
           'Magdalena Robles is a fashion designer and specialist pattern maker whose work inhabits the intersection of historical silhouette, experimental construction and circular materials. Conceptual pieces made to be worn.'
         )
       }}
@@ -49,14 +49,19 @@
 <section class="looks-section" aria-labelledby="looks-title">
   <div class="looks-header">
     <h2 id="looks-title" class="mr-eyebrow">
-      {{ lang.t('Colección — Lobotomy Chic', 'Collection — Lobotomy Chic') }}
+      {{ lang.t('Lobotomy Chic — Marionetas', 'Lobotomy Chic — Marionetas') }}
     </h2>
-    <span class="mr-eyebrow faint">6 Looks — SS25</span>
+    <span class="mr-eyebrow faint">4 Looks</span>
   </div>
   <div class="looks-grid" role="list">
-    @for (look of collection.looks(); track look.id) {
+    @for (look of featuredLooks(); track look.id; let index = $index) {
       <div role="listitem">
-        <mr-look-card [look]="look" [index]="$index" (cardClick)="collection.openLook($index)" />
+        <mr-look-card
+          [look]="look"
+          [index]="index"
+          imageFit="contain"
+          (cardClick)="collection.openLook(collection.looks().indexOf(look))"
+        />
       </div>
     }
   </div>
@@ -68,6 +73,7 @@
 </section>
 
 <!-- MANIFESTO -->
+<!--
 <section class="mr-manifesto" aria-label="Manifiesto">
   <blockquote>
     "{{
@@ -85,7 +91,8 @@
       )
     }}
   </cite>
-</section>
+</section>*/
+-->
 
 <!-- NEWSLETTER -->
 <mr-newsletter />

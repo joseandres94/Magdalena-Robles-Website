@@ -1,78 +1,19 @@
 <section
   class="board-section"
-  [attr.aria-label]="lang.t('Universo — Lobotomy Chic SS25', 'Universe — Lobotomy Chic SS25')"
+  [attr.aria-label]="lang.t('Moodboard de la colección', 'Collection moodboard')"
 >
-  <header class="board-header">
-    <span class="mr-eyebrow">
-      {{ lang.t('Universo — Lobotomy Chic SS25', 'Universe — Lobotomy Chic SS25') }}
-    </span>
-    <span class="mr-eyebrow faint">6 Looks</span>
-  </header>
-
-  <div class="board">
-    @for (look of collection.looks(); track look.id; let index = $index) {
-      <a
-        [routerLink]="['/collection', look.slug]"
-        class="foto foto-{{ index + 1 }}"
-        [attr.aria-label]="lang.t('Ver ficha de ', 'View story for ') + look.name"
-      >
-        <span class="foto-img" [style.background]="look.bgColor">
-          @if (look.images[0]; as image) {
-            <img
-              [src]="image.src"
-              [alt]="image.alt"
-              mrImageFallback="/assets/placeholders/look-placeholder.svg"
-              loading="lazy"
-              decoding="async"
-            />
-          }
-          <span class="foto-roman" aria-hidden="true">{{ look.roman }}</span>
-        </span>
-        <span class="foto-cap">{{ look.name }}, look {{ look.number }}</span>
-        <span class="pin" [style.background]="look.accentColor" aria-hidden="true"></span>
-      </a>
-    }
-
-    <aside class="postit postit-concept">
-      <span class="pin pin-yellow" aria-hidden="true"></span>
-      <p>
-        {{
-          lang.t(
-            '"Todo el mundo está en la fiesta. Nadie sabe que la fiesta ya terminó."',
-            '"Everyone is at the party. No one knows the party is already over."'
-          )
-        }}
-      </p>
-      <small>{{ lang.t('— concepto central', '— central concept') }}</small>
-    </aside>
-
-    <aside class="postit postit-craft">
-      <span class="pin pin-rose" aria-hidden="true"></span>
-      <p>
-        {{
-          lang.t(
-            'Siluetas del siglo XVII — volumen en mangas y caderas.',
-            '17th-century silhouettes — volume at sleeves and hips.'
-          )
-        }}
-      </p>
-      <small>{{ lang.t('reinterpretadas', 'reinterpreted') }}</small>
-    </aside>
-
-    <div class="swatch swatch-gold" aria-hidden="true">
-      <span class="swatch-label">{{ lang.t('tejido noble', 'noble textile') }}</span>
-      <span class="tape"></span>
-    </div>
-    <div class="swatch swatch-rose" aria-hidden="true">
-      <span class="swatch-label">{{ lang.t('tensión suave', 'soft tension') }}</span>
-      <span class="tape"></span>
-    </div>
-
-    <p class="text-note text-note-one" aria-hidden="true">
-      ← {{ lang.t('plisados + volantes', 'pleats + ruffles') }}
-    </p>
-    <p class="text-note text-note-two" aria-hidden="true">
-      {{ lang.t('artesanía + proceso digital', 'craft + digital process') }} →
-    </p>
-  </div>
+  <figure class="board-frame">
+    <img
+      src="assets/moodboard/moodboard.jpg"
+      [alt]="
+        lang.t(
+          'Moodboard de la colección Lobotomy Chic',
+          'Moodboard for the Lobotomy Chic collection'
+        )
+      "
+      mrImageFallback="/assets/placeholders/look-placeholder.svg"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
 </section>
