@@ -47,6 +47,20 @@
   z-index: 0;
 }
 
+.look-card--contain {
+  .look-img {
+    background: transparent !important;
+  }
+
+  .look-photo {
+    object-fit: contain;
+  }
+
+  .look-roman {
+    display: none;
+  }
+}
+
 .look-overlay {
   position: absolute;
   inset: 0;

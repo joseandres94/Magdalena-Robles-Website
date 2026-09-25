@@ -54,9 +54,14 @@
     <span class="mr-eyebrow faint">4 Looks</span>
   </div>
   <div class="looks-grid" role="list">
-    @for (look of collection.looks(); track look.id) {
+    @for (look of featuredLooks(); track look.id; let index = $index) {
       <div role="listitem">
-        <mr-look-card [look]="look" [index]="$index" (cardClick)="collection.openLook($index)" />
+        <mr-look-card
+          [look]="look"
+          [index]="index"
+          imageFit="contain"
+          (cardClick)="collection.openLook(collection.looks().indexOf(look))"
+        />
       </div>
     }
   </div>
