@@ -26,6 +26,19 @@ export class TickerComponent {
     return [
       { text: 'Lobotomy Chic', strong: true },
       { text: '—' },
+      { text: this.lang.t('Materiales Circulares', 'Circular Materials') },
+      { text: '✦' },
+      { text: this.lang.t('Estudio Experimental', 'Experimental Studio') },
+      { text: '✦' },
+      { text: this.lang.t('Artesanía, Sostenibilidad e Innovación', 'Craftsmanship, Sustainability and Innovation') },
+      { text: '✦' },
+      { text: this.lang.t('Diseño de Autor', 'Designer Collection') },
+      { text: '✦' },
+      { text: this.lang.t('Patronaje Creativo', 'Creative Pattern-making') },
+      { text: '✦' },
+      /*
+      { text: 'Lobotomy Chic', strong: true },
+      { text: '—' },
       { text: this.lang.t('Primera colección', 'First collection') },
       { text: '✦' },
       { text: 'Designer & Pattern Maker' },
@@ -42,6 +55,7 @@ export class TickerComponent {
       { text: '✦' },
       { text: this.lang.t('Impresión 3D & corte láser', '3D printing & laser cutting') },
       { text: '✦' },
+       */
     ];
   }
 }

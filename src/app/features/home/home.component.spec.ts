@@ -32,7 +32,7 @@ describe('HomeComponent', () => {
   it('sets SEO description for the home page on init', () => {
     expect(seoSpy.setPage).toHaveBeenCalledOnceWith({
       description:
-        'Magdalena Robles — Fashion designer and specialist pattern maker. Lobotomy Chic SS25.',
+        'Magdalena Robles — Fashion designer and specialist pattern maker. Lobotomy Chic.',
     });
   });
 

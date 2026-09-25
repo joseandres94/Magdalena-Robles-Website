@@ -13,9 +13,9 @@ export interface SeoData {
 }
 
 const BRAND_NAME = 'Magdalena Robles';
-const BASE_TITLE = `${BRAND_NAME} — Designer & Pattern Maker`;
+const BASE_TITLE = `${BRAND_NAME}`;
 const BASE_DESC =
-  'Fashion designer and specialist pattern maker based in Almería. First collection: Lobotomy Chic SS25.';
+  'Fashion designer and specialist pattern maker based in Almería. First collection: Lobotomy Chic.';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
@@ -56,7 +56,7 @@ export class SeoService {
   setLookPage(look: Look): void {
     const isEnglish = this.document.documentElement.lang === 'en';
     this.setPage({
-      title: `${look.name} — Lobotomy Chic SS25`,
+      title: `${look.name} — Lobotomy Chic`,
       description: isEnglish ? look.editorialDescriptionEn : look.editorialDescription,
       image: look.images[0]?.src,
       url: `/collection/${look.slug}`,

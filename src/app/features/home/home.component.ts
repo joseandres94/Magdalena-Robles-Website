@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.seo.setPage({
       description:
-        'Magdalena Robles — Fashion designer and specialist pattern maker. Lobotomy Chic SS25.',
+        'Magdalena Robles — Fashion designer and specialist pattern maker. Lobotomy Chic.',
     });
   }
 }

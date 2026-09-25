@@ -18,7 +18,7 @@ export class CollectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setPage({
-      title: 'Colección — Lobotomy Chic SS25',
+      title: 'Colección — Lobotomy Chic',
       description:
         "Lobotomy Chic — Primera colección de Magdalena Robles. Commedia dell'Arte reinterpretada a través de siluetas históricas, construcción experimental y materiales circulares.",
     });
