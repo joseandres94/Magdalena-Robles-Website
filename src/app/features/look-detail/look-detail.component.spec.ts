@@ -13,7 +13,7 @@ describe('LookDetailComponent', () => {
   let slug$: BehaviorSubject<ReturnType<typeof convertToParamMap>>;
 
   beforeEach(async () => {
-    slug$ = new BehaviorSubject(convertToParamMap({ slug: 'pedrolino' }));
+    slug$ = new BehaviorSubject(convertToParamMap({ slug: 'colombina' }));
     seoSpy = jasmine.createSpyObj<SeoService>('SeoService', ['setPage', 'setLookPage']);
 
     await TestBed.configureTestingModule({
@@ -24,7 +24,7 @@ describe('LookDetailComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            snapshot: { paramMap: convertToParamMap({ slug: 'pedrolino' }) },
+            snapshot: { paramMap: convertToParamMap({ slug: 'colombina' }) },
             paramMap: slug$.asObservable(),
           },
         },
@@ -38,10 +38,10 @@ describe('LookDetailComponent', () => {
 
   describe('ngOnInit — look resolution', () => {
     it('sets the look signal for a valid slug', () => {
-      setSlug('pedrolino');
+      setSlug('colombina');
       fixture.detectChanges();
 
-      expect(component.look()?.name).toBe('Pedrolino');
+      expect(component.look()?.name).toBe('Colombina');
     });
 
     it('leaves the look signal undefined for an unknown slug', () => {

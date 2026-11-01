@@ -8,11 +8,11 @@ test('recorre la colección y abre una ficha compartible', async ({ page }) => {
   await expect(page).toHaveURL(/\/collection$/);
 
   await page.getByRole('button', { name: /Vista rápida: Look 1/ }).click();
-  await expect(page.getByRole('dialog', { name: 'Look 1 — Pedrolino' })).toBeVisible();
+  await expect(page.getByRole('dialog', { name: 'Look 1 — Colombina' })).toBeVisible();
   await page.getByRole('link', { name: /Ver ficha completa/ }).click({ force: true });
 
-  await expect(page).toHaveURL(/\/collection\/pedrolino$/);
-  await expect(page.getByRole('heading', { level: 1, name: 'Pedrolino' })).toBeVisible();
+  await expect(page).toHaveURL(/\/collection\/colombina$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Colombina' })).toBeVisible();
 });
 
 test('cambia el idioma y conserva la preferencia', async ({ page }) => {

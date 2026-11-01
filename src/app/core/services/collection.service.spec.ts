@@ -30,10 +30,10 @@ describe('CollectionService', () => {
 
   describe('getLookBySlug()', () => {
     it('returns the look matching the given slug', () => {
-      const look = service.getLookBySlug('pedrolino');
+      const look = service.getLookBySlug('colombina');
 
       expect(look).toBeDefined();
-      expect(look?.name).toBe('Pedrolino');
+      expect(look?.name).toBe('Colombina');
     });
 
     it('returns undefined for an unknown slug', () => {

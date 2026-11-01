@@ -85,7 +85,7 @@ describe('SeoService', () => {
 
   describe('setLookPage()', () => {
     it('formats the document title as look name — collection — brand', () => {
-      const look = LOOKS_DATA[0]; // Pedrolino
+      const look = LOOKS_DATA[0]; // Colombina
       service.setLookPage(look);
 
       expect(titleSpy.setTitle).toHaveBeenCalledWith(

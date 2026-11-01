@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   readonly featuredLooks = computed(() => {
     const looksBySlug = new Map(this.collection.looks().map((look) => [look.slug, look]));
 
-    return ['colombina', 'pantalone', 'lelio', 'pedrolino'].flatMap((slug) => {
+    return ['colombina', 'pantalone', 'arlequin', 'pierrot'].flatMap((slug) => {
       const look = looksBySlug.get(slug);
       return look ? [look] : [];
     });

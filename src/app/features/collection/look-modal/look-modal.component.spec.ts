@@ -18,7 +18,7 @@ describe('LookModalComponent', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('look', MOCK_LOOK);
     fixture.componentRef.setInput('currentIndex', 2);
-    fixture.componentRef.setInput('totalLooks', 6);
+    fixture.componentRef.setInput('totalLooks', 4);
     fixture.detectChanges();
   });
 
@@ -39,14 +39,14 @@ describe('LookModalComponent', () => {
     });
 
     it('hasNext is false when at the last look', () => {
-      fixture.componentRef.setInput('currentIndex', 5);
-      fixture.componentRef.setInput('totalLooks', 6);
+      fixture.componentRef.setInput('currentIndex', 3);
+      fixture.componentRef.setInput('totalLooks', 4);
       expect(component.hasNext).toBeFalse();
     });
 
     it('hasNext is true when there is a next look', () => {
-      fixture.componentRef.setInput('currentIndex', 4);
-      fixture.componentRef.setInput('totalLooks', 6);
+      fixture.componentRef.setInput('currentIndex', 2);
+      fixture.componentRef.setInput('totalLooks', 4);
       expect(component.hasNext).toBeTrue();
     });
   });
