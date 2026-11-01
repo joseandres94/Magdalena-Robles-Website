@@ -17,18 +17,14 @@
 .modal-inner {
   background: #fff;
   width: min(1100px, calc(100vw - 2.5rem));
-  height: 70vh;
-  max-height: 70vh;
+  min-height: 70dvh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: auto;
-  overflow: hidden;
 
   @include m.mobile {
-    height: auto;
-    max-height: calc(100dvh - 2.5rem);
     grid-template-columns: 1fr;
-    overflow-y: auto;
+    min-height: 0;
   }
 }
 
@@ -81,7 +77,6 @@
 }
 
 .modal-content {
-  height: 100%;
   min-height: 0;
   padding: 1.75rem 1.85rem;
   display: flex;
@@ -90,9 +85,8 @@
   gap: 1rem;
 
   @include m.mobile {
-    height: auto;
     padding: 1.5rem 1.35rem;
-    display: block;
+    justify-content: flex-start;
   }
 }
 
@@ -109,10 +103,10 @@
   flex-direction: column;
   justify-content: space-evenly;
   gap: 0.85rem;
-  min-height: 0;
 
   @include m.mobile {
-    display: contents;
+    flex: none;
+    justify-content: flex-start;
   }
 }
 

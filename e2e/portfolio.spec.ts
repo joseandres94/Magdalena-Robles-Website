@@ -21,10 +21,31 @@ test('recorre la colección y abre una ficha compartible', async ({ page }) => {
 
   await page.getByRole('button', { name: /Vista rápida: Look 1/ }).click();
   await expect(page.getByRole('dialog', { name: 'Look 1 — Colombina' })).toBeVisible();
-  await page.getByRole('link', { name: /Ver ficha completa/ }).click({ force: true });
+  await page.getByRole('link', { name: /Ver ficha completa/ }).click();
 
   await expect(page).toHaveURL(/\/collection\/colombina$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Colombina' })).toBeVisible();
+});
+
+test('muestra el modal completo en una ventana baja', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'Comprobación de ventana de escritorio');
+  for (const viewport of [
+    { width: 800, height: 600 },
+    { width: 1024, height: 500 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/collection', { waitUntil: 'networkidle' });
+    await page.getByRole('button', { name: /Vista rápida: Look 1/ }).click();
+
+    const body = await page.locator('.modal-content-body').boundingBox();
+    const footer = await page.locator('.modal-content-footer').boundingBox();
+    expect(body).not.toBeNull();
+    expect(footer).not.toBeNull();
+    expect(body!.y + body!.height).toBeLessThanOrEqual(footer!.y + 1);
+
+    await page.getByRole('link', { name: /Ver ficha completa/ }).click();
+    await expect(page).toHaveURL(/\/collection\/colombina$/);
+  }
 });
 
 test('cambia el idioma y conserva la preferencia', async ({ page }) => {
