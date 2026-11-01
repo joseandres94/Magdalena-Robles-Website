@@ -47,7 +47,7 @@ describe('LanguageService', () => {
   it('navItems exposes Spanish labels by default', () => {
     const items = service.navItems();
 
-    expect(items[0].label).toBe('Colección');
+    expect(items[0].label).toBe('Atelier');
     expect(items[1].label).toBe('Diseñadora');
   });
 
@@ -55,7 +55,7 @@ describe('LanguageService', () => {
     service.toggle();
     const items = service.navItems();
 
-    expect(items[0].label).toBe('Collection');
+    expect(items[0].label).toBe('Atelier');
     expect(items[1].label).toBe('About');
   });
 });
