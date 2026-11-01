@@ -48,17 +48,12 @@
     <h2 id="looks-title" class="mr-eyebrow">
       {{ lang.t('Lobotomy Chic — Marionetas', 'Lobotomy Chic — Marionetas') }}
     </h2>
-    <span class="mr-eyebrow faint">4 Looks</span>
+    <span class="mr-eyebrow faint">{{ collection.totalLooks() }} Looks</span>
   </div>
   <div class="looks-grid" role="list">
-    @for (look of featuredLooks(); track look.id; let index = $index) {
+    @for (look of collection.looks(); track look.id; let index = $index) {
       <div role="listitem">
-        <mr-look-card
-          [look]="look"
-          [index]="index"
-          imageFit="contain"
-          (cardClick)="collection.openLook(collection.looks().indexOf(look))"
-        />
+        <mr-look-card [look]="look" imageFit="contain" (cardClick)="collection.openLook(index)" />
       </div>
     }
   </div>
@@ -71,28 +66,6 @@
 
 <!-- FULL-WIDTH IMAGE -->
 <mr-collection-banner />
-
-<!-- MANIFESTO -->
-<!--
-<section class="mr-manifesto" aria-label="Manifiesto">
-  <blockquote>
-    "{{
-      lang.t(
-        'La máscara, llevada tanto tiempo que hemos dejado de preguntarnos qué cubría — o por qué.',
-        "The mask, worn so long we've stopped asking what it covered — or why."
-      )
-    }}"
-  </blockquote>
-  <cite>
-    {{
-      lang.t(
-        'Lobotomy Chic — Brief creativo de colección, 2025',
-        'Lobotomy Chic — Collection Brief, 2025'
-      )
-    }}
-  </cite>
-</section>*/
--->
 
 <!-- NEWSLETTER -->
 <mr-newsletter />

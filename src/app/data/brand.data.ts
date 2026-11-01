@@ -18,16 +18,6 @@ export const BRAND_INFO: BrandInfo = {
     'Artesanía, Sostenibilidad e Innovación',
     'Diseño de Autor',
     'Patronaje Creativo',
-    /*'Patronaje Avanzado',
-    #'Impresión 3D',
-    'Corte Láser',
-    'Materiales Circulares',
-    'Construcción Couture',
-    'Storytelling de Colección',
-    'Tela Deadstock',
-    'Plisados',
-    'Serigrafía',
-    'Tejidos Biodegradables',*/
   ],
   manifesto: [
     {

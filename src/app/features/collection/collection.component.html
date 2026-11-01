@@ -27,16 +27,14 @@
 <!-- Grid -->
 <section class="looks-section" aria-labelledby="looks-grid-title">
   <div class="looks-bar">
-    <h2 id="looks-grid-title" class="mr-eyebrow">
-      {{ lang.t('4 Looks', '4 Looks') }}
-    </h2>
+    <h2 id="looks-grid-title" class="mr-eyebrow">{{ collection.totalLooks() }} Looks</h2>
     <span class="mr-eyebrow faint">Magdalena Robles —</span>
   </div>
 
   <div class="looks-grid" role="list">
     @for (look of collection.looks(); track look.id) {
       <div role="listitem">
-        <mr-look-card [look]="look" [index]="$index" (cardClick)="collection.openLook($index)" />
+        <mr-look-card [look]="look" (cardClick)="collection.openLook($index)" />
       </div>
     }
   </div>

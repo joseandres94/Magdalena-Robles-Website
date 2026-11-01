@@ -26,30 +26,3 @@ export const MOCK_LOOK: Look = {
   ctaLabel: 'Consultar disponibilidad',
   ctaLabelEn: 'Enquire availability',
 };
-
-/** Look fixture for the last entry of LOOKS_DATA (Pierrot), used to test boundary conditions. */
-export const MOCK_LOOK_LAST: Look = {
-  id: 'look-04-pierrot',
-  number: 4,
-  roman: 'IV',
-  name: 'Pierrot',
-  archetype: 'Romanticismo',
-  archetypeEn: 'Romanticism',
-  slug: 'pierrot',
-  shortDescription: 'Romanticismo.',
-  shortDescriptionEn: 'Romanticism.',
-  editorialDescription: 'El eterno outsider. Vestido de blanco.',
-  editorialDescriptionEn: 'The eternal outsider. Dressed in white.',
-  conceptNote: 'Test concept note.',
-  conceptNoteEn: 'Test concept note.',
-  materials: [{ name: 'Lino deadstock', type: 'deadstock' }],
-  techniques: [{ name: 'Patronaje avanzado', category: 'Construcción' }],
-  images: [{ src: 'assets/looks/pierrot-01.jpg', alt: 'Pierrot look', type: 'editorial' }],
-  accentColor: '#27ae60',
-  bgColor: '#e8e3da',
-  season: 'SS25',
-  referenceCode: 'MR-SS25-04',
-  status: 'on-request',
-  ctaLabel: 'Consultar disponibilidad',
-  ctaLabelEn: 'Enquire availability',
-};

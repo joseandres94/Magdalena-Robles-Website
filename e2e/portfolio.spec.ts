@@ -4,6 +4,18 @@ test('recorre la colección y abre una ficha compartible', async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
 
   await expect(page.getByRole('heading', { level: 1, name: 'Magdalena Robles' })).toBeVisible();
+  await expect(page.locator('.looks-section .look-name')).toHaveText([
+    'Colombina',
+    'Pantalone',
+    'Arlequín',
+    'Pierrot',
+  ]);
+  const banner = page.locator('.collection-banner img');
+  await banner.scrollIntoViewIfNeeded();
+  await expect(banner).toHaveAttribute('src', 'assets/collection-banner/collection-banner.jpg');
+  await expect
+    .poll(() => banner.evaluate((image: HTMLImageElement) => image.naturalWidth))
+    .toBeGreaterThan(0);
   await page.getByRole('link', { name: 'Ver Colección' }).click();
   await expect(page).toHaveURL(/\/collection$/);
 
