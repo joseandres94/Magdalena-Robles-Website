@@ -9,12 +9,10 @@ assets/
   hero/
     hero-backdrop.jpg       ← Fondo del hero en home
   looks/
-    pedrolino-01.jpg        ← Look 01 editorial
-    colombina-01.jpg        ← Look 02 editorial
+    colombina-01.jpg        ← Look 01 editorial
+    pantalone-01.jpg        ← Look 02 editorial
     arlequin-01.jpg         ← Look 03 editorial
-    pantalone-01.jpg        ← Look 04 editorial
-    isabella-01.jpg         ← Look 05 editorial
-    lelio-01.jpg            ← Look 06 editorial
+    pierrot-01.jpg         ← Look 04 editorial
 ```
 
 ## Especificaciones de imagen

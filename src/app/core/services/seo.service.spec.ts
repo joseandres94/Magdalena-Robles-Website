@@ -34,7 +34,7 @@ describe('SeoService', () => {
     it('uses the default brand title when no title is provided', () => {
       service.setPage({});
 
-      expect(titleSpy.setTitle).toHaveBeenCalledWith('Magdalena Robles — Designer & Pattern Maker');
+      expect(titleSpy.setTitle).toHaveBeenCalledWith('Magdalena Robles');
     });
 
     it('sets the meta description tag', () => {
@@ -85,11 +85,11 @@ describe('SeoService', () => {
 
   describe('setLookPage()', () => {
     it('formats the document title as look name — collection — brand', () => {
-      const look = LOOKS_DATA[0]; // Pedrolino
+      const look = LOOKS_DATA[0]; // Colombina
       service.setLookPage(look);
 
       expect(titleSpy.setTitle).toHaveBeenCalledWith(
-        `${look.name} — Lobotomy Chic SS25 — Magdalena Robles`,
+        `${look.name} — Lobotomy Chic — Magdalena Robles`,
       );
     });
 

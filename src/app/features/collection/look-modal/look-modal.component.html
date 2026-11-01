@@ -11,7 +11,7 @@
 >
   <div class="modal-inner" @panelEnter>
     <!-- Image panel -->
-    <div class="modal-img-col" [style.background]="look.bgColor">
+    <div class="modal-img-col">
       @if (look.images[0]; as hero) {
         <img
           class="modal-photo"
@@ -27,80 +27,85 @@
 
     <!-- Content panel -->
     <div class="modal-content" role="document">
-      <div class="modal-top-row">
-        <span class="modal-num">{{ look.number | lookNumber }}</span>
-        <button
-          class="modal-close"
-          (click)="dismiss.emit()"
-          [attr.aria-label]="lang.t('Cerrar detalle de look', 'Close look detail')"
-        >
-          {{ lang.t('Cerrar', 'Close') }} ✕
-        </button>
-      </div>
+      <header class="modal-content-header">
+        <div class="modal-top-row">
+          <span class="modal-num">{{ look.number | lookNumber }}</span>
+          <button
+            class="modal-close"
+            (click)="dismiss.emit()"
+            [attr.aria-label]="lang.t('Cerrar detalle de look', 'Close look detail')"
+          >
+            {{ lang.t('Cerrar', 'Close') }} ✕
+          </button>
+        </div>
 
-      <h2 class="modal-name">{{ look.name }}</h2>
-      <p class="modal-tagline">
-        {{ lang.isEs() ? look.shortDescription : look.shortDescriptionEn }}
-      </p>
+        <h2 class="modal-name">{{ look.name }}</h2>
+        <p class="modal-tagline">
+          {{ lang.isEs() ? look.shortDescription : look.shortDescriptionEn }}
+        </p>
+      </header>
 
-      <hr class="modal-divider" />
+      <div class="modal-content-body">
+        <hr class="modal-divider" />
 
-      <div class="modal-block">
-        <p class="modal-section-label">{{ lang.t('Concepto', 'Concept') }}</p>
-        <p class="modal-body">{{ lang.isEs() ? look.conceptNote : look.conceptNoteEn }}</p>
-      </div>
+        <div class="modal-block">
+          <p class="modal-section-label">{{ lang.t('Concepto', 'Concept') }}</p>
+          <p class="modal-body">{{ lang.isEs() ? look.conceptNote : look.conceptNoteEn }}</p>
+        </div>
 
-      <div class="modal-block">
-        <p class="modal-section-label">{{ lang.t('Técnicas', 'Techniques') }}</p>
-        <div class="modal-tags">
-          @for (t of look.techniques; track t.name) {
-            <span class="modal-tag">{{ t.name }}</span>
-          }
+        <div class="modal-block">
+          <p class="modal-section-label">{{ lang.t('Técnicas', 'Techniques') }}</p>
+          <div class="modal-tags">
+            @for (t of look.techniques; track t.name) {
+              <span class="modal-tag">{{ t.name }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="modal-block">
+          <p class="modal-section-label">{{ lang.t('Materiales', 'Materials') }}</p>
+          <div class="modal-tags">
+            @for (mat of look.materials; track mat.name) {
+              <span class="modal-tag">{{ mat.name }}</span>
+            }
+          </div>
         </div>
       </div>
 
-      <div class="modal-block">
-        <p class="modal-section-label">{{ lang.t('Materiales', 'Materials') }}</p>
-        <div class="modal-tags">
-          @for (mat of look.materials; track mat.name) {
-            <span class="modal-tag">{{ mat.name }}</span>
-          }
+      <footer class="modal-content-footer">
+        <div class="modal-actions">
+          <a
+            [routerLink]="['/collection', look.slug]"
+            class="btn-primary dark"
+            (click)="dismiss.emit()"
+          >
+            {{ lang.t('Ver ficha completa', 'View full story') }} →
+          </a>
+          <a routerLink="/contact" class="btn-line" (click)="dismiss.emit()">
+            {{ lang.t('Consultar disponibilidad', 'Enquire availability') }} →
+          </a>
         </div>
-      </div>
 
-      <div class="modal-actions">
-        <a
-          [routerLink]="['/collection', look.slug]"
-          class="btn-primary dark"
-          (click)="dismiss.emit()"
-        >
-          {{ lang.t('Ver ficha completa', 'View full story') }} →
-        </a>
-        <a routerLink="/contact" class="btn-line" (click)="dismiss.emit()">
-          {{ lang.t('Consultar disponibilidad', 'Enquire availability') }} →
-        </a>
-      </div>
-
-      <!-- Nav -->
-      <div class="modal-nav">
-        <button
-          class="modal-nav-btn"
-          (click)="navigate.emit(-1)"
-          [disabled]="!hasPrev"
-          [attr.aria-label]="lang.t('Look anterior', 'Previous look')"
-        >
-          ← {{ lang.t('Anterior', 'Previous') }}
-        </button>
-        <span class="modal-counter">{{ currentIndex + 1 }} / {{ totalLooks }}</span>
-        <button
-          class="modal-nav-btn"
-          (click)="navigate.emit(1)"
-          [disabled]="!hasNext"
-          [attr.aria-label]="lang.t('Look siguiente', 'Next look')"
-        >
-          {{ lang.t('Siguiente', 'Next') }} →
-        </button>
-      </div>
+        <div class="modal-nav">
+          <button
+            class="modal-nav-btn"
+            (click)="navigate.emit(-1)"
+            [disabled]="!hasPrev"
+            [attr.aria-label]="lang.t('Look anterior', 'Previous look')"
+          >
+            ← {{ lang.t('Anterior', 'Previous') }}
+          </button>
+          <span class="modal-counter">{{ currentIndex + 1 }} / {{ totalLooks }}</span>
+          <button
+            class="modal-nav-btn"
+            (click)="navigate.emit(1)"
+            [disabled]="!hasNext"
+            [attr.aria-label]="lang.t('Look siguiente', 'Next look')"
+          >
+            {{ lang.t('Siguiente', 'Next') }} →
+          </button>
+        </div>
+      </footer>
     </div>
   </div>
 </div>
