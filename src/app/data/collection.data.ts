@@ -146,7 +146,7 @@ export const LOOKS_DATA: Look[] = [
     archetypeEn: 'Romanticism',
     slug: 'pierrot',
     shortDescription: 'Romanticismo.',
-    shortDescriptionEn: "Romanticism.",
+    shortDescriptionEn: 'Romanticism.',
     editorialDescription:
       'El eterno outsider. Vestido de blanco, expresivo, perpetuamente incomprendido.',
     editorialDescriptionEn:
