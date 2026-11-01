@@ -8,6 +8,7 @@ import { LanguageService } from '../../core/services/language.service';
 import { SeoService } from '../../core/services/seo.service';
 import { BRAND_INFO } from '../../data/brand.data';
 import { NewsletterComponent } from './newsletter/newsletter.component';
+import { CollectionBannerComponent } from './collection-banner/collection-banner.component';
 @Component({
   selector: 'mr-home',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,6 +18,7 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
     MoodboardComponent,
     LookCardComponent,
     NewsletterComponent,
+    CollectionBannerComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
