@@ -2,7 +2,6 @@ import { Component, type OnInit, computed, inject, ChangeDetectionStrategy } fro
 import { RouterLink } from '@angular/router';
 import { HeroComponent } from './hero/hero.component';
 import { MoodboardComponent } from './moodboard/moodboard.component';
-import { TickerComponent } from '../../shared/components/ticker/ticker.component';
 import { LookCardComponent } from '../../shared/components/look-card/look-card.component';
 import { CollectionService } from '../../core/services/collection.service';
 import { LanguageService } from '../../core/services/language.service';
@@ -16,7 +15,6 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
     RouterLink,
     HeroComponent,
     MoodboardComponent,
-    TickerComponent,
     LookCardComponent,
     NewsletterComponent,
   ],
