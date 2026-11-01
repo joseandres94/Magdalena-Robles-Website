@@ -20,7 +20,7 @@ describe('LookCardComponent', () => {
 
   it('opens quick view for the clicked look', () => {
     let emitted: Look | undefined;
-    component.cardClick.subscribe((look) => (emitted = look));
+    fixture.componentInstance.cardClick.subscribe((look) => (emitted = look));
 
     (fixture.nativeElement as HTMLElement)
       .querySelector<HTMLButtonElement>('.look-trigger')
