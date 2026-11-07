@@ -21,6 +21,14 @@ export class FormSubmissionService {
   private readonly http = inject(HttpClient);
   private readonly environment = inject(APP_ENVIRONMENT);
 
+  get contactConfigured(): boolean {
+    return !!this.environment.contactEndpoint;
+  }
+
+  get newsletterConfigured(): boolean {
+    return !!this.environment.newsletterEndpoint;
+  }
+
   submitContact(payload: ContactSubmission): Observable<void> {
     return this.post(this.environment.contactEndpoint, payload);
   }

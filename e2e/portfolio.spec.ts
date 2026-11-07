@@ -76,7 +76,8 @@ test('cambia el idioma y conserva la preferencia', async ({ page }) => {
 
 test('valida el formulario de contacto y enlaza privacidad', async ({ page }) => {
   await page.goto('/contact', { waitUntil: 'networkidle' });
-  await page.getByRole('button', { name: /^Enviar/ }).click();
+  await expect(page.getByText('Formulario de muestra. Puedes probarlo')).toBeVisible();
+  await page.getByRole('button', { name: /^Probar formulario/ }).click();
 
   await expect(page.getByText('Nombre requerido')).toBeVisible();
   await page.getByRole('link', { name: 'política de privacidad' }).click();

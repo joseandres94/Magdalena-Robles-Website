@@ -120,6 +120,14 @@
   margin-bottom: 2.5rem;
 }
 
+.form-preview-note {
+  margin-bottom: 1.5rem;
+  font-family: t.$font-ui;
+  font-size: 0.68rem;
+  line-height: 1.6;
+  color: t.$mr-ink-55;
+}
+
 // ── FORM ──
 .form-row {
   display: grid;
