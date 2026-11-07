@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://magdalenarobles.com/sitemap.xml
+Sitemap: https://joseandres94.github.io/Magdalena-Robles-Website/sitemap.xml

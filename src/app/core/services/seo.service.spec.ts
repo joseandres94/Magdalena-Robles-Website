@@ -78,8 +78,17 @@ describe('SeoService', () => {
 
       expect(metaSpy.updateTag).toHaveBeenCalledWith({
         property: 'og:image',
-        content: 'https://magdalenarobles.com/assets/placeholders/hero-placeholder.svg',
+        content:
+          'https://joseandres94.github.io/Magdalena-Robles-Website/assets/placeholders/hero-placeholder.svg',
       });
+    });
+
+    it('keeps canonical routes inside the GitHub Pages project path', () => {
+      service.setPage({ url: '/Magdalena-Robles-Website/contact' });
+
+      const canonical = 'https://joseandres94.github.io/Magdalena-Robles-Website/contact';
+      expect(metaSpy.updateTag).toHaveBeenCalledWith({ property: 'og:url', content: canonical });
+      expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(canonical);
     });
   });
 
@@ -100,6 +109,20 @@ describe('SeoService', () => {
       expect(metaSpy.updateTag).toHaveBeenCalledWith({
         name: 'description',
         content: look.editorialDescription,
+      });
+    });
+
+    it('resolves look URLs and social images under the GitHub Pages project path', () => {
+      const look = LOOKS_DATA[0];
+      service.setLookPage(look);
+
+      expect(metaSpy.updateTag).toHaveBeenCalledWith({
+        property: 'og:url',
+        content: `https://joseandres94.github.io/Magdalena-Robles-Website/collection/${look.slug}`,
+      });
+      expect(metaSpy.updateTag).toHaveBeenCalledWith({
+        property: 'og:image',
+        content: `https://joseandres94.github.io/Magdalena-Robles-Website/${look.images[0].src}`,
       });
     });
   });
