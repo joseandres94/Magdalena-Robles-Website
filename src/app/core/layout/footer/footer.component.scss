@@ -23,7 +23,6 @@
   align-items: center;
   padding: 0 2rem;
   gap: 1.5rem;
-  background: t.$mr-white;
 }
 
 .footer-logo {
@@ -32,7 +31,7 @@
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: t.$mr-ink-35;
+  color: t.$mr-cream;
 }
 
 .footer-right {
@@ -66,13 +65,17 @@
     font-size: 0.62rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: t.$mr-ink-30;
+    color: t.$mr-cream;
     text-decoration: none;
     transition: color 0.2s;
     @include m.focus-ring;
 
+    &:focus-visible {
+      outline-color: t.$mr-cream;
+    }
+
     &:hover {
-      color: t.$mr-ink;
+      color: t.$mr-gold;
     }
   }
 }
@@ -117,5 +120,5 @@
   font-size: 0.58rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: t.$mr-ink-22;
+  color: t.$mr-cream;
 }
