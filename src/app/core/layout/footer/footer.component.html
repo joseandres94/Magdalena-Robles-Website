@@ -19,8 +19,10 @@
           <a [href]="s.url" target="_blank" rel="noopener noreferrer">{{ s.label }}</a>
         }
       </div>
-      <span class="footer-text">© {{ year }} — {{ brand.location }}</span>
-      <span class="footer-text">{{ brand.positioning }}</span>
+      <div class="footer-meta">
+        <span class="footer-text">© {{ year }} — {{ brand.location }}</span>
+        <span class="footer-text">{{ brand.positioning }}</span>
+      </div>
     </div>
   </div>
 </footer>
