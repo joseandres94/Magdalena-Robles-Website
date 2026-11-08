@@ -2,25 +2,32 @@
 @use '../../../../styles/mixins' as m;
 
 .mr-footer {
-  border-top: 0.5px solid t.$mr-ink-10;
+  display: flex;
+  align-items: stretch;
+  height: clamp(3.5rem, 5.4vw, 5rem);
+  background: t.$mr-ink;
+}
+
+.footer-sponsor {
+  display: block;
+  height: 100%;
+  width: auto;
+  flex: none;
 }
 
 .footer-inner {
   display: flex;
-  justify-content: flex-start;
+  flex: 1;
+  min-width: 0;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.6rem 2.5rem;
+  padding: 0 2.5rem;
   gap: 2rem;
-
-  @include m.mobile {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.2rem;
-    padding: 2rem 1.5rem;
-  }
+  background: t.$mr-white;
 }
 
 .footer-logo {
+  flex: none;
   font-family: t.$font-display;
   font-size: 0.82rem;
   font-weight: 700;
@@ -31,14 +38,14 @@
 .footer-right {
   margin-left: auto;
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
 
   @include m.mobile {
     margin-left: 0;
     width: 100%;
     min-width: 0;
-    flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
@@ -46,10 +53,12 @@
 
 .footer-socials {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 1.2rem;
 
   @include m.mobile {
-    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   a {
@@ -64,6 +73,30 @@
 
     &:hover {
       color: t.$mr-ink;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .mr-footer {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .footer-sponsor {
+    width: min(100%, 700px);
+    height: auto;
+  }
+
+  .footer-inner {
+    width: 100%;
+    padding: 1.5rem 2.5rem;
+
+    @include m.mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 2rem 1.5rem;
     }
   }
 }
