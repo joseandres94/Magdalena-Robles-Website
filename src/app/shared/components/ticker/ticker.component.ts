@@ -26,21 +26,20 @@ export class TickerComponent {
     return [
       { text: 'Lobotomy Chic', strong: true },
       { text: '—' },
-      { text: this.lang.t('Primera colección', 'First collection') },
+      { text: this.lang.t('Materiales Circulares', 'Circular Materials') },
       { text: '✦' },
-      { text: 'Designer & Pattern Maker' },
+      { text: this.lang.t('Estudio Experimental', 'Experimental Studio') },
       { text: '✦' },
-      { text: "Commedia dell'Arte", strong: true },
-      { text: '—' },
-      { text: this.lang.t('Reinterpretada', 'Reinterpreted') },
+      {
+        text: this.lang.t(
+          'Artesanía, Sostenibilidad e Innovación',
+          'Craftsmanship, Sustainability and Innovation',
+        ),
+      },
       { text: '✦' },
-      { text: this.lang.t('Almería — España', 'Almería — Spain') },
+      { text: this.lang.t('Diseño de Autor', 'Designer Collection') },
       { text: '✦' },
-      { text: 'Couture / Ready-to-wear' },
-      { text: '✦' },
-      { text: this.lang.t('Materiales circulares', 'Circular materials'), strong: true },
-      { text: '✦' },
-      { text: this.lang.t('Impresión 3D & corte láser', '3D printing & laser cutting') },
+      { text: this.lang.t('Patronaje Creativo', 'Creative Pattern-making') },
       { text: '✦' },
     ];
   }

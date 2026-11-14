@@ -13,16 +13,11 @@ export const BRAND_INFO: BrandInfo = {
   currentCollection: 'Lobotomy Chic',
   currentSeason: 'SS25',
   skills: [
-    'Patronaje Avanzado',
-    'Impresión 3D',
-    'Corte Láser',
     'Materiales Circulares',
-    'Construcción Couture',
-    'Storytelling de Colección',
-    'Tela Deadstock',
-    'Plisados',
-    'Serigrafía',
-    'Tejidos Biodegradables',
+    'Estudio Experimental',
+    'Artesanía, Sostenibilidad e Innovación',
+    'Diseño de Autor',
+    'Patronaje Creativo',
   ],
   manifesto: [
     {

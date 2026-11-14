@@ -1,9 +1,6 @@
 <!-- HERO -->
 <mr-hero />
 
-<!-- TICKER -->
-<mr-ticker />
-
 <!-- MOODBOARD -->
 <mr-moodboard />
 
@@ -17,7 +14,7 @@
       <em>
         con
         <br />
-        propósito.
+        identidad.
       </em>
     } @else {
       Author-led
@@ -34,8 +31,8 @@
     <p>
       {{
         lang.t(
-          'Magdalena Robles es diseñadora de moda y patronista especializada cuyo trabajo habita la intersección entre la silueta histórica, la construcción experimental y los materiales circulares. Prendas conceptuales y llevables a la vez.',
-          'Magdalena Robles is a fashion designer and specialist pattern maker whose work inhabits the intersection of historical silhouette, experimental construction and circular materials. Conceptual pieces made to be worn.'
+          'Magdalena Robles es una marca de autor que explora el encuentro entre artesanía, tecnología y experimentación. Su trabajo combina siluetas históricas, construcción experimental y materiales circulares para crear piezas únicas y atemporales.',
+          'Magdalena Robles is a designer brand that explores the intersection of craftsmanship, technology and experimentation. Her work combines historical silhouettes, experimental construction and circular materials to create unique and timeless pieces.'
         )
       }}
     </p>
@@ -49,14 +46,14 @@
 <section class="looks-section" aria-labelledby="looks-title">
   <div class="looks-header">
     <h2 id="looks-title" class="mr-eyebrow">
-      {{ lang.t('Colección — Lobotomy Chic', 'Collection — Lobotomy Chic') }}
+      {{ lang.t('Lobotomy Chic — Marionetas', 'Lobotomy Chic — Marionetas') }}
     </h2>
-    <span class="mr-eyebrow faint">6 Looks — SS25</span>
+    <span class="mr-eyebrow faint">{{ collection.totalLooks() }} Looks</span>
   </div>
   <div class="looks-grid" role="list">
-    @for (look of collection.looks(); track look.id) {
+    @for (look of collection.looks(); track look.id; let index = $index) {
       <div role="listitem">
-        <mr-look-card [look]="look" [index]="$index" (cardClick)="collection.openLook($index)" />
+        <mr-look-card [look]="look" imageFit="contain" (cardClick)="collection.openLook(index)" />
       </div>
     }
   </div>
@@ -67,25 +64,8 @@
   </div>
 </section>
 
-<!-- MANIFESTO -->
-<section class="mr-manifesto" aria-label="Manifiesto">
-  <blockquote>
-    "{{
-      lang.t(
-        'La máscara, llevada tanto tiempo que hemos dejado de preguntarnos qué cubría — o por qué.',
-        "The mask, worn so long we've stopped asking what it covered — or why."
-      )
-    }}"
-  </blockquote>
-  <cite>
-    {{
-      lang.t(
-        'Lobotomy Chic — Brief creativo de colección, 2025',
-        'Lobotomy Chic — Collection Brief, 2025'
-      )
-    }}
-  </cite>
-</section>
+<!-- FULL-WIDTH IMAGE -->
+<mr-collection-banner />
 
 <!-- NEWSLETTER -->
 <mr-newsletter />

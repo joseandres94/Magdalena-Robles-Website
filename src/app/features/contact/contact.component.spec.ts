@@ -10,15 +10,16 @@ describe('ContactComponent', () => {
   let component: ContactComponent;
   let seoSpy: jasmine.SpyObj<SeoService>;
   let submission$: Subject<void>;
-  let submissionsSpy: jasmine.SpyObj<FormSubmissionService>;
+  let submissionsSpy: { contactConfigured: boolean; submitContact: jasmine.Spy };
 
   beforeEach(async () => {
     localStorage.removeItem('mr-language');
     seoSpy = jasmine.createSpyObj<SeoService>('SeoService', ['setPage', 'setLookPage']);
     submission$ = new Subject<void>();
-    submissionsSpy = jasmine.createSpyObj<FormSubmissionService>('FormSubmissionService', [
-      'submitContact',
-    ]);
+    submissionsSpy = {
+      contactConfigured: true,
+      submitContact: jasmine.createSpy('submitContact'),
+    };
     submissionsSpy.submitContact.and.returnValue(submission$);
 
     await TestBed.configureTestingModule({
@@ -125,6 +126,21 @@ describe('ContactComponent', () => {
 
       expect(component.formState().loading).toBeFalse();
       expect(component.formState().success).toBeTrue();
+    });
+
+    it('keeps the form in preview mode without sending or reporting success', () => {
+      submissionsSpy.contactConfigured = false;
+      fixture = TestBed.createComponent(ContactComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+      fillValidForm(component);
+
+      component.onSubmit();
+
+      expect(submissionsSpy.submitContact).not.toHaveBeenCalled();
+      expect(component.formState().success).toBeFalse();
+      expect(component.formState().error).toContain('no se ha enviado');
+      expect(fixture.nativeElement.textContent).toContain('Formulario de muestra');
     });
   });
 });

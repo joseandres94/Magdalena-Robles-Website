@@ -15,7 +15,7 @@ export const APP_ENVIRONMENT = new InjectionToken<AppEnvironment>('APP_ENVIRONME
  */
 export const appEnvironment: AppEnvironment = {
   production: true,
-  publicUrl: 'https://magdalenarobles.com',
+  publicUrl: 'https://joseandres94.github.io/Magdalena-Robles-Website/',
   contactEndpoint: '',
   newsletterEndpoint: '',
 };

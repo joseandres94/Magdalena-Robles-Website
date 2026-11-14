@@ -22,6 +22,6 @@ import { ImageFallbackDirective } from '../../directives/image-fallback.directiv
 export class LookCardComponent {
   readonly lang = inject(LanguageService);
   @Input({ required: true }) look!: Look;
-  @Input() index = 0;
+  @Input() imageFit: 'contain' | 'cover' = 'cover';
   @Output() cardClick = new EventEmitter<Look>();
 }

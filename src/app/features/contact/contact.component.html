@@ -40,6 +40,17 @@
     <div class="contact-form-col">
       <p class="form-eyebrow mr-eyebrow">{{ lang.t('Envía un mensaje', 'Send a message') }}</p>
 
+      @if (!contactConfigured) {
+        <p class="form-preview-note">
+          {{
+            lang.t(
+              'Formulario de muestra. Puedes probarlo, pero tus datos no se envían ni se guardan.',
+              'Sample form. You can try it, but your details are not sent or saved.'
+            )
+          }}
+        </p>
+      }
+
       @if (formState().success) {
         <div class="form-success" role="status" aria-live="polite">
           <p>
@@ -182,7 +193,13 @@
               [disabled]="formState().loading"
               [attr.aria-busy]="formState().loading"
             >
-              {{ formState().loading ? lang.t('Enviando…', 'Sending…') : lang.t('Enviar', 'Send') }}
+              {{
+                formState().loading
+                  ? lang.t('Enviando…', 'Sending…')
+                  : contactConfigured
+                    ? lang.t('Enviar', 'Send')
+                    : lang.t('Probar formulario', 'Try the form')
+              }}
               →
             </button>
           </div>

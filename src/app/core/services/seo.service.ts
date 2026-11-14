@@ -13,9 +13,9 @@ export interface SeoData {
 }
 
 const BRAND_NAME = 'Magdalena Robles';
-const BASE_TITLE = `${BRAND_NAME} — Designer & Pattern Maker`;
+const BASE_TITLE = `${BRAND_NAME}`;
 const BASE_DESC =
-  'Fashion designer and specialist pattern maker based in Almería. First collection: Lobotomy Chic SS25.';
+  'Fashion designer and specialist pattern maker based in Almería. First collection: Lobotomy Chic.';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
@@ -27,11 +27,19 @@ export class SeoService {
   setPage(data: Partial<SeoData>): void {
     const t = data.title ? `${data.title} — ${BRAND_NAME}` : BASE_TITLE;
     const d = data.description ?? BASE_DESC;
+    const publicBase = new URL(`${this.environment.publicUrl.replace(/\/$/, '')}/`);
+    const basePath = publicBase.pathname.replace(/\/$/, '');
     const path = data.url ?? this.document.location?.pathname ?? '/';
-    const canonicalUrl = new URL(path, this.environment.publicUrl).toString();
+    const route =
+      path === basePath
+        ? '/'
+        : path.startsWith(`${basePath}/`)
+          ? path.slice(basePath.length)
+          : path;
+    const canonicalUrl = new URL(route.replace(/^\/+/, ''), publicBase).toString();
     const image = new URL(
-      data.image ?? '/assets/placeholders/hero-placeholder.svg',
-      this.environment.publicUrl,
+      (data.image ?? '/assets/placeholders/hero-placeholder.svg').replace(/^\/+/, ''),
+      publicBase,
     ).toString();
 
     this.title.setTitle(t);
@@ -56,7 +64,7 @@ export class SeoService {
   setLookPage(look: Look): void {
     const isEnglish = this.document.documentElement.lang === 'en';
     this.setPage({
-      title: `${look.name} — Lobotomy Chic SS25`,
+      title: `${look.name} — Lobotomy Chic`,
       description: isEnglish ? look.editorialDescriptionEn : look.editorialDescription,
       image: look.images[0]?.src,
       url: `/collection/${look.slug}`,

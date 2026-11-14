@@ -1,4 +1,4 @@
-<article class="look-card">
+<article class="look-card" [class.look-card--contain]="imageFit === 'contain'">
   <!-- Image area -->
   <button
     type="button"
@@ -14,7 +14,7 @@
           class="look-photo"
           [src]="hero.src"
           [alt]="hero.alt"
-          mrImageFallback="/assets/placeholders/look-placeholder.svg"
+          mrImageFallback="assets/placeholders/look-placeholder.svg"
           loading="lazy"
           decoding="async"
         />
@@ -30,7 +30,7 @@
     <a [routerLink]="['/collection', look.slug]" class="look-detail-link">
       <h3 class="look-name">{{ look.name }}</h3>
       <p class="look-desc">{{ lang.isEs() ? look.shortDescription : look.shortDescriptionEn }}</p>
-      <span class="look-more">{{ lang.t('Ver ficha', 'View story') }} →</span>
+      <span class="look-more">{{ lang.t('Descubrir personaje', 'Explore the character') }} →</span>
     </a>
   </footer>
 </article>

@@ -8,13 +8,15 @@ describe('NewsletterComponent', () => {
   let fixture: ComponentFixture<NewsletterComponent>;
   let component: NewsletterComponent;
   let submission$: Subject<void>;
-  let submissionsSpy: jasmine.SpyObj<FormSubmissionService>;
+  let submissionsSpy: { newsletterConfigured: boolean; subscribeToNewsletter: jasmine.Spy };
 
   beforeEach(async () => {
+    localStorage.removeItem('mr-language');
     submission$ = new Subject<void>();
-    submissionsSpy = jasmine.createSpyObj<FormSubmissionService>('FormSubmissionService', [
-      'subscribeToNewsletter',
-    ]);
+    submissionsSpy = {
+      newsletterConfigured: true,
+      subscribeToNewsletter: jasmine.createSpy('subscribeToNewsletter'),
+    };
     submissionsSpy.subscribeToNewsletter.and.returnValue(submission$);
 
     await TestBed.configureTestingModule({
@@ -112,6 +114,22 @@ describe('NewsletterComponent', () => {
       submission$.complete();
 
       expect(component.form.get('interests.collection')?.value).toBeTrue();
+    });
+
+    it('keeps the form in preview mode without sending or reporting success', () => {
+      submissionsSpy.newsletterConfigured = false;
+      fixture = TestBed.createComponent(NewsletterComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+      component.field('email').setValue('test@example.com');
+      component.field('acceptPrivacy').setValue(true);
+
+      component.onSubmit();
+
+      expect(submissionsSpy.subscribeToNewsletter).not.toHaveBeenCalled();
+      expect(component.state().success).toBeFalse();
+      expect(component.state().error).toContain('no se ha enviado');
+      expect(fixture.nativeElement.textContent).toContain('Formulario de muestra');
     });
   });
 

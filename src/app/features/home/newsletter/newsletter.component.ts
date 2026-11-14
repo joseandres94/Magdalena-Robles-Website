@@ -21,6 +21,7 @@ export class NewsletterComponent {
   readonly lang = inject(LanguageService);
   private readonly fb = inject(FormBuilder).nonNullable;
   private readonly submissions = inject(FormSubmissionService);
+  readonly newsletterConfigured = this.submissions.newsletterConfigured;
 
   readonly state = signal<NewsletterState>({ loading: false, success: false, error: null });
 
@@ -48,6 +49,18 @@ export class NewsletterComponent {
   onSubmit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      return;
+    }
+
+    if (!this.newsletterConfigured) {
+      this.state.set({
+        loading: false,
+        success: false,
+        error: this.lang.t(
+          'Vista previa: tu email no se ha enviado ni guardado.',
+          'Preview: your email was not sent or saved.',
+        ),
+      });
       return;
     }
 

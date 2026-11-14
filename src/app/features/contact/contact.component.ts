@@ -21,6 +21,7 @@ export class ContactComponent implements OnInit {
   private readonly seo = inject(SeoService);
 
   readonly brand = BRAND_INFO;
+  readonly contactConfigured = this.submissions.contactConfigured;
 
   readonly formState = signal<ContactFormState>({ loading: false, success: false, error: null });
 
@@ -60,6 +61,18 @@ export class ContactComponent implements OnInit {
   onSubmit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      return;
+    }
+
+    if (!this.contactConfigured) {
+      this.formState.set({
+        loading: false,
+        success: false,
+        error: this.lang.t(
+          'Vista previa: el mensaje no se ha enviado ni guardado.',
+          'Preview: the message was not sent or saved.',
+        ),
+      });
       return;
     }
 
