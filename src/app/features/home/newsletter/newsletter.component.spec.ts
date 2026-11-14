@@ -11,6 +11,7 @@ describe('NewsletterComponent', () => {
   let submissionsSpy: { newsletterConfigured: boolean; subscribeToNewsletter: jasmine.Spy };
 
   beforeEach(async () => {
+    localStorage.removeItem('mr-language');
     submission$ = new Subject<void>();
     submissionsSpy = {
       newsletterConfigured: true,
