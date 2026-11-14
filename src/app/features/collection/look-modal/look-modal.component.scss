@@ -16,32 +16,18 @@
 
 .modal-inner {
   background: #fff;
-  width: min(1100px, calc(100vw - 2.5rem));
-  min-height: 70dvh;
+  width: min(940px, calc(100vw - 2.5rem));
+  height: min(640px, calc(100dvh - 2.5rem));
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 38.3%) minmax(0, 1fr);
   margin: auto;
-
-  @include m.mobile {
-    grid-template-columns: 1fr;
-    min-height: 0;
-  }
 }
 
 .modal-img-col {
-  background: #fff;
+  background: #111b1a;
   position: relative;
-  height: 100%;
   min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-
-  @include m.mobile {
-    height: auto;
-    min-height: 48vh;
-  }
+  overflow: hidden;
 }
 
 .modal-photo {
@@ -50,71 +36,36 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
-  z-index: 0;
-
-  @include m.mobile {
-    height: auto;
-    max-height: 48vh;
-  }
-}
-
-.modal-roman {
-  font-family: t.$font-display;
-  font-size: 5rem;
-  font-weight: 900;
-  color: rgba(29, 29, 29, 0.05);
-  font-style: italic;
-  line-height: 1;
-  position: absolute;
-  right: 0.75rem;
-  bottom: 0.25rem;
-  z-index: 2;
-  pointer-events: none;
-
-  @include m.mobile {
-    font-size: 3rem;
-  }
 }
 
 .modal-content {
   min-height: 0;
-  padding: 1.75rem 1.85rem;
+  padding: 2rem 2.5rem 1.75rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-
-  @include m.mobile {
-    padding: 1.5rem 1.35rem;
-    justify-content: flex-start;
-  }
 }
 
 .modal-content-header {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
   flex-shrink: 0;
 }
 
 .modal-content-body {
   flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  gap: 0.85rem;
-
-  @include m.mobile {
-    flex: none;
-    justify-content: flex-start;
-  }
+  gap: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .modal-content-footer {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1.15rem;
   flex-shrink: 0;
+  margin-top: auto;
 }
 
 .modal-top-row {
@@ -130,7 +81,7 @@
   font-size: 0.6rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: t.$mr-ink-35;
+  color: t.$mr-ink-60;
   cursor: pointer;
   transition: color 0.2s;
   @include m.focus-ring;
@@ -145,23 +96,25 @@
   font-size: 0.56rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: t.$mr-ink-30;
+  color: t.$mr-ink-60;
 }
 
 .modal-name {
   font-family: t.$font-display;
-  font-size: clamp(1.7rem, 2.5vw, 2.15rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 900;
-  line-height: 0.92;
+  line-height: 1;
   letter-spacing: -0.04em;
+  margin-top: 1.5rem;
 }
 
 .modal-tagline {
   font-family: t.$font-display;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-style: italic;
-  color: t.$mr-ink-45;
+  color: t.$mr-ink-60;
   line-height: 1.4;
+  margin-top: 0.35rem;
 }
 
 .modal-divider {
@@ -173,7 +126,13 @@
 .modal-block {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.5rem;
+}
+
+.modal-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
 }
 
 .modal-section-label {
@@ -181,14 +140,14 @@
   font-size: 0.56rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: t.$mr-ink-30;
+  color: t.$mr-ink-60;
 }
 
 .modal-body {
   font-family: t.$font-ui;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   line-height: 1.65;
-  color: t.$mr-ink-55;
+  color: t.$mr-ink-60;
   font-weight: 300;
 }
 
@@ -204,8 +163,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: t.$border-hair;
-  padding: 0.2rem 0.55rem;
-  color: t.$mr-ink-45;
+  padding: 0.3rem 0.55rem;
+  color: t.$mr-ink-60;
 }
 
 .modal-actions {
@@ -230,7 +189,7 @@
   font-size: 0.6rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: t.$mr-ink-35;
+  color: t.$mr-ink-60;
   cursor: pointer;
   transition: color 0.2s;
   @include m.focus-ring;
@@ -249,5 +208,56 @@
   font-family: t.$font-ui;
   font-size: 0.56rem;
   letter-spacing: 0.14em;
-  color: t.$mr-ink-22;
+  color: t.$mr-ink-60;
+}
+
+@media (max-width: 767px), (max-height: 560px) {
+  .modal-backdrop {
+    padding: 0.75rem;
+  }
+
+  .modal-inner {
+    width: min(640px, calc(100vw - 1.5rem));
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .modal-img-col {
+    height: min(46dvh, 360px);
+  }
+
+  .modal-content {
+    padding: 1.75rem 2rem;
+  }
+
+  .modal-content-body {
+    flex: none;
+  }
+
+  .modal-content-footer {
+    margin-top: 1.5rem;
+  }
+}
+
+@include m.mobile {
+  .modal-inner {
+    width: calc(100vw - 1rem);
+  }
+
+  .modal-img-col {
+    height: min(48dvh, 340px);
+  }
+
+  .modal-content {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .modal-name {
+    margin-top: 1rem;
+  }
+
+  .modal-details {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 }

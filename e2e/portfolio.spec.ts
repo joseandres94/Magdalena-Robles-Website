@@ -12,7 +12,9 @@ test('recorre la colección y abre una ficha compartible', async ({ page }) => {
   ]);
   await expect
     .poll(() =>
-      page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth),
+      page.evaluate(
+        () => document.documentElement.scrollWidth <= document.documentElement.clientWidth,
+      ),
     )
     .toBe(true);
   const banner = page.locator('.collection-banner img');
@@ -50,6 +52,43 @@ test('muestra el modal completo en una ventana baja', async ({ page }, testInfo)
 
     await page.getByRole('link', { name: /Ver ficha completa/ }).click();
     await expect(page).toHaveURL(/\/collection\/colombina$/);
+  }
+});
+
+test('muestra la foto entera y todo el contenido sin scroll en escritorio', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'Comprobación de ventana de escritorio');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/collection', { waitUntil: 'networkidle' });
+  await page.getByRole('button', { name: /Vista rápida: Look 1/ }).click();
+
+  for (const [index, name] of ['Colombina', 'Pantalone', 'Arlequín', 'Pierrot'].entries()) {
+    await expect(page.locator('.modal-name')).toHaveText(name);
+    const layout = await page.locator('.modal-inner').evaluate((modal) => {
+      const photo = modal.querySelector<HTMLImageElement>('.modal-photo')!;
+      const content = modal.querySelector<HTMLElement>('.modal-content')!;
+      const backdrop = modal.parentElement!;
+      const rect = modal.getBoundingClientRect();
+      return {
+        top: rect.top,
+        bottom: rect.bottom,
+        viewportHeight: window.innerHeight,
+        photoLoaded: photo.complete && photo.naturalWidth > 0,
+        photoFit: getComputedStyle(photo).objectFit,
+        contentOverflow: content.scrollHeight - content.clientHeight,
+        backdropOverflow: backdrop.scrollHeight - backdrop.clientHeight,
+      };
+    });
+
+    expect(layout.top).toBeGreaterThanOrEqual(0);
+    expect(layout.bottom).toBeLessThanOrEqual(layout.viewportHeight);
+    expect(layout.photoLoaded).toBe(true);
+    expect(layout.photoFit).toBe('contain');
+    expect(layout.contentOverflow).toBeLessThanOrEqual(1);
+    expect(layout.backdropOverflow).toBeLessThanOrEqual(1);
+
+    if (index < 3) await page.getByRole('button', { name: 'Look siguiente' }).click();
   }
 });
 

@@ -22,14 +22,13 @@
           decoding="async"
         />
       }
-      <span class="modal-roman" aria-hidden="true">{{ look.roman }}</span>
     </div>
 
     <!-- Content panel -->
     <div class="modal-content" role="document">
       <header class="modal-content-header">
         <div class="modal-top-row">
-          <span class="modal-num">{{ look.number | lookNumber }}</span>
+          <span class="modal-num">{{ look.number | lookNumber }} · Lobotomy Chic</span>
           <button
             class="modal-close"
             (click)="dismiss.emit()"
@@ -53,21 +52,23 @@
           <p class="modal-body">{{ lang.isEs() ? look.conceptNote : look.conceptNoteEn }}</p>
         </div>
 
-        <div class="modal-block">
-          <p class="modal-section-label">{{ lang.t('Técnicas', 'Techniques') }}</p>
-          <div class="modal-tags">
-            @for (t of look.techniques; track t.name) {
-              <span class="modal-tag">{{ t.name }}</span>
-            }
+        <div class="modal-details">
+          <div class="modal-block">
+            <p class="modal-section-label">{{ lang.t('Técnicas', 'Techniques') }}</p>
+            <div class="modal-tags">
+              @for (t of look.techniques; track t.name) {
+                <span class="modal-tag">{{ t.name }}</span>
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="modal-block">
-          <p class="modal-section-label">{{ lang.t('Materiales', 'Materials') }}</p>
-          <div class="modal-tags">
-            @for (mat of look.materials; track mat.name) {
-              <span class="modal-tag">{{ mat.name }}</span>
-            }
+          <div class="modal-block">
+            <p class="modal-section-label">{{ lang.t('Materiales', 'Materials') }}</p>
+            <div class="modal-tags">
+              @for (mat of look.materials; track mat.name) {
+                <span class="modal-tag">{{ mat.name }}</span>
+              }
+            </div>
           </div>
         </div>
       </div>
