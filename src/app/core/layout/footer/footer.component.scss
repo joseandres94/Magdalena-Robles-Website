@@ -80,17 +80,6 @@
   }
 }
 
-.footer-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.25rem 1.25rem;
-
-  @include m.mobile {
-    justify-content: flex-start;
-  }
-}
-
 @media (max-width: 1020px) {
   .mr-footer {
     height: auto;
